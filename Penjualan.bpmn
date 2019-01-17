@@ -16,12 +16,12 @@
       <bpmn:outgoing>SequenceFlow_113oidf</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="SequenceFlow_1ydjfsy" sourceRef="Task_1upki6w" targetRef="ExclusiveGateway_0zal7ug" />
-    <bpmn:sequenceFlow id="SequenceFlow_0es87ws" sourceRef="ExclusiveGateway_0zal7ug" targetRef="Task_13vxa7o" />
+    <bpmn:sequenceFlow id="SequenceFlow_0es87ws" name="&#62; 1 bulan penggunaan" sourceRef="ExclusiveGateway_0zal7ug" targetRef="Task_13vxa7o" />
     <bpmn:task id="Task_13vxa7o" name="Memberikan saran paket produk">
       <bpmn:incoming>SequenceFlow_0es87ws</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1vishal</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:sequenceFlow id="SequenceFlow_113oidf" sourceRef="ExclusiveGateway_0zal7ug" targetRef="ExclusiveGateway_0b374jp" />
+    <bpmn:sequenceFlow id="SequenceFlow_113oidf" name="&#60;1 bulan Pengunaan" sourceRef="ExclusiveGateway_0zal7ug" targetRef="ExclusiveGateway_0b374jp" />
     <bpmn:exclusiveGateway id="ExclusiveGateway_0b374jp">
       <bpmn:incoming>SequenceFlow_113oidf</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1vishal</bpmn:incoming>
@@ -127,6 +127,9 @@
         <di:waypoint x="426" y="103" />
         <di:waypoint x="426" y="76" />
         <di:waypoint x="508" y="76" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="433" y="83" width="62" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ExclusiveGateway_0b374jp_di" bpmnElement="ExclusiveGateway_0b374jp" isMarkerVisible="true">
         <dc:Bounds x="692" y="167" width="50" height="50" />
@@ -135,6 +138,9 @@
         <di:waypoint x="426" y="153" />
         <di:waypoint x="426" y="192" />
         <di:waypoint x="692" y="192" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="455" y="165" width="57" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1vishal_di" bpmnElement="SequenceFlow_1vishal">
         <di:waypoint x="608" y="76" />

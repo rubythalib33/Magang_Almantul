@@ -160,6 +160,7 @@
       <bpmndi:BPMNEdge id="MessageFlow_1wxj7l1_di" bpmnElement="MessageFlow_1wxj7l1">
         <di:waypoint x="981" y="288" />
         <di:waypoint x="981" y="347" />
+        <di:waypoint x="626" y="336" />
         <di:waypoint x="430" y="347" />
         <di:waypoint x="430" y="405" />
       </bpmndi:BPMNEdge>
