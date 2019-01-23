@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 22, 2019 at 02:30 PM
+-- Generation Time: Jan 23, 2019 at 07:57 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -57,7 +57,8 @@ CREATE TABLE `produk` (
   `kategori_produk` varchar(25) NOT NULL,
   `nama_produk` varchar(25) NOT NULL,
   `deskripsi_produk` text NOT NULL,
-  `harga_produk` int(9) NOT NULL,
+  `harga_jual_produk` int(9) NOT NULL,
+  `harga_beli_produk` int(9) NOT NULL,
   `satuan_produk` varchar(25) NOT NULL,
   `gambar_produk` varchar(50) NOT NULL,
   `stok_produk` int(3) NOT NULL
