@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 23, 2019 at 07:57 AM
+-- Generation Time: Jan 23, 2019 at 06:53 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -61,7 +61,8 @@ CREATE TABLE `produk` (
   `harga_beli_produk` int(9) NOT NULL,
   `satuan_produk` varchar(25) NOT NULL,
   `gambar_produk` varchar(50) NOT NULL,
-  `stok_produk` int(3) NOT NULL
+  `stok_produk` int(3) NOT NULL,
+  `stok_kritis_produk` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
