@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 23, 2019 at 06:53 PM
+-- Generation Time: Jan 25, 2019 at 09:05 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -25,12 +25,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bundle`
+--
+
+CREATE TABLE `bundle` (
+  `kode_bundle` int(11) NOT NULL,
+  `harga_bundle` int(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `list_produk_bundle`
+--
+
+CREATE TABLE `list_produk_bundle` (
+  `kode_bundle_list` int(11) NOT NULL,
+  `kode_produk_list_bundle` varchar(13) NOT NULL,
+  `jumlah_produk_bundle` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `list_produk_restock`
 --
 
 CREATE TABLE `list_produk_restock` (
   `kode_restock_list` int(11) NOT NULL,
-  `kode_produk_list` varchar(13) NOT NULL
+  `kode_produk_list_restock` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -41,8 +64,34 @@ CREATE TABLE `list_produk_restock` (
 
 CREATE TABLE `list_produk_terjual` (
   `kode_penjualan_list` int(13) NOT NULL,
-  `kode_produk_list` varchar(13) NOT NULL,
+  `kode_produk_list_terjual` varchar(13) NOT NULL,
   `jumlah_produk_keluar` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pemasukan`
+--
+
+CREATE TABLE `pemasukan` (
+  `kode_data_pemasukan` int(11) NOT NULL,
+  `kode_pemasukan` varchar(5) NOT NULL,
+  `tanggal_pemasukan` date NOT NULL,
+  `jumlah_pemasukan` int(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengeluaran`
+--
+
+CREATE TABLE `pengeluaran` (
+  `kode_data_pengeluaran` int(11) NOT NULL,
+  `kode_pengeluaran` varchar(5) NOT NULL,
+  `tanggal_pengeluaran` date NOT NULL,
+  `jumlah_pengeluaran` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -125,18 +174,43 @@ CREATE TABLE `user` (
 --
 
 --
+-- Indexes for table `bundle`
+--
+ALTER TABLE `bundle`
+  ADD PRIMARY KEY (`kode_bundle`);
+
+--
+-- Indexes for table `list_produk_bundle`
+--
+ALTER TABLE `list_produk_bundle`
+  ADD KEY `kode_bundle_list` (`kode_bundle_list`),
+  ADD KEY `kode_produk_list_bundle` (`kode_produk_list_bundle`);
+
+--
 -- Indexes for table `list_produk_restock`
 --
 ALTER TABLE `list_produk_restock`
   ADD KEY `kode_restock_list` (`kode_restock_list`),
-  ADD KEY `kode_produk_list` (`kode_produk_list`);
+  ADD KEY `kode_produk_list` (`kode_produk_list_restock`);
 
 --
 -- Indexes for table `list_produk_terjual`
 --
 ALTER TABLE `list_produk_terjual`
   ADD KEY `kode_penjualan_list` (`kode_penjualan_list`),
-  ADD KEY `kode_produk_list` (`kode_produk_list`);
+  ADD KEY `kode_produk_list` (`kode_produk_list_terjual`);
+
+--
+-- Indexes for table `pemasukan`
+--
+ALTER TABLE `pemasukan`
+  ADD PRIMARY KEY (`kode_data_pemasukan`);
+
+--
+-- Indexes for table `pengeluaran`
+--
+ALTER TABLE `pengeluaran`
+  ADD PRIMARY KEY (`kode_data_pengeluaran`);
 
 --
 -- Indexes for table `produk`
@@ -175,6 +249,24 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `bundle`
+--
+ALTER TABLE `bundle`
+  MODIFY `kode_bundle` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pemasukan`
+--
+ALTER TABLE `pemasukan`
+  MODIFY `kode_data_pemasukan` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pengeluaran`
+--
+ALTER TABLE `pengeluaran`
+  MODIFY `kode_data_pengeluaran` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `restock`
 --
 ALTER TABLE `restock`
@@ -197,10 +289,17 @@ ALTER TABLE `transaksi_penjualan`
 --
 
 --
+-- Constraints for table `list_produk_bundle`
+--
+ALTER TABLE `list_produk_bundle`
+  ADD CONSTRAINT `fk_kode_bundle` FOREIGN KEY (`kode_bundle_list`) REFERENCES `bundle` (`kode_bundle`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_kode_produk_list3` FOREIGN KEY (`kode_produk_list_bundle`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
+
+--
 -- Constraints for table `list_produk_restock`
 --
 ALTER TABLE `list_produk_restock`
-  ADD CONSTRAINT `fk_kode_produk_list2` FOREIGN KEY (`kode_produk_list`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_kode_produk_list2` FOREIGN KEY (`kode_produk_list_restock`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_kode_restock_list` FOREIGN KEY (`kode_restock_list`) REFERENCES `restock` (`kode_restock`) ON UPDATE CASCADE;
 
 --
@@ -208,7 +307,7 @@ ALTER TABLE `list_produk_restock`
 --
 ALTER TABLE `list_produk_terjual`
   ADD CONSTRAINT `fk_kode_penjualan_list` FOREIGN KEY (`kode_penjualan_list`) REFERENCES `transaksi_penjualan` (`kode_penjualan`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_kode_produk_list` FOREIGN KEY (`kode_produk_list`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_kode_produk_list` FOREIGN KEY (`kode_produk_list_terjual`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `restock`
