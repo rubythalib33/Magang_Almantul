@@ -86,12 +86,11 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="185dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="259dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="50dp"
         android:text="Simpan"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button2"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/JabatanDU" />
@@ -100,14 +99,10 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="259dp"
         android:text="Batal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
         app:layout_constraintTop_toBottomOf="@+id/JabatanDU" />
 
 </android.support.constraint.ConstraintLayout>

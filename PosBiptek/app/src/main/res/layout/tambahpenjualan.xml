@@ -8,82 +8,80 @@
 
     <EditText
         android:id="@+id/editText5"
-        android:layout_width="270dp"
+        android:layout_width="250dp"
         android:layout_height="70dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="Pilih Produk"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editText9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText9"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="70dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Jumlah"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText5" />
 
     <EditText
         android:id="@+id/editText10"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="70dp"
-        android:layout_marginStart="97dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="101dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Diskon"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText9" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/buttonsimpanpenjualan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:text="Batal"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button6"
+        android:layout_marginStart="84dp"
+        android:layout_marginEnd="43dp"
+        android:text="Simpan"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonbatalpenjualan"
+        app:layout_constraintEnd_toStartOf="@+id/buttonbatalpenjualan"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/buttonbatalpenjualan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="124dp"
+        android:layout_marginEnd="108dp"
         android:layout_marginBottom="248dp"
-        android:text="Simpan"
+        android:text="Batal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button5"
         app:layout_constraintTop_toBottomOf="@+id/editText10"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.182" />
 
     <Button
         android:id="@+id/Barcode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="38dp"
-        android:background="@android:color/black"
+        android:background="@drawable/barcode"
         app:layout_constraintBottom_toTopOf="@+id/editText9"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.42"
         app:layout_constraintStart_toEndOf="@+id/editText5"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.576" />
 
 
 </android.support.constraint.ConstraintLayout>
