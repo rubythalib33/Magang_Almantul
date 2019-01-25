@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 25, 2019 at 09:05 AM
+-- Generation Time: Jan 25, 2019 at 03:02 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bundle` (
   `kode_bundle` int(11) NOT NULL,
+  `nama_bundle` varchar(25) NOT NULL,
   `harga_bundle` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -43,6 +44,17 @@ CREATE TABLE `list_produk_bundle` (
   `kode_bundle_list` int(11) NOT NULL,
   `kode_produk_list_bundle` varchar(13) NOT NULL,
   `jumlah_produk_bundle` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `list_produk_diskon`
+--
+
+CREATE TABLE `list_produk_diskon` (
+  `kode_produk_list_diskon` varchar(13) NOT NULL,
+  `besar_diskon(%)` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -65,7 +77,7 @@ CREATE TABLE `list_produk_restock` (
 CREATE TABLE `list_produk_terjual` (
   `kode_penjualan_list` int(13) NOT NULL,
   `kode_produk_list_terjual` varchar(13) NOT NULL,
-  `jumlah_produk_keluar` int(3) NOT NULL
+  `jumlah_produk_terjual` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -187,6 +199,12 @@ ALTER TABLE `list_produk_bundle`
   ADD KEY `kode_produk_list_bundle` (`kode_produk_list_bundle`);
 
 --
+-- Indexes for table `list_produk_diskon`
+--
+ALTER TABLE `list_produk_diskon`
+  ADD KEY `kode_produk_list_diskon` (`kode_produk_list_diskon`);
+
+--
 -- Indexes for table `list_produk_restock`
 --
 ALTER TABLE `list_produk_restock`
@@ -294,6 +312,12 @@ ALTER TABLE `transaksi_penjualan`
 ALTER TABLE `list_produk_bundle`
   ADD CONSTRAINT `fk_kode_bundle` FOREIGN KEY (`kode_bundle_list`) REFERENCES `bundle` (`kode_bundle`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_kode_produk_list3` FOREIGN KEY (`kode_produk_list_bundle`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `list_produk_diskon`
+--
+ALTER TABLE `list_produk_diskon`
+  ADD CONSTRAINT `fk_kode_produk_diskon` FOREIGN KEY (`kode_produk_list_diskon`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `list_produk_restock`
