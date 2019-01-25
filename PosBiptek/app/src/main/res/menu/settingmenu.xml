@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ManajemenToko"
+        android:icon="@drawable/home"
+        android:title="Manajemen Toko"
+/>
+    <item
+        android:id="@+id/ManajemenUser"
+        android:icon="@drawable/pegawai"
+        android:title="Manajemen User"
+/>
+</menu>

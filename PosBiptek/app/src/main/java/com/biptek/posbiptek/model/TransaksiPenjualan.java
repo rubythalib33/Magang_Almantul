@@ -2,13 +2,13 @@ package com.biptek.posbiptek.model;
 
 public class TransaksiPenjualan {
     private long kode_penjualan;
-    private String kode_user_penjualan;
+    private String username_pegawai_penjualan;
     private String nama_customer;
     private String tanggal_transaksi_penjualan;
 
-    public TransaksiPenjualan(long kode_penjualan, String kode_user_penjualan, String nama_customer, String tanggal_transaksi_penjualan) {
+    public TransaksiPenjualan(long kode_penjualan, String username_pegawai_penjualan, String nama_customer, String tanggal_transaksi_penjualan) {
         this.kode_penjualan = kode_penjualan;
-        this.kode_user_penjualan = kode_user_penjualan;
+        this.username_pegawai_penjualan = username_pegawai_penjualan;
         this.nama_customer = nama_customer;
         this.tanggal_transaksi_penjualan = tanggal_transaksi_penjualan;
     }
@@ -25,12 +25,12 @@ public class TransaksiPenjualan {
         this.kode_penjualan = kode_penjualan;
     }
 
-    public String getKode_user_penjualan() {
-        return kode_user_penjualan;
+    public String getUsername_pegawai_penjualan() {
+        return username_pegawai_penjualan;
     }
 
-    public void setKode_user_penjualan(String kode_user_penjualan) {
-        this.kode_user_penjualan = kode_user_penjualan;
+    public void setUsername_pegawai_penjualan(String username_pegawai_penjualan) {
+        this.username_pegawai_penjualan = username_pegawai_penjualan;
     }
 
     public String getNama_customer() {
@@ -53,7 +53,7 @@ public class TransaksiPenjualan {
     public String toString() {
         return "TransaksiPenjualan{" +
                 "kode_penjualan=" + kode_penjualan +
-                ", kode_user_penjualan='" + kode_user_penjualan + '\'' +
+                ", username_pegawai_penjualan='" + username_pegawai_penjualan + '\'' +
                 ", nama_customer='" + nama_customer + '\'' +
                 ", tanggal_transaksi_penjualan='" + tanggal_transaksi_penjualan + '\'' +
                 '}';

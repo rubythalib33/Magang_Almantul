@@ -1,7 +1,10 @@
 package com.biptek.posbiptek;
 
+<<<<<<< HEAD
 import android.content.Intent;
 import android.support.design.widget.BottomNavigationView;
+=======
+>>>>>>> e4d906e9eb8d7e7f76d077e5aa17c27b75967d7e
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     EditText usernameLogin, passwordLogin;
     Button b1;
     private CRUD crud;
+<<<<<<< HEAD
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -107,3 +111,42 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+=======
+    private Pegawai pegawai;
+
+
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        crud.open();
+        mDBHelper = new DatabaseHelper(this);
+        try {
+            mDBHelper.updateDataBase();
+        } catch (IOException mIOException) {
+            throw new Error("UnableToUpdateDatabase");
+        }
+
+
+        usernameLogin=(EditText)findViewById(R.id.LoginUsername);
+        passwordLogin=(EditText)findViewById(R.id.LoginPasssword);
+        b1=(Button)findViewById(R.id.ButtonLogin);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = usernameLogin.getText().toString();
+                String password = passwordLogin.getText().toString();
+                if(crud.getPegawai(username) == null){
+                    Toast.makeText(getApplicationContext(),"Username Tidak Terdaftar",Toast.LENGTH_SHORT).show();
+                }else if(pegawai.getJabatan_pegawai() == "admin"){
+                    Toast.makeText(getApplicationContext(),"Masuk admin",Toast.LENGTH_SHORT).show();
+                }else if(pegawai.getJabatan_pegawai() == "kasir") {
+                    Toast.makeText(getApplicationContext(),"Masuk KAsir",Toast.LENGTH_SHORT).show();
+
+                }
+                crud.close();
+            }
+        });
+    }
+}
+>>>>>>> e4d906e9eb8d7e7f76d077e5aa17c27b75967d7e

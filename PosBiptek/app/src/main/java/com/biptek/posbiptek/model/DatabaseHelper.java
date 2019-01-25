@@ -1,8 +1,6 @@
 package com.biptek.posbiptek.model;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -17,6 +15,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //nama database harus sama dengan yang ada di folder Assets
     private static String DB_NAME = "pos_biptek.db";
     private static String DB_PATH = "";
+
+    //nama shared database (disarankan nama hampir sama dengan database main)
+    private static String DB_SHARED_NAME = "pos_biptek_shared.db";
 
     //Untuk mengupdate database dari file project
     private static final int DB_VERSION = 1;
@@ -82,9 +83,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         mInput.close();
     }
 
-    public boolean openDataBase() throws SQLException {
-        mDataBase = SQLiteDatabase.openDatabase(DB_PATH + DB_NAME, null, SQLiteDatabase.CREATE_IF_NECESSARY);
-        return mDataBase != null;
+    //Membuat/mengupdate shared database
+    public void syncToSharedDatabase(){
+
     }
 
     @Override
@@ -104,5 +105,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (newVersion > oldVersion)
             mNeedUpdate = true;
     }
-
 }
