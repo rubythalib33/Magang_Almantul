@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 25, 2019 at 03:02 PM
+-- Generation Time: Jan 25, 2019 at 05:56 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -65,7 +65,8 @@ CREATE TABLE `list_produk_diskon` (
 
 CREATE TABLE `list_produk_restock` (
   `kode_restock_list` int(11) NOT NULL,
-  `kode_produk_list_restock` varchar(13) NOT NULL
+  `kode_produk_list_restock` varchar(13) NOT NULL,
+  `jumlah_produk_restock` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
