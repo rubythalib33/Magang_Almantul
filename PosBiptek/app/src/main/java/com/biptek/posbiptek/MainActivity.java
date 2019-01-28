@@ -12,7 +12,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private DatabaseHelper mDBHelper;
-    private SQLiteDatabase mDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,19 +22,21 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView);
         textView.append(this.getApplicationInfo().dataDir+"\n");
 
-
         try {
             mDBHelper.updateDataBase();
         } catch (IOException mIOException) {
             throw new Error("UnableToUpdateDatabase");
         }
 
-        ProdukCRUD produkCRUD = new ProdukCRUD(this);
-        produkCRUD.open();
-        Produk produk = produkCRUD.getProduk("2");
-        produk.setDeskripsi_produk("Ubuntu 18.04");
-        produkCRUD.updateProduk(produk);
-        textView.append(produkCRUD.getProduk("2").toString());
-        produkCRUD.close();
+        SupplierCRUD supplierCRUD = new SupplierCRUD(this);
+        Supplier supplier = new Supplier(0,
+                "unilever",
+                "abc@abv.com",
+                "0271123123",
+                "Jl, blabal");
+        supplierCRUD.open();
+        supplier.setKode_supplier(supplierCRUD.addSupplier(supplier));
+        supplierCRUD.close();
+        textView.append(supplier.toString());
     }
 }
