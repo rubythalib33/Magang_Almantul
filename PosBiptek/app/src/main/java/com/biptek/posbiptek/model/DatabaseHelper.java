@@ -1,4 +1,4 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.model;
 
 import android.content.Context;
 import android.database.SQLException;

@@ -1,4 +1,4 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.model;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdukOperations {
+public class ProdukCRUD {
     private static final String LOGTAG = "POS_BIPTEK_SYS";
     private SQLiteOpenHelper dbhandler;
     private SQLiteDatabase database;
@@ -30,7 +30,7 @@ public class ProdukOperations {
             "status_produk"
     };
 
-    public ProdukOperations(Context context){
+    public ProdukCRUD(Context context){
         dbhandler = new DatabaseHelper(context);
     }
 

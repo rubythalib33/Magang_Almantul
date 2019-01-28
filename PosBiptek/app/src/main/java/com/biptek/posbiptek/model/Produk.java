@@ -1,4 +1,4 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.model;
 
 public class Produk {
     private String kode_produk;
