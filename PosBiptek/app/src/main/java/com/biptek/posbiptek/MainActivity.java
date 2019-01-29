@@ -1,35 +1,26 @@
 package com.biptek.posbiptek;
 
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.TextView;
+
+import com.biptek.posbiptek.model.*;
 
 import java.io.IOException;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    private Button addEmployeeButton;
-    private Button editEmployeeButton;
-    private Button deleteEmployeeButton;
-    private Button viewAllEmployeeButton;
-    private ProdukOperations employeeOps;
-
+    private DatabaseHelper mDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        addEmployeeButton = findViewById(R.id.button_tambah_produk);
-        editEmployeeButton = findViewById(R.id.button_edit_produk);
-        deleteEmployeeButton = findViewById(R.id.button_delete_produk);
-        viewAllEmployeeButton = findViewById(R.id.button_view_produk;
-
-
-
-        DatabaseHelper mDBHelper = new DatabaseHelper(this);
+        mDBHelper = new DatabaseHelper(this);
+        TextView textView = findViewById(R.id.textView);
+        textView.append(this.getApplicationInfo().dataDir+"\n");
 
         try {
             mDBHelper.updateDataBase();
@@ -37,11 +28,15 @@ public class MainActivity extends AppCompatActivity {
             throw new Error("UnableToUpdateDatabase");
         }
 
-        try {
-            SQLiteDatabase mDb = mDBHelper.getWritableDatabase();
-        } catch (SQLException mSQLException) {
-            throw mSQLException;
-        }
-
+        SupplierCRUD supplierCRUD = new SupplierCRUD(this);
+        Supplier supplier = new Supplier(0,
+                "unilever",
+                "abc@abv.com",
+                "0271123123",
+                "Jl, blabal");
+        supplierCRUD.open();
+        supplier.setKode_supplier(supplierCRUD.addSupplier(supplier));
+        supplierCRUD.close();
+        textView.append(supplier.toString());
     }
 }

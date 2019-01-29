@@ -1,4 +1,4 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.model;
 
 import android.content.Context;
 import android.database.SQLException;
@@ -16,6 +16,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //nama database harus sama dengan yang ada di folder Assets
     private static String DB_NAME = "pos_biptek.db";
     private static String DB_PATH = "";
+
+    //Untuk mengupdate database dari file project
     private static final int DB_VERSION = 1;
 
     private SQLiteDatabase mDataBase;

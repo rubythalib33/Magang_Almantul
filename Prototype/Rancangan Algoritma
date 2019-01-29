@@ -1,0 +1,25 @@
+Feature:
+-jenis barang (belum tahu)
+-baru atau tidak
+-keuntungan
+-jumlah stok
+-stok keluar
+
+Algoritma digunakan : Bundling : K means
+		      Stok     : ????
+
+Bundling
+kluster:
+1. barang Kategori 1
+2. barang Kategori 2
+3. barang Kategori 3
+
+ket:
+Kategori 1 : Barang dicocokan untuk bundle dengan kategori 3 dan kategori 3 dikurangi keuntungan sedikit
+Kategori 2 : tidak masuk jadi output bundle discount
+kategori 3 : Barang dicocokan dengan kategori 1 atau dengan dirinya sendiri dengan keuntungan lebih murah
+
+manfaat:
+1. mengenalkan produk baru
+2. cuci gudang
+3. promo
