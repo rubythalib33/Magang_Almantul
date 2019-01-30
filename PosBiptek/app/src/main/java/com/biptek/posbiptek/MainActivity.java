@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.biptek.posbiptek.model.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,15 +29,7 @@ public class MainActivity extends AppCompatActivity {
             throw new Error("UnableToUpdateDatabase");
         }
 
-        SupplierCRUD supplierCRUD = new SupplierCRUD(this);
-        Supplier supplier = new Supplier(0,
-                "unilever",
-                "abc@abv.com",
-                "0271123123",
-                "Jl, blabal");
-        supplierCRUD.open();
-        supplier.setKode_supplier(supplierCRUD.addSupplier(supplier));
-        supplierCRUD.close();
-        textView.append(supplier.toString());
+        List<ListProdukTerjual> listProdukTerjuals = new ArrayList<>();
+        textView.append();
     }
 }
