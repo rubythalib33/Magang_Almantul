@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PosBiptek</string>
+    <string name="home">Dashboard</string>
+    <string name="data">PData</string>
+    <string name="plus">plus</string>
+    <string name="report">Laporan</string>
+    <string name="more">More</string>
 </resources>
