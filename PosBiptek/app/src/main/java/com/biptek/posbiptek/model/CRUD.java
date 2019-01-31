@@ -29,14 +29,20 @@ public class CRUD {
         dbhandler.close();
     }
 
-//Untuk table bundle_produk
+//Untuk table bundle_produk dan list_produk_bundle
     private static final String[] allColumnsBundle = {
             "kode_bundle",
             "nama_bundle",
             "harga_bundle",
     };
 
-    public long addBundleProduk(BundleProduk bundleProduk){
+    private static final String[] allColumnsBundleList ={
+            "kode_bundle_list",
+            "kode_produk_list_bundle",
+            "jumlah_produk_bundle"
+    };
+
+    public long addBundleProduk(BundleProduk bundleProduk, List<ListProdukBundle> listProdukBundles){
 
         //untuk table bundle
         ContentValues contentValues = new ContentValues();
@@ -44,7 +50,14 @@ public class CRUD {
         contentValues.put("harga_bundle", bundleProduk.getHarga_bundle());
         long insertid = database.insert("bundle", null, contentValues);
 
-        untuk table
+        //untuk table list_produk_bundle
+        for(ListProdukBundle listProdukBundle : listProdukBundles){
+            ContentValues contentValuesList = new ContentValues();
+            contentValuesList.put("kode_bundle_list", insertid);
+            contentValuesList.put("kode_produk_list_bundle", listProdukBundle.getKode_produk_list_bundle());
+            contentValuesList.put("jumlah_produk_bundle", listProdukBundle.getJumlah_produk_bundle());
+            database.insert("list_produk_bundle", null, contentValuesList);
+        }
 
         return insertid;
     }
@@ -93,14 +106,52 @@ public class CRUD {
         return bundleProduks;
     }
 
-    public void updateBundleProduk(BundleProduk bundleProduk){
+    //mendapatkan list barang yang dibundle pada produk bundle tertentu
+    public List<ListProdukBundle> getListProdukBundle(long kode_bundle_list){
+        Cursor cursor = database.query("list_produk_bundle",
+                allColumnsBundleList,
+                "kode_bundle_list",
+                new String[]{String.valueOf(kode_bundle_list)},
+                null,
+                null,
+                null);
+
+        List<ListProdukBundle> listProdukBundles = new ArrayList<>();
+        if(cursor.getCount() > 0){
+            while(cursor.moveToNext()){
+                ListProdukBundle produkBundle = new ListProdukBundle();
+                produkBundle.setKode_bundle_list(cursor.getLong(cursor.getColumnIndex("kode_bundle_list")));
+                produkBundle.setKode_produk_list_bundle(cursor.getString(cursor.getColumnIndex("kode_produk_list_bundle")));
+                produkBundle.setJumlah_produk_bundle(cursor.getInt(cursor.getColumnIndex("jumlah_produk_bundle")));
+                listProdukBundles.add(produkBundle);
+            }
+        }
+
+        return listProdukBundles;
+    }
+
+    public void updateBundleProduk(BundleProduk bundleProduk, List<ListProdukBundle> listProdukBundles){
+
+        //untuk table bundle_produk
         ContentValues contentValues = new ContentValues();
         contentValues.put("nama_bundle", bundleProduk.getNama_bundle());
         contentValues.put("harga_bundle", bundleProduk.getHarga_bundle());
         database.update("bundle", contentValues, "kode_bundle=?", new String[]{String.valueOf(bundleProduk.getKode_bundle())});
+
+        //untuk table list_produk_bundle
+        for(ListProdukBundle listProdukBundle : listProdukBundles){
+            ContentValues contentValuesList = new ContentValues();
+            contentValuesList.put("kode_bundle_list", bundleProduk.getKode_bundle());
+            contentValuesList.put("kode_produk_list_bundle", listProdukBundle.getKode_produk_list_bundle());
+            contentValuesList.put("jumlah_produk_bundle", listProdukBundle.getJumlah_produk_bundle());
+            database.update("list_produk_bundle", contentValuesList,
+                    "kode_bundle_list=? AND kode_produk_list_bundle=?",
+                    new String[]{String.valueOf(bundleProduk.getKode_bundle()), listProdukBundle.getKode_produk_list_bundle()});
+        }
     }
 
     public void deleteBundleProduk(BundleProduk bundleProduk){
+        database.delete("list_produk_bundle", "kode_bundle_list=?", new String[]{String.valueOf(bundleProduk.getKode_bundle())});
         database.delete("bundle", "kode_bundle=?", new String[]{String.valueOf(bundleProduk.getKode_bundle())});
     }
 
@@ -451,7 +502,7 @@ public class CRUD {
         database.delete("produk_diskon", "kode_diskon=?", new String[]{String.valueOf(produkDiskon.getKode_diskon())});
     }
 
-//Untuk table restock
+//Untuk table restock dan list_produk_restock
     private static final String[] allColumnsRestock = {
             "kode_restock",
             "kode_supplier_restock",
@@ -460,17 +511,30 @@ public class CRUD {
             "bukti_transakti_restock"
     };
 
-    public long addRestock(Restock restock, Supplier supplier){
+    private static final String[] allColumnsRestockList = {
+            "kode_restock_list",
+            "kode_produk_list_restock",
+            "jumlah_produk_restock"
+    };
+
+    public long addRestock(Restock restock, List<ListProdukRestock> listProdukRestocks){
 
         //untuk table restock
         ContentValues contentValues = new ContentValues();
-        contentValues.put("kode_supplier_restock", supplier.getKode_supplier());
+        contentValues.put("kode_supplier_restock", restock.getKode_supplier_restock());
         contentValues.put("tanggal_transaksi_restock", restock.getTanggal_transaksi_restock());
         contentValues.put("tanggal_jatuh_tempon", restock.getTanggal_jatuh_tempo());
         contentValues.put("bukti_transaksi_restock", restock.getBukti_transaksi_restock());
         long insertid = database.insert("restock", null, contentValues);
 
-        untuk table
+        //untuk table list_produk_restock
+        for(ListProdukRestock listProdukRestock : listProdukRestocks){
+            ContentValues contentValuesList = new ContentValues();
+            contentValuesList.put("kode_restock_list", insertid);
+            contentValuesList.put("kode_produk_list_restock", listProdukRestock.getKode_produk_list_restock());
+            contentValuesList.put("jumlah_produk_restock", listProdukRestock.getJumlah_produk_restock());
+            database.insert("list_produk_restock", null, contentValuesList);
+        }
 
         return insertid;
     }
@@ -523,16 +587,54 @@ public class CRUD {
         return restocks;
     }
 
-    public void updateRestock(Restock restock, Supplier supplier){
+    //mendapatkan list barang yang direstock pada data restock tertentu
+    public List<ListProdukRestock> getListProdukRestock(long kode_restock_list){
+        Cursor cursor = database.query("list_produk_restock",
+                allColumnsRestockList,
+                "kode_restock_list",
+                new String[]{String.valueOf(kode_restock_list)},
+                null,
+                null,
+                null);
+
+        List<ListProdukRestock> listProdukRestocks = new ArrayList<>();
+        if(cursor.getCount() > 0){
+            while(cursor.moveToNext()){
+                ListProdukRestock ProdukRestock = new ListProdukRestock();
+                ProdukRestock.setKode_restock_list(cursor.getLong(cursor.getColumnIndex("kode_restock_list")));
+                ProdukRestock.setKode_produk_list_restock(cursor.getString(cursor.getColumnIndex("kode_produk_list_restock")));
+                ProdukRestock.setJumlah_produk_restock(cursor.getInt(cursor.getColumnIndex("jumlah_produk_restock")));
+                listProdukRestocks.add(ProdukRestock);
+            }
+        }
+
+        return listProdukRestocks;
+    }
+
+    public void updateRestock(Restock restock, List<ListProdukRestock> listProdukRestocks){
+
+        //untuk table restock
         ContentValues contentValues = new ContentValues();
-        contentValues.put("kode_supplier_restock", supplier.getKode_supplier());
+        contentValues.put("kode_supplier_restock", restock.getKode_supplier_restock());
         contentValues.put("tanggal_transaksi_restock", restock.getTanggal_transaksi_restock());
         contentValues.put("tanggal_jatuh_tempon", restock.getTanggal_jatuh_tempo());
         contentValues.put("bukti_transaksi_restock", restock.getBukti_transaksi_restock());
         database.update("restock", contentValues, "kode_restock=?", new String[]{String.valueOf(restock.getKode_restock())});
+
+        //untuk table list_produk_restock
+        for(ListProdukRestock listProdukRestock : listProdukRestocks){
+            ContentValues contentValuesList = new ContentValues();
+            contentValuesList.put("kode_restock_list", restock.getKode_restock());
+            contentValuesList.put("kode_produk_list_restock", listProdukRestock.getKode_produk_list_restock());
+            contentValuesList.put("jumlah_produk_restock", listProdukRestock.getJumlah_produk_restock());
+            database.update("list_produk_restock", contentValuesList,
+                    "kode_restock_list=? AND kode_produk_list_restock=?",
+                    new String[]{String.valueOf(restock.getKode_restock()), listProdukRestock.getKode_produk_list_restock()});
+        }
     }
 
     public void deleteRestock(Restock restock){
+        database.delete("list_produk_restock", "kode_restock_list=?", new String[]{String.valueOf(restock.getKode_restock())});
         database.delete("restock", "kode_restock=?", new String[]{String.valueOf(restock.getKode_restock())});
     }
 
@@ -630,11 +732,11 @@ public class CRUD {
             "jumlah_produk_terjual"
     };
 
-    public long addTransaksiPenjualan(TransaksiPenjualan transaksiPenjualan, User user, List<ListProdukTerjual> listProdukTerjuals){
+    public long addTransaksiPenjualan(TransaksiPenjualan transaksiPenjualan, List<ListProdukTerjual> listProdukTerjuals){
 
         //untuk table transaksi_penjualan
         ContentValues contentValues = new ContentValues();
-        contentValues.put("kode_user_penjualan", user.getUsername());
+        contentValues.put("kode_user_penjualan", transaksiPenjualan.getKode_user_penjualan());
         contentValues.put("nama_customer", transaksiPenjualan.getNama_customer());
         contentValues.put("tanggal_transaksi_penjualan", transaksiPenjualan.getTanggal_transaksi_penjualan());
         long inserid = database.insert("transaksi_penjualan", null, contentValues);
@@ -721,11 +823,11 @@ public class CRUD {
         return transaksiPenjualans;
     }
 
-    public void updateTransaksiPenjualan(TransaksiPenjualan transaksiPenjualan, User user, List<ListProdukTerjual> listProdukTerjuals){
+    public void updateTransaksiPenjualan(TransaksiPenjualan transaksiPenjualan , List<ListProdukTerjual> listProdukTerjuals){
 
         //update di table transaksi_penjualan
         ContentValues contentValues = new ContentValues();
-        contentValues.put("kode_user_penjualan", user.getUsername());
+        contentValues.put("kode_user_penjualan", transaksiPenjualan.getKode_user_penjualan());
         contentValues.put("nama_customer", transaksiPenjualan.getNama_customer());
         contentValues.put("tanggal_transaksi_penjualan", transaksiPenjualan.getTanggal_transaksi_penjualan());
         database.update("transaksi_penjualan", contentValues, "kode_penjualan=?", new String[]{String.valueOf(transaksiPenjualan.getKode_penjualan())});
@@ -735,7 +837,7 @@ public class CRUD {
             contentValuesList.put("kode_penjualan_list", transaksiPenjualan.getKode_penjualan());
             contentValuesList.put("kode_produk_list_terjual", produkTerjual.getKode_produk_list_terjual());
             contentValuesList.put("jumlah_produk_terjual", produkTerjual.getJumlah_produk_terjual());
-            database.update("list_produk_terjual", contentValuesList, "kode_penjualan_list=?", new String[]{String.valueOf(produkTerjual.getKode_penjualan_list()), produkTerjual.getKode_produk_list_terjual()});
+            database.update("list_produk_terjual", contentValuesList, "kode_penjualan_list=? AND kode_produk_list_terjual=?", new String[]{String.valueOf(produkTerjual.getKode_penjualan_list()), produkTerjual.getKode_produk_list_terjual()});
         }
     }
 

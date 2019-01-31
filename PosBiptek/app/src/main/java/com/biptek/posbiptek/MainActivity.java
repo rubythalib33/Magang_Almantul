@@ -29,7 +29,28 @@ public class MainActivity extends AppCompatActivity {
             throw new Error("UnableToUpdateDatabase");
         }
 
-        List<ListProdukTerjual> listProdukTerjuals = new ArrayList<>();
-        textView.append();
+        CRUD crud = new CRUD(this);
+        crud.open();
+        crud.addProduk(new Produk("2",
+                "jasa",
+                "komputer",
+                "Install Linux OS",
+                "Ubuntu 18.10",
+                50000,
+                0,
+                "unit",
+                "-",
+                30,
+                0,
+                "baru"));
+        User user = crud.getUser("odhi");
+        List<ListProdukTerjual> produkTerjuals = new ArrayList<>();
+        TransaksiPenjualan transaksiPenjualan = new TransaksiPenjualan(2, user.getUsername(), "putra", "hari ini");
+        produkTerjuals.add(new ListProdukTerjual(transaksiPenjualan.getKode_penjualan(), "1", 11));
+        produkTerjuals.add(new ListProdukTerjual(transaksiPenjualan.getKode_penjualan(), "2", 2));
+        crud.deleteTransaksiPenjualan(transaksiPenjualan);
+        textView.append(crud.getAllTransaksiPenjualan().toString());
+        //textView.append(crud.getListProdukTerjual(transaksiPenjualan.getKode_penjualan()).toString());
+        crud.close();
     }
 }
