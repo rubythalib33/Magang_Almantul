@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
         setContentView(R.layout.tambahuser);
 
         bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomNavigation);
@@ -51,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         MaterialBetterSpinner betterSpinner = (MaterialBetterSpinner) findViewById(R.id.SpinnerJabatan);
         betterSpinner.setAdapter(arrayAdapter);
 
+=======
+        setContentView(R.layout.home_admin);
+>>>>>>> 9c52b8c2664d25b5ed0c9cb874a67eaf2ee1f715
 
 //        mDBHelper = new DatabaseHelper(this);
 //        TextView textView = findViewById(R.id.textView);
@@ -85,5 +89,9 @@ public class MainActivity extends AppCompatActivity {
 //        textView.append(crud.getAllTransaksiPenjualan().toString());
 //        //textView.append(crud.getListProdukTerjual(transaksiPenjualan.getKode_penjualan()).toString());
 //        crud.close();
+<<<<<<< HEAD
       }
+=======
+    }
+>>>>>>> 9c52b8c2664d25b5ed0c9cb874a67eaf2ee1f715
 }
