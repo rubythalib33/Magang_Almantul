@@ -9,7 +9,7 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="1326dp">
+        android:layout_height="731dp">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/frameLayout"
@@ -59,8 +59,8 @@
 
         <LinearLayout
             android:id="@+id/layout_kontenHome"
-            android:layout_width="328dp"
-            android:layout_height="1037dp"
+            android:layout_width="284dp"
+            android:layout_height="499dp"
             android:layout_marginTop="200dp"
             android:orientation="vertical"
             design:layout_constraintBottom_toBottomOf="parent"
@@ -91,19 +91,6 @@
                 android:layout_marginTop="60dp"
                 design:cardBackgroundColor="@android:color/background_light" />
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="60dp"
-                design:cardBackgroundColor="@android:color/background_light" />
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="60dp"
-                design:cardBackgroundColor="@android:color/background_light" />
         </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>
@@ -120,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/darker_gray"
-            design:menu="@menu/menu_kasir" />
+            design:menu="@menu/menu_navigation" />
 
     </FrameLayout>
 

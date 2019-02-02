@@ -7,11 +7,6 @@
         android:title="@string/home" />
 
     <item
-        android:id="@+id/Data"
-        android:icon="@drawable/data"
-        android:title="@string/data" />
-
-    <item
         android:id="@+id/plus"
         android:icon="@drawable/plus"
         android:title="@string/plus" />
