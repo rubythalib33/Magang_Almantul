@@ -13,7 +13,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
-        android:text="Pengaturan Toko"
+        android:text="Data User"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -22,80 +22,80 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/NamaTokoPT"
+        android:id="@+id/NamaLengkapDU"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Nama Toko"
+        android:hint="Nama Lengkap"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <EditText
-        android:id="@+id/NamaPemilikPT"
+        android:id="@+id/UsernameDU"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Nama Pemilik/Owner"
+        android:hint="Username"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NamaTokoPT" />
+        app:layout_constraintTop_toBottomOf="@+id/NamaLengkapDU" />
 
     <EditText
-        android:id="@+id/AlamatLengkapPT"
+        android:id="@+id/PasswordDU"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="39dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="27dp"
         android:ems="10"
-        android:hint="Alamat Lengkap"
-        android:inputType="textImeMultiLine"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/JabatanDU"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NamaPemilikPT" />
+        app:layout_constraintTop_toBottomOf="@+id/UsernameDU" />
 
-    <Button
-        android:id="@+id/buttonUploadLogo"
-        android:layout_width="81dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:text="upload logo"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.074"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AlamatLengkapPT" />
-
-    <Button
-        android:id="@+id/SimpanPT"
-        android:layout_width="wrap_content"
+    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+        android:id="@+id/JabatanDU"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        android:text="Simpan"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BatalPT"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="356dp"
+        android:hint="Jabatan"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/BatalPT" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/BatalPT"
+        android:id="@+id/SimpanDU"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_marginStart="168dp"
+        android:text="Simpan"
+        app:layout_constraintBaseline_toBaselineOf="@+id/BatalDU"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/BatalDU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="140dp"
         android:text="Batal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:design="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -71,6 +72,7 @@
             design:layout_constraintVertical_bias="0.0">
 
             <android.support.v7.widget.CardView
+                android:id="@+id/KeuntunganCard"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginStart="0dp"
@@ -108,12 +110,9 @@
 
     </android.support.constraint.ConstraintLayout>
 
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:layout_gravity="bottom">
 
         <android.support.design.widget.BottomNavigationView
@@ -121,12 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/darker_gray"
-            design:menu="@menu/menu_kasir" />
-=======
-        android:layout_gravity="bottom"
-        />
->>>>>>> 9c52b8c2664d25b5ed0c9cb874a67eaf2ee1f715
-
+            design:menu="@menu/menu_navigation" />
     </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>
