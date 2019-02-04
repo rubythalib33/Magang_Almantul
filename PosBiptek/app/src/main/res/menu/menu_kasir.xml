@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/dashboard"
         android:icon="@drawable/home"
         android:title="@string/home" />
 
     <item
-        android:id="@+id/Data"
-        android:icon="@drawable/data"
-        android:title="@string/data" />
-
-    <item
         android:id="@+id/plus"
         android:icon="@drawable/plus"
         android:title="@string/plus" />
-
-    <item
-        android:id="@+id/Laporan"
-        android:icon="@drawable/laporan"
-        android:title="@string/report" />
 
     <item
         android:id="@+id/More"

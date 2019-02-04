@@ -1,8 +1,18 @@
 <resources>
     <string name="app_name">PosBiptek</string>
     <string name="home">Dashboard</string>
+<<<<<<< HEAD
+    <string name="data">Data</string>
+    <string name="report">laporan</string>
+    <string name="more">More</string>
+    <string name="plus">plus</string>
+    <string name="username">User</string>
+    <string name="Hi">Hi,</string>
+    <string name="keuntungan_cardview">Keuntungan</string>
+=======
     <string name="data">PData</string>
     <string name="plus">plus</string>
     <string name="report">Laporan</string>
     <string name="more">More</string>
+>>>>>>> 9c52b8c2664d25b5ed0c9cb874a67eaf2ee1f715
 </resources>

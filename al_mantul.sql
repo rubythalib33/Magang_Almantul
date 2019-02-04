@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 25, 2019 at 05:56 PM
+-- Generation Time: Feb 02, 2019 at 01:27 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -49,17 +49,6 @@ CREATE TABLE `list_produk_bundle` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `list_produk_diskon`
---
-
-CREATE TABLE `list_produk_diskon` (
-  `kode_produk_list_diskon` varchar(13) NOT NULL,
-  `besar_diskon(%)` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `list_produk_restock`
 --
 
@@ -76,7 +65,7 @@ CREATE TABLE `list_produk_restock` (
 --
 
 CREATE TABLE `list_produk_terjual` (
-  `kode_penjualan_list` int(13) NOT NULL,
+  `kode_penjualan_list` int(11) NOT NULL,
   `kode_produk_list_terjual` varchar(13) NOT NULL,
   `jumlah_produk_terjual` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -124,7 +113,22 @@ CREATE TABLE `produk` (
   `satuan_produk` varchar(25) NOT NULL,
   `gambar_produk` varchar(50) NOT NULL,
   `stok_produk` int(3) NOT NULL,
-  `stok_kritis_produk` int(3) NOT NULL
+  `stok_kritis_produk` int(3) NOT NULL,
+  `status_produk` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `produk_diskon`
+--
+
+CREATE TABLE `produk_diskon` (
+  `kode_diskon` int(11) NOT NULL,
+  `kode_produk_diskon` varchar(13) NOT NULL,
+  `besar_diskon(%)` int(3) NOT NULL,
+  `tanggal_mulai_berlaku_diskon` date NOT NULL,
+  `tanggal_berakhir_diskon` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -134,11 +138,11 @@ CREATE TABLE `produk` (
 --
 
 CREATE TABLE `restock` (
-  `kode_restock` int(13) NOT NULL,
+  `kode_restock` int(11) NOT NULL,
   `kode_supplier_restock` int(11) NOT NULL,
   `tanggal_transaksi_restock` date NOT NULL,
   `tanggal_jatuh_tempo` date NOT NULL,
-  `bukti_transaksi_restock` varchar(50) NOT NULL
+  `bukti_transaksi_restock` varchar(50) NOT NULL DEFAULT '-'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -162,7 +166,7 @@ CREATE TABLE `supplier` (
 --
 
 CREATE TABLE `transaksi_penjualan` (
-  `kode_penjualan` int(13) NOT NULL,
+  `kode_penjualan` int(11) NOT NULL,
   `kode_user_penjualan` varchar(25) NOT NULL,
   `nama_customer` varchar(25) NOT NULL,
   `tanggal_transaksi_penjualan` date NOT NULL
@@ -200,24 +204,18 @@ ALTER TABLE `list_produk_bundle`
   ADD KEY `kode_produk_list_bundle` (`kode_produk_list_bundle`);
 
 --
--- Indexes for table `list_produk_diskon`
---
-ALTER TABLE `list_produk_diskon`
-  ADD KEY `kode_produk_list_diskon` (`kode_produk_list_diskon`);
-
---
 -- Indexes for table `list_produk_restock`
 --
 ALTER TABLE `list_produk_restock`
   ADD KEY `kode_restock_list` (`kode_restock_list`),
-  ADD KEY `kode_produk_list` (`kode_produk_list_restock`);
+  ADD KEY `kode_produk_list_restock` (`kode_produk_list_restock`);
 
 --
 -- Indexes for table `list_produk_terjual`
 --
 ALTER TABLE `list_produk_terjual`
   ADD KEY `kode_penjualan_list` (`kode_penjualan_list`),
-  ADD KEY `kode_produk_list` (`kode_produk_list_terjual`);
+  ADD KEY `kode_produk_list_terjual` (`kode_produk_list_terjual`);
 
 --
 -- Indexes for table `pemasukan`
@@ -236,6 +234,13 @@ ALTER TABLE `pengeluaran`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`kode_produk`);
+
+--
+-- Indexes for table `produk_diskon`
+--
+ALTER TABLE `produk_diskon`
+  ADD PRIMARY KEY (`kode_diskon`),
+  ADD KEY `kode_produk_diskon` (`kode_produk_diskon`);
 
 --
 -- Indexes for table `restock`
@@ -286,10 +291,16 @@ ALTER TABLE `pengeluaran`
   MODIFY `kode_data_pengeluaran` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `produk_diskon`
+--
+ALTER TABLE `produk_diskon`
+  MODIFY `kode_diskon` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `restock`
 --
 ALTER TABLE `restock`
-  MODIFY `kode_restock` int(13) NOT NULL AUTO_INCREMENT;
+  MODIFY `kode_restock` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -301,7 +312,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `transaksi_penjualan`
 --
 ALTER TABLE `transaksi_penjualan`
-  MODIFY `kode_penjualan` int(13) NOT NULL AUTO_INCREMENT;
+  MODIFY `kode_penjualan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -311,40 +322,40 @@ ALTER TABLE `transaksi_penjualan`
 -- Constraints for table `list_produk_bundle`
 --
 ALTER TABLE `list_produk_bundle`
-  ADD CONSTRAINT `fk_kode_bundle` FOREIGN KEY (`kode_bundle_list`) REFERENCES `bundle` (`kode_bundle`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_kode_produk_list3` FOREIGN KEY (`kode_produk_list_bundle`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
-
---
--- Constraints for table `list_produk_diskon`
---
-ALTER TABLE `list_produk_diskon`
-  ADD CONSTRAINT `fk_kode_produk_diskon` FOREIGN KEY (`kode_produk_list_diskon`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `list_produk_bundle_ibfk_1` FOREIGN KEY (`kode_bundle_list`) REFERENCES `bundle` (`kode_bundle`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `list_produk_bundle_ibfk_2` FOREIGN KEY (`kode_produk_list_bundle`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `list_produk_restock`
 --
 ALTER TABLE `list_produk_restock`
-  ADD CONSTRAINT `fk_kode_produk_list2` FOREIGN KEY (`kode_produk_list_restock`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_kode_restock_list` FOREIGN KEY (`kode_restock_list`) REFERENCES `restock` (`kode_restock`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `list_produk_restock_ibfk_1` FOREIGN KEY (`kode_restock_list`) REFERENCES `restock` (`kode_restock`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `list_produk_restock_ibfk_2` FOREIGN KEY (`kode_produk_list_restock`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `list_produk_terjual`
 --
 ALTER TABLE `list_produk_terjual`
-  ADD CONSTRAINT `fk_kode_penjualan_list` FOREIGN KEY (`kode_penjualan_list`) REFERENCES `transaksi_penjualan` (`kode_penjualan`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_kode_produk_list` FOREIGN KEY (`kode_produk_list_terjual`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `list_produk_terjual_ibfk_1` FOREIGN KEY (`kode_penjualan_list`) REFERENCES `transaksi_penjualan` (`kode_penjualan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `list_produk_terjual_ibfk_2` FOREIGN KEY (`kode_produk_list_terjual`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `produk_diskon`
+--
+ALTER TABLE `produk_diskon`
+  ADD CONSTRAINT `produk_diskon_ibfk_1` FOREIGN KEY (`kode_produk_diskon`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `restock`
 --
 ALTER TABLE `restock`
-  ADD CONSTRAINT `fk_kode_supplier_restock` FOREIGN KEY (`kode_supplier_restock`) REFERENCES `supplier` (`kode_supplier`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `restock_ibfk_1` FOREIGN KEY (`kode_supplier_restock`) REFERENCES `supplier` (`kode_supplier`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `transaksi_penjualan`
 --
 ALTER TABLE `transaksi_penjualan`
-  ADD CONSTRAINT `fk_transaksi_kode_user` FOREIGN KEY (`kode_user_penjualan`) REFERENCES `user` (`username`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `transaksi_penjualan_ibfk_1` FOREIGN KEY (`kode_user_penjualan`) REFERENCES `user` (`username`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
