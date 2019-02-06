@@ -3,8 +3,10 @@ Feature:
 -keuntungan
 -stok keluar
 
+dilihat satu tahun kebelakang
+
 Algoritma digunakan : Bundling : K means
-		      Stok     : ????
+		      Stok     : K means
 
 Bundling
 kluster:
