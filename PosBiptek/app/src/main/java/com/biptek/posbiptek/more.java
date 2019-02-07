@@ -19,23 +19,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public abstract class more extends Context implements android.support.v7.widget.PopupMenu.OnMenuItemClickListener {
-     public void ShowSetting(View v){
-         PopupMenu popup = new PopupMenu(this,v);
-         popup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
-         popup.inflate(R.menu.settingmenu);
-         popup.show();
-     }
+    public void ShowSetting(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        popup.inflate(R.menu.settingmenu);
+        popup.show();
+    }
 
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
-        switch (menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
             case R.id.ManajemenToko:
-                Toast.makeText(this,"Pengaturan Toko", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Pengaturan Toko", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.ManajemenUser:
-                Toast.makeText(this,"Pengaturan User",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Pengaturan User", Toast.LENGTH_SHORT).show();
                 return true;
 
         }
