@@ -1,5 +1,8 @@
 package com.biptek.posbiptek;
 
+import android.app.Activity;
+import android.app.Application;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
@@ -12,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.biptek.posbiptek.model.*;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
@@ -24,65 +28,87 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseHelper mDBHelper;
     EditText usernameLogin,passwordLogin;
     Button b1;
+    private CRUD crud;
+    private User user;
 
-//    public void onCreate(Bundle savedInstanceState){
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//        usernameLogin=(EditText)findViewById(R.id.LoginUsername);
-//        passwordLogin=(EditText)findViewById(R.id.LoginPasssword);
-//        b1=(Button)findViewById(R.id.ButtonLogin);
-//        b1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String username = usernameLogin.getText().toString();
-//                String password = passwordLogin.getText().toString();
-//            }
-//        });
-//    }
-    private BottomNavigationView bottomNavigationView;
 
-    String [] SPINNER ={"Admin","Kasir","Owner"};
-    @Override
+    public void onCreate(Bundle savedInstanceState){
+        crud.open();public class MainActivity extends AppCompatActivity {
 
-    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_admin);
+        setContentView(R.layout.activity_main);
 
-        bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomNavigation);
+        mDBHelper = new DatabaseHelper(this);
+        try {
+            mDBHelper.updateDataBase();
+        } catch (IOException mIOException) {
+            throw new Error("UnableToUpdateDatabase");
+        }
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        usernameLogin=(EditText)findViewById(R.id.LoginUsername);
+        passwordLogin=(EditText)findViewById(R.id.LoginPasssword);
+        b1=(Button)findViewById(R.id.ButtonLogin);
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                if (menuItem.getItemId() == R.id.dashboard){
-
-                }else if(menuItem.getItemId() == R.id.Data){
-
-                }else if(menuItem.getItemId() == R.id.Laporan){
-
-                }else if(menuItem.getItemId() == R.id.More){
+            public void onClick(View v) {
+                String username = usernameLogin.getText().toString();
+                String password = passwordLogin.getText().toString();
+                if(crud.getUser(username) == null){
+                    Toast.makeText(getApplicationContext(),"Username Tidak Terdaftar",Toast.LENGTH_SHORT).show();
+                }else if(user.getJabatan() == "admin"){
+                    Toast.makeText(getApplicationContext(),"Masuk admin",Toast.LENGTH_SHORT).show();
+                }else if(user.getJabatan() == "kasir") {
+                    Toast.makeText(getApplicationContext(),"Masuk KAsir",Toast.LENGTH_SHORT).show();
 
                 }
-                return false;
+                crud.close();
             }
         });
+    }
+
+//    private BottomNavigationView bottomNavigationView;
+//
+//    String [] SPINNER ={"Admin","Kasir","Owner"};
+//    @Override
+//
 
 
+    //Bottom Menu
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.home_admin);
+//
+//        bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomNavigation);
+//
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//
+//                if (menuItem.getItemId() == R.id.dashboard){
+//
+//                }else if(menuItem.getItemId() == R.id.Data){
+//
+//                }else if(menuItem.getItemId() == R.id.Laporan){
+//
+//                }else if(menuItem.getItemId() == R.id.More){
+//
+//                }
+//                return false;
+//            }
+//        });
+
+
+    //menampilkan spinner jabatan
 //        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,SPINNER);
 //        MaterialBetterSpinner betterSpinner = (MaterialBetterSpinner) findViewById(R.id.SpinnerJabatan);
 //        betterSpinner.setAdapter(arrayAdapter);
 
 //        setContentView(R.layout.home_admin);
 
-//        mDBHelper = new DatabaseHelper(this);
 //        TextView textView = findViewById(R.id.textView);
 //        textView.append(this.getApplicationInfo().dataDir+"\n");
 //
-//        try {
-//            mDBHelper.updateDataBase();
-//        } catch (IOException mIOException) {
-//            throw new Error("UnableToUpdateDatabase");
-//        }
 //
 //        CRUD crud = new CRUD(this);
 //        crud.open();
@@ -107,5 +133,4 @@ public class MainActivity extends AppCompatActivity {
 //        textView.append(crud.getAllTransaksiPenjualan().toString());
 //        //textView.append(crud.getListProdukTerjual(transaksiPenjualan.getKode_penjualan()).toString());
 //        crud.close()
-    }
 }

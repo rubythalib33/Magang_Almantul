@@ -926,4 +926,5 @@ public class CRUD {
     public void deleteUser(User user){
         database.delete("user", "username=?", new String[]{user.getUsername()});
     }
+
 }
