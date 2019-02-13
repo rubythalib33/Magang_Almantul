@@ -20,7 +20,7 @@ public class CRUD {
     }
 
     public void open () {
-        Log.i (LOGTAG, "Datanase Opened");
+        Log.i (LOGTAG, "Database Opened");
         database = dbhandler.getWritableDatabase();
     }
 
