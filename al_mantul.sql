@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 14, 2019 at 05:44 AM
+-- Generation Time: Feb 15, 2019 at 01:45 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `al_mantul`
+-- Database: `pos_biptek`
 --
 
 -- --------------------------------------------------------
