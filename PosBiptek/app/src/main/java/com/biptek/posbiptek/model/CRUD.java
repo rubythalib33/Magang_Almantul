@@ -1033,6 +1033,7 @@ public class CRUD {
             "kode_perusahaan",
             "nama_pemilik_perusahaan",
             "alamat_perusahaan",
+            "tanggal_berdiri_perusahaan",
             "email_perusahaan",
             "no_telepon_perusahaan"
     };
@@ -1042,6 +1043,7 @@ public class CRUD {
         contentValues.put("kode_perusahaan", perusahaan.getKode_perusahaan());
         contentValues.put("nama_pemilik_perusahaan", perusahaan.getNama_pemilik_perusahaan());
         contentValues.put("alamat_perusahaan", perusahaan.getAlamat_perusahaan());
+        contentValues.put("tanggal_berdiri_perusahaan", perusahaan.getTanggal_berdiri_perusahaan());
         contentValues.put("email_perusahaan", perusahaan.getEmail_perusahaan());
         contentValues.put("no_telepon_perusahaan", perusahaan.getNo_telepon_perusahaan());
         long insertid = database.insert("perusahaan", null, contentValues);
@@ -1065,7 +1067,8 @@ public class CRUD {
                 cursor.getString(1),
                 cursor.getString(2),
                 cursor.getString(3),
-                cursor.getString(4));
+                cursor.getString(4),
+                cursor.getString(5));
 
         return perusahaan;
     }
@@ -1087,6 +1090,7 @@ public class CRUD {
                 perusahaan.setKode_perusahaan(cursor.getLong(cursor.getColumnIndex("kode_perusahaan")));
                 perusahaan.setNama_pemilik_perusahaan(cursor.getString(cursor.getColumnIndex("nama_pemilik_perusahaan")));
                 perusahaan.setAlamat_perusahaan(cursor.getString(cursor.getColumnIndex("alamat_perusahaan")));
+                perusahaan.setTanggal_berdiri_perusahaan(cursor.getString(cursor.getColumnIndex("tanggal_berdiri_perusahaan")));
                 perusahaan.setEmail_perusahaan(cursor.getString(cursor.getColumnIndex("email_perusahaan")));
                 perusahaan.setNo_telepon_perusahaan(cursor.getString(cursor.getColumnIndex("no_telepon_perusahaan")));
                 perusahaans.add(perusahaan);
@@ -1101,6 +1105,7 @@ public class CRUD {
         contentValues.put("kode_perusahaan", perusahaan.getKode_perusahaan());
         contentValues.put("nama_pemilik_perusahaan", perusahaan.getNama_pemilik_perusahaan());
         contentValues.put("alamat_perusahaan", perusahaan.getAlamat_perusahaan());
+        contentValues.put("tanggal_berdiri_perusahaan", perusahaan.getTanggal_berdiri_perusahaan());
         contentValues.put("email_perusahaan", perusahaan.getEmail_perusahaan());
         contentValues.put("no_telepon_perusahaan", perusahaan.getNo_telepon_perusahaan());
         database.update("perusahaan", contentValues, "kode_perusahaan=?", new String[]{String.valueOf(perusahaan.getKode_perusahaan())});
