@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,7 +14,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
-        android:text="Data User"
+        android:text="Tambah User"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -25,6 +26,7 @@
     <EditText
         android:id="@+id/NamaLengkapDU"
         android:layout_width="350dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="30dp"
@@ -37,6 +39,7 @@
 
     <EditText
         android:id="@+id/UsernameDU"
+        android:layout_height="wrap_content"
         android:layout_width="350dp"
         android:layout_marginStart="31dp"
         android:layout_marginTop="32dp"
@@ -51,6 +54,7 @@
     <EditText
         android:id="@+id/PasswordDU"
         android:layout_width="350dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="31dp"
@@ -64,6 +68,7 @@
     <EditText
         android:id="@+id/NomorTelepon"
         android:layout_width="350dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="31dp"
@@ -91,20 +96,26 @@
     <Button
         android:id="@+id/SimpanDU"
         android:layout_width="wrap_content"
-        android:layout_height="47dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="168dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="50dp"
         android:text="Simpan"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BatalDU"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/BatalDU"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SpinnerJabatan" />
 
     <Button
         android:id="@+id/BatalDU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="50dp"
         android:text="Batal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/SimpanDU"
+        app:layout_constraintTop_toBottomOf="@+id/SpinnerJabatan" />
 
 </android.support.constraint.ConstraintLayout>

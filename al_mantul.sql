@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 02, 2019 at 01:27 PM
+-- Generation Time: Feb 18, 2019 at 03:13 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -25,13 +25,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `username_admin` varchar(25) NOT NULL,
+  `kode_perusahaan_admin` int(11) NOT NULL,
+  `password_admin` varchar(25) NOT NULL,
+  `nama_lengkap_admin` varchar(50) NOT NULL,
+  `no_telepon_admin` varchar(14) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `bundle`
 --
 
 CREATE TABLE `bundle` (
   `kode_bundle` int(11) NOT NULL,
   `nama_bundle` varchar(25) NOT NULL,
-  `harga_bundle` int(9) NOT NULL
+  `harga_bundle` int(9) NOT NULL,
+  `tanggal_mulai_berlaku_bundle` date NOT NULL,
+  `tanggal_berakhir_bundle` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -42,8 +58,7 @@ CREATE TABLE `bundle` (
 
 CREATE TABLE `list_produk_bundle` (
   `kode_bundle_list` int(11) NOT NULL,
-  `kode_produk_list_bundle` varchar(13) NOT NULL,
-  `jumlah_produk_bundle` int(3) NOT NULL
+  `kode_produk_list_bundle` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -73,11 +88,27 @@ CREATE TABLE `list_produk_terjual` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pegawai`
+--
+
+CREATE TABLE `pegawai` (
+  `username_pegawai` varchar(25) NOT NULL,
+  `kode_toko_pegawai` int(11) NOT NULL,
+  `password_pegawai` varchar(25) NOT NULL,
+  `jabatan_pegawai` varchar(10) NOT NULL,
+  `nama_lengkap_pegawai` varchar(50) NOT NULL,
+  `no_telepon_pegawai` varchar(14) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pemasukan`
 --
 
 CREATE TABLE `pemasukan` (
   `kode_data_pemasukan` int(11) NOT NULL,
+  `kode_toko_pemasukan` int(11) NOT NULL,
   `kode_pemasukan` varchar(5) NOT NULL,
   `tanggal_pemasukan` date NOT NULL,
   `jumlah_pemasukan` int(9) NOT NULL
@@ -91,9 +122,25 @@ CREATE TABLE `pemasukan` (
 
 CREATE TABLE `pengeluaran` (
   `kode_data_pengeluaran` int(11) NOT NULL,
+  `kode_toko_pengeluaran` int(11) NOT NULL,
   `kode_pengeluaran` varchar(5) NOT NULL,
   `tanggal_pengeluaran` date NOT NULL,
   `jumlah_pengeluaran` int(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `perusahaan`
+--
+
+CREATE TABLE `perusahaan` (
+  `kode_perusahaan` int(11) NOT NULL,
+  `nama_pemilik_perusahaan` varchar(50) NOT NULL,
+  `alamat_perusahaan` text NOT NULL,
+  `tanggal_berdiri_perusahaan` date NOT NULL,
+  `email_perusahaan` varchar(50) NOT NULL,
+  `no_telepon_perusahaan` varchar(14) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -111,7 +158,6 @@ CREATE TABLE `produk` (
   `harga_jual_produk` int(9) NOT NULL,
   `harga_beli_produk` int(9) NOT NULL,
   `satuan_produk` varchar(25) NOT NULL,
-  `gambar_produk` varchar(50) NOT NULL,
   `stok_produk` int(3) NOT NULL,
   `stok_kritis_produk` int(3) NOT NULL,
   `status_produk` varchar(5) NOT NULL
@@ -140,6 +186,7 @@ CREATE TABLE `produk_diskon` (
 CREATE TABLE `restock` (
   `kode_restock` int(11) NOT NULL,
   `kode_supplier_restock` int(11) NOT NULL,
+  `username_pegawai_restock` varchar(25) NOT NULL,
   `tanggal_transaksi_restock` date NOT NULL,
   `tanggal_jatuh_tempo` date NOT NULL,
   `bukti_transaksi_restock` varchar(50) NOT NULL DEFAULT '-'
@@ -162,33 +209,39 @@ CREATE TABLE `supplier` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi_penjualan`
+-- Table structure for table `toko`
 --
 
-CREATE TABLE `transaksi_penjualan` (
-  `kode_penjualan` int(11) NOT NULL,
-  `kode_user_penjualan` varchar(25) NOT NULL,
-  `nama_customer` varchar(25) NOT NULL,
-  `tanggal_transaksi_penjualan` date NOT NULL
+CREATE TABLE `toko` (
+  `kode_toko` int(11) NOT NULL,
+  `kode_perusahaan_toko` int(11) NOT NULL,
+  `manager_toko` varchar(50) NOT NULL,
+  `alamat_toko` text NOT NULL,
+  `no_telepon_toko` varchar(14) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `transaksi_penjualan`
 --
 
-CREATE TABLE `user` (
-  `username` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL,
-  `jabatan` varchar(10) NOT NULL,
-  `nama_lengkap` varchar(50) NOT NULL,
-  `no_telepon` varchar(13) NOT NULL
+CREATE TABLE `transaksi_penjualan` (
+  `kode_penjualan` int(11) NOT NULL,
+  `username_pegawai_penjualan` varchar(25) NOT NULL,
+  `tanggal_transaksi_penjualan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`username_admin`),
+  ADD KEY `kode_perusahaan_admin` (`kode_perusahaan_admin`);
 
 --
 -- Indexes for table `bundle`
@@ -218,16 +271,31 @@ ALTER TABLE `list_produk_terjual`
   ADD KEY `kode_produk_list_terjual` (`kode_produk_list_terjual`);
 
 --
+-- Indexes for table `pegawai`
+--
+ALTER TABLE `pegawai`
+  ADD PRIMARY KEY (`username_pegawai`),
+  ADD KEY `kode_toko_pegawai` (`kode_toko_pegawai`);
+
+--
 -- Indexes for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  ADD PRIMARY KEY (`kode_data_pemasukan`);
+  ADD PRIMARY KEY (`kode_data_pemasukan`),
+  ADD KEY `kode_toko_pemasukan` (`kode_toko_pemasukan`);
 
 --
 -- Indexes for table `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
-  ADD PRIMARY KEY (`kode_data_pengeluaran`);
+  ADD PRIMARY KEY (`kode_data_pengeluaran`),
+  ADD KEY `kode_toko_pengeluaran` (`kode_toko_pengeluaran`);
+
+--
+-- Indexes for table `perusahaan`
+--
+ALTER TABLE `perusahaan`
+  ADD PRIMARY KEY (`kode_perusahaan`);
 
 --
 -- Indexes for table `produk`
@@ -247,7 +315,8 @@ ALTER TABLE `produk_diskon`
 --
 ALTER TABLE `restock`
   ADD PRIMARY KEY (`kode_restock`),
-  ADD KEY `kode_supplier_restock` (`kode_supplier_restock`);
+  ADD KEY `kode_supplier_restock` (`kode_supplier_restock`),
+  ADD KEY `username_restock` (`username_pegawai_restock`);
 
 --
 -- Indexes for table `supplier`
@@ -256,17 +325,18 @@ ALTER TABLE `supplier`
   ADD PRIMARY KEY (`kode_supplier`);
 
 --
+-- Indexes for table `toko`
+--
+ALTER TABLE `toko`
+  ADD PRIMARY KEY (`kode_toko`),
+  ADD KEY `kode_perusahaan_toko` (`kode_perusahaan_toko`);
+
+--
 -- Indexes for table `transaksi_penjualan`
 --
 ALTER TABLE `transaksi_penjualan`
   ADD PRIMARY KEY (`kode_penjualan`),
-  ADD KEY `kode_user_penjualan` (`kode_user_penjualan`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`username`);
+  ADD KEY `kode_pegawai_penjualan` (`username_pegawai_penjualan`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -291,6 +361,12 @@ ALTER TABLE `pengeluaran`
   MODIFY `kode_data_pengeluaran` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `perusahaan`
+--
+ALTER TABLE `perusahaan`
+  MODIFY `kode_perusahaan` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `produk_diskon`
 --
 ALTER TABLE `produk_diskon`
@@ -309,6 +385,12 @@ ALTER TABLE `supplier`
   MODIFY `kode_supplier` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `toko`
+--
+ALTER TABLE `toko`
+  MODIFY `kode_toko` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `transaksi_penjualan`
 --
 ALTER TABLE `transaksi_penjualan`
@@ -317,6 +399,12 @@ ALTER TABLE `transaksi_penjualan`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`kode_perusahaan_admin`) REFERENCES `perusahaan` (`kode_perusahaan`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `list_produk_bundle`
@@ -340,6 +428,24 @@ ALTER TABLE `list_produk_terjual`
   ADD CONSTRAINT `list_produk_terjual_ibfk_2` FOREIGN KEY (`kode_produk_list_terjual`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
 
 --
+-- Constraints for table `pegawai`
+--
+ALTER TABLE `pegawai`
+  ADD CONSTRAINT `pegawai_ibfk_1` FOREIGN KEY (`kode_toko_pegawai`) REFERENCES `toko` (`kode_toko`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `pemasukan`
+--
+ALTER TABLE `pemasukan`
+  ADD CONSTRAINT `pemasukan_ibfk_1` FOREIGN KEY (`kode_toko_pemasukan`) REFERENCES `toko` (`kode_toko`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `pengeluaran`
+--
+ALTER TABLE `pengeluaran`
+  ADD CONSTRAINT `pengeluaran_ibfk_1` FOREIGN KEY (`kode_toko_pengeluaran`) REFERENCES `toko` (`kode_toko`) ON UPDATE CASCADE;
+
+--
 -- Constraints for table `produk_diskon`
 --
 ALTER TABLE `produk_diskon`
@@ -349,13 +455,20 @@ ALTER TABLE `produk_diskon`
 -- Constraints for table `restock`
 --
 ALTER TABLE `restock`
-  ADD CONSTRAINT `restock_ibfk_1` FOREIGN KEY (`kode_supplier_restock`) REFERENCES `supplier` (`kode_supplier`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `restock_ibfk_1` FOREIGN KEY (`kode_supplier_restock`) REFERENCES `supplier` (`kode_supplier`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `restock_ibfk_2` FOREIGN KEY (`username_pegawai_restock`) REFERENCES `pegawai` (`username_pegawai`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `toko`
+--
+ALTER TABLE `toko`
+  ADD CONSTRAINT `toko_ibfk_1` FOREIGN KEY (`kode_perusahaan_toko`) REFERENCES `perusahaan` (`kode_perusahaan`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `transaksi_penjualan`
 --
 ALTER TABLE `transaksi_penjualan`
-  ADD CONSTRAINT `transaksi_penjualan_ibfk_1` FOREIGN KEY (`kode_user_penjualan`) REFERENCES `user` (`username`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `transaksi_penjualan_ibfk_1` FOREIGN KEY (`username_pegawai_penjualan`) REFERENCES `pegawai` (`username_pegawai`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:design="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/scrollView2"
+    <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="1326dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="-300dp"
+        android:background="@android:color/secondary_text_light">
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/frameLayout"
+        <LinearLayout
             android:layout_width="match_parent"
+<<<<<<< HEAD
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
+=======
             android:layout_height="300dp"
             android:background="@android:color/holo_orange_dark"
             android:visibility="visible"
@@ -28,7 +35,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="132dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/username"
+                android:text="@string/username_pegawai"
                 android:textColor="@android:color/background_light"
                 android:textSize="36sp"
                 android:textStyle="bold"
@@ -36,81 +43,71 @@
                 design:layout_constraintEnd_toEndOf="parent"
                 design:layout_constraintTop_toTopOf="parent"
                 design:layout_constraintVertical_bias="0.408" />
+>>>>>>> e4d906e9eb8d7e7f76d077e5aa17c27b75967d7e
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/Hi"
-                android:textColor="@android:color/background_light"
-                android:textSize="36sp"
-                android:textStyle="bold"
-                design:layout_constraintBottom_toBottomOf="parent"
-                design:layout_constraintEnd_toStartOf="@+id/textView3"
-                design:layout_constraintHorizontal_bias="0.957"
-                design:layout_constraintStart_toStartOf="parent"
-                design:layout_constraintTop_toTopOf="parent"
-                design:layout_constraintVertical_bias="0.408" />
-
-        </android.support.constraint.ConstraintLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_kontenHome"
-            android:layout_width="328dp"
-            android:layout_height="1037dp"
-            android:layout_marginTop="200dp"
-            android:orientation="vertical"
-            design:layout_constraintBottom_toBottomOf="parent"
-            design:layout_constraintEnd_toEndOf="parent"
-            design:layout_constraintHorizontal_bias="0.493"
-            design:layout_constraintStart_toStartOf="parent"
-            design:layout_constraintTop_toTopOf="parent"
-            design:layout_constraintVertical_bias="0.0">
-
-            <android.support.v7.widget.CardView
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginStart="0dp"
-                design:cardBackgroundColor="@android:color/background_light">
+                android:layout_height="550dp"
+                android:background="@android:color/holo_orange_dark">
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/namaUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/keuntungan_cardview"
-                    android:textColor="@color/colorAccent" />
+                    android:layout_marginTop="350dp"
+                    android:layout_marginEnd="128dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="User"
+                    android:textColor="@android:color/white"
+                    android:textSize="18pt"
+                    android:textStyle="bold"
+                    design:layout_constraintBottom_toBottomOf="parent"
+                    design:layout_constraintEnd_toEndOf="parent"
+                    design:layout_constraintTop_toTopOf="parent"
+                    design:layout_constraintVertical_bias="0.144" />
+
+                <TextView
+                    android:id="@+id/Hi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="136dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="Hi,"
+                    android:textColor="@android:color/white"
+                    android:textSize="18pt"
+                    android:textStyle="bold"
+                    design:layout_constraintBaseline_toBaselineOf="@+id/namaUser"
+                    design:layout_constraintEnd_toStartOf="@+id/namaUser"
+                    design:layout_constraintStart_toStartOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="320dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="-50dp"
+                design:layout_constraintEnd_toEndOf="parent"
+                design:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="200dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="60dp"
-                design:cardBackgroundColor="@android:color/background_light" />
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="100dp" />
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="60dp"
-                design:cardBackgroundColor="@android:color/background_light" />
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="60dp"
-                design:cardBackgroundColor="@android:color/background_light" />
         </LinearLayout>
 
-    </android.support.constraint.ConstraintLayout>
-
-
-
+    </ScrollView>
     <FrameLayout
+        android:id="@+id/layoutBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom">
@@ -120,8 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/darker_gray"
-            design:menu="@menu/menu_kasir"/>
-
+            design:menu="@menu/menu_kasir" />
     </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

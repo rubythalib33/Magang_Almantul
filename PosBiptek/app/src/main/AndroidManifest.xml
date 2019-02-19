@@ -4,18 +4,34 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_biptek2"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo_biptek2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".homeadmin"></activity>
+        <activity android:name=".homekasir"></activity>
+        <activity android:name=".More_admin"></activity>
+        <activity android:name=".tambahpembelian"></activity>
+        <activity android:name=".pilihprodukpembelian"></activity>
+        <activity android:name=".tambahpenjualan"></activity>
+        <activity android:name=".daftarhutang"></activity>
+        <activity android:name=".daftarkontak"></activity>
+        <activity android:name=".daftarproduk"></activity>
+        <activity android:name=".hutang"></activity>
+        <activity android:name=".laporankeuangan"></activity>
+        <activity android:name=".laporanpembelian"></activity>
+        <activity android:name=".laporanpenjualan"></activity>
+        <activity android:name=".tambahproduk"></activity>
+        <activity android:name=".manajemen_user"></activity>
+        <activity android:name=".manajemen_toko"></activity>
+        <activity android:name=".tambahuser"></activity>
     </application>
 
 </manifest>

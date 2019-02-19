@@ -20,7 +20,7 @@ public class CRUD {
     }
 
     public void open () {
-        Log.i (LOGTAG, "Datanase Opened");
+        Log.i (LOGTAG, "Database Opened");
         database = dbhandler.getWritableDatabase();
     }
 
@@ -158,6 +158,7 @@ public class CRUD {
 //Untuk table pemasukan
     private static final String[] allColumnsPemasukan = {
             "kode_data_pemasukan",
+            "kode_toko_pemasukan",
             "kode_pemasukan",
             "tanggal_pemasukan",
             "jumlah_pemasukan"
@@ -166,6 +167,7 @@ public class CRUD {
     public long addPemasukan(Pemasukan pemasukan){
         ContentValues contentValues = new ContentValues();
         contentValues.put("kode_pemasukan", pemasukan.getKode_pemasukan());
+        contentValues.put("kode_toko_pemasukan", pemasukan.getKode_toko_pemasukan());
         contentValues.put("tanggal_pemasukan", pemasukan.getTanggal_pemasukan());
         contentValues.put("jumlah_pemasukan", pemasukan.getJumlah_pemasukan());
         long insertid = database.insert("pemasukan", null, contentValues);
@@ -186,9 +188,10 @@ public class CRUD {
             cursor.moveToFirst();
 
         Pemasukan pemasukan = new Pemasukan(cursor.getLong(0),
-                cursor.getString(1),
+                cursor.getLong(1),
                 cursor.getString(2),
-                cursor.getInt(3));
+                cursor.getString(3),
+                cursor.getInt(4));
 
         return pemasukan;
     }
@@ -208,6 +211,7 @@ public class CRUD {
             while (cursor.moveToNext()){
                 Pemasukan pemasukan = new Pemasukan();
                 pemasukan.setKode_data_pemasukan(cursor.getLong(cursor.getColumnIndex("kode_data_pemasukan")));
+                pemasukan.setKode_toko_pemasukan(cursor.getLong(cursor.getColumnIndex("kode_toko_pemasukan")));
                 pemasukan.setKode_pemasukan(cursor.getString(cursor.getColumnIndex("kode_pemasukan")));
                 pemasukan.setTanggal_pemasukan(cursor.getString(cursor.getColumnIndex("tanggal_pemasukan")));
                 pemasukan.setJumlah_pemasukan(cursor.getInt(cursor.getColumnIndex("jumlah_pemasukan")));
@@ -221,6 +225,7 @@ public class CRUD {
     public void updatePemasukan(Pemasukan pemasukan){
         ContentValues contentValues = new ContentValues();
         contentValues.put("kode_pemasukan", pemasukan.getKode_pemasukan());
+        contentValues.put("kode_toko_pemasukan", pemasukan.getKode_toko_pemasukan());
         contentValues.put("tanggal_pemasukan", pemasukan.getTanggal_pemasukan());
         contentValues.put("jumlah_pemasukan", pemasukan.getJumlah_pemasukan());
         database.update("pemasukan", contentValues, "kode_data_pemasukan=?", new String[]{String.valueOf(pemasukan.getKode_data_pemasukan())});
@@ -233,6 +238,7 @@ public class CRUD {
 //Untuk table pengeluaran
     private static final String[] allColumnsPengeluaran = {
             "kode_data_pengeluaran",
+            "kode_toko_pengeluaran",
             "kode_pengeluaran",
             "tanggal_pengeluaran",
             "jumlah_pengeluaran"
@@ -241,6 +247,7 @@ public class CRUD {
     public long addPengeluaran(Pengeluaran pengeluaran){
         ContentValues contentValues = new ContentValues();
         contentValues.put("kode_pengeluaran", pengeluaran.getKode_pengeluaran());
+        contentValues.put("kode_toko_pengeluaran", pengeluaran.getKode_toko_pengeluaran());
         contentValues.put("tanggal_pengeluaran", pengeluaran.getTanggal_pengeluaran());
         contentValues.put("jumlah_pengeluaran", pengeluaran.getJumlah_pengeluaran());
         long insertid = database.insert("pengeluaran", null, contentValues);
@@ -261,9 +268,10 @@ public class CRUD {
             cursor.moveToFirst();
 
         Pengeluaran pengeluaran = new Pengeluaran(cursor.getLong(0),
-                cursor.getString(1),
+                cursor.getLong(1),
                 cursor.getString(2),
-                cursor.getInt(3));
+                cursor.getString(3),
+                cursor.getInt(4));
 
         return pengeluaran;
     }
@@ -283,6 +291,7 @@ public class CRUD {
             while (cursor.moveToNext()){
                 Pengeluaran pengeluaran = new Pengeluaran();
                 pengeluaran.setKode_data_pengeluaran(cursor.getLong(cursor.getColumnIndex("kode_data_pengeluaran")));
+                pengeluaran.setKode_toko_pengeluaran(cursor.getLong(cursor.getColumnIndex("kode_toko_pengeluaran")));
                 pengeluaran.setKode_pengeluaran(cursor.getString(cursor.getColumnIndex("kode_pengeluaran")));
                 pengeluaran.setTanggal_pengeluaran(cursor.getString(cursor.getColumnIndex("tanggal_pengeluaran")));
                 pengeluaran.setJumlah_pengeluaran(cursor.getInt(cursor.getColumnIndex("jumlah_pengeluaran")));
@@ -296,6 +305,7 @@ public class CRUD {
     public void updatePengeluaran(Pengeluaran pengeluaran){
         ContentValues contentValues = new ContentValues();
         contentValues.put("kode_pengeluaran", pengeluaran.getKode_pengeluaran());
+        contentValues.put("kode_toko_pengeluaran", pengeluaran.getKode_toko_pengeluaran());
         contentValues.put("tanggal_pengeluaran", pengeluaran.getTanggal_pengeluaran());
         contentValues.put("jumlah_pengeluaran", pengeluaran.getJumlah_pengeluaran());
         database.update("pengeluaran", contentValues, "kode_data_pengeluaran=?", new String[]{String.valueOf(pengeluaran.getKode_data_pengeluaran())});
@@ -522,6 +532,7 @@ public class CRUD {
         //untuk table restock
         ContentValues contentValues = new ContentValues();
         contentValues.put("kode_supplier_restock", restock.getKode_supplier_restock());
+        contentValues.put("username_pegawai_restock", restock.getUsername_pegawai_restock());
         contentValues.put("tanggal_transaksi_restock", restock.getTanggal_transaksi_restock());
         contentValues.put("tanggal_jatuh_tempon", restock.getTanggal_jatuh_tempo());
         contentValues.put("bukti_transaksi_restock", restock.getBukti_transaksi_restock());
@@ -556,7 +567,8 @@ public class CRUD {
                 cursor.getLong(1),
                 cursor.getString(2),
                 cursor.getString(3),
-                cursor.getString(4));
+                cursor.getString(4),
+                cursor.getString(5));
 
         return  restock;
     }
@@ -577,6 +589,7 @@ public class CRUD {
                 Restock restock = new Restock();
                 restock.setKode_restock(cursor.getLong(cursor.getColumnIndex("kode_restock")));
                 restock.setKode_supplier_restock(cursor.getLong(cursor.getColumnIndex("kode_supplier_restock")));
+                restock.setUsername_pegawai_restock(cursor.getString(cursor.getColumnIndex("username_pegawai_restock")));
                 restock.setTanggal_transaksi_restock(cursor.getString(cursor.getColumnIndex("tanggal_transaksi_restock")));
                 restock.setTanggal_jatuh_tempo(cursor.getString(cursor.getColumnIndex("tanggal_jatuh_tempo")));
                 restock.setBukti_transaksi_restock(cursor.getString(cursor.getColumnIndex("bukti_transaksi_restock")));
@@ -616,6 +629,7 @@ public class CRUD {
         //untuk table restock
         ContentValues contentValues = new ContentValues();
         contentValues.put("kode_supplier_restock", restock.getKode_supplier_restock());
+        contentValues.put("username_pegawai_restock", restock.getUsername_pegawai_restock());
         contentValues.put("tanggal_transaksi_restock", restock.getTanggal_transaksi_restock());
         contentValues.put("tanggal_jatuh_tempon", restock.getTanggal_jatuh_tempo());
         contentValues.put("bukti_transaksi_restock", restock.getBukti_transaksi_restock());
@@ -721,7 +735,7 @@ public class CRUD {
 //Untuk table transaksi_penjualan dan list_produk_terjual
     private static final String[] allColumnsTransaksiPenjualan = {
             "kode_penjualan",
-            "kode_user_penjualan",
+            "username_pegawai_penjualan",
             "nama_customer",
             "tanggal_transaksi_penjualan"
     };
@@ -736,7 +750,7 @@ public class CRUD {
 
         //untuk table transaksi_penjualan
         ContentValues contentValues = new ContentValues();
-        contentValues.put("kode_user_penjualan", transaksiPenjualan.getKode_user_penjualan());
+        contentValues.put("username_pegawai_penjualan", transaksiPenjualan.getUsername_pegawai_penjualan());
         contentValues.put("nama_customer", transaksiPenjualan.getNama_customer());
         contentValues.put("tanggal_transaksi_penjualan", transaksiPenjualan.getTanggal_transaksi_penjualan());
         long inserid = database.insert("transaksi_penjualan", null, contentValues);
@@ -813,7 +827,7 @@ public class CRUD {
             while (cursor.moveToNext()){
                 TransaksiPenjualan transaksiPenjualan = new TransaksiPenjualan();
                 transaksiPenjualan.setKode_penjualan(cursor.getLong(cursor.getColumnIndex("kode_penjualan")));
-                transaksiPenjualan.setKode_user_penjualan(cursor.getString(cursor.getColumnIndex("kode_user_penjualan")));
+                transaksiPenjualan.setUsername_pegawai_penjualan(cursor.getString(cursor.getColumnIndex("username_pegawai_penjualan")));
                 transaksiPenjualan.setNama_customer(cursor.getString(cursor.getColumnIndex("nama_customer")));
                 transaksiPenjualan.setTanggal_transaksi_penjualan(cursor.getString(cursor.getColumnIndex("tanggal_transaksi_penjualan")));
                 transaksiPenjualans.add(transaksiPenjualan);
@@ -827,7 +841,7 @@ public class CRUD {
 
         //update di table transaksi_penjualan
         ContentValues contentValues = new ContentValues();
-        contentValues.put("kode_user_penjualan", transaksiPenjualan.getKode_user_penjualan());
+        contentValues.put("username_pegawai_penjualan", transaksiPenjualan.getUsername_pegawai_penjualan());
         contentValues.put("nama_customer", transaksiPenjualan.getNama_customer());
         contentValues.put("tanggal_transaksi_penjualan", transaksiPenjualan.getTanggal_transaksi_penjualan());
         database.update("transaksi_penjualan", contentValues, "kode_penjualan=?", new String[]{String.valueOf(transaksiPenjualan.getKode_penjualan())});
@@ -846,30 +860,32 @@ public class CRUD {
         database.delete("transaksi_penjualan", "kode_penjualan=?", new String[]{String.valueOf(transaksiPenjualan.getKode_penjualan())});
     }
 
-//Untuk table user
-    private static final String[] allColumnsUser = {
-            "username",
-            "password",
-            "jabatan",
-            "nama_lengkap",
-            "no_telepon"
+//Untuk table pegawai
+    private static final String[] allColumnsPegawai = {
+            "username_pegawai",
+            "kode_toko_pegawai",
+            "password_pegawai",
+            "jabatan_pegawai",
+            "nama_lengkap_pegawai",
+            "no_telepon_pegawai"
     };
 
-    public void addUser(User user){
+    public void addPegawai(Pegawai pegawai){
         ContentValues contentValues = new ContentValues();
-        contentValues.put("username", user.getUsername());
-        contentValues.put("password", user.getPassword());
-        contentValues.put("jabatan", user.getJabatan());
-        contentValues.put("nama_lengkap", user.getNama_lengkap());
-        contentValues.put("no_telepon", user.getNo_telepon());
-        database.insert("user", null, contentValues);
+        contentValues.put("username_pegawai", pegawai.getUsername_pegawai());
+        contentValues.put("kode_toko_pegawai",pegawai.getKode_toko_pegawai());
+        contentValues.put("password_pegawai", pegawai.getPassword_pegawai());
+        contentValues.put("jabatan_pegawai", pegawai.getJabatan_pegawai());
+        contentValues.put("nama_lengkap_pegawai", pegawai.getNama_lengkap_pegawai());
+        contentValues.put("no_telepon_pegawai", pegawai.getNo_telepon_pegawai());
+        database.insert("pegawai", null, contentValues);
     }
 
-    //mendapatkan 1 user
-    public User getUser (String username){
-        Cursor cursor = database.query("user",
-                allColumnsUser,
-                "username=?",
+    //mendapatkan 1 pegawai
+    public Pegawai getPegawai(String username){
+        Cursor cursor = database.query("pegawai",
+                allColumnsPegawai,
+                "username_pegawai=?",
                 new String[]{username},
                 null,
                 null,
@@ -878,53 +894,305 @@ public class CRUD {
         if(cursor != null)
             cursor.moveToFirst();
 
-        User user = new User(cursor.getString(0),
-                cursor.getString(1),
+        Pegawai pegawai = new Pegawai(cursor.getString(0),
+                cursor.getLong(1),
                 cursor.getString(2),
                 cursor.getString(3),
-                cursor.getString(4));
+                cursor.getString(4),
+                cursor.getString(5));
 
-        return user;
+        return pegawai;
     }
 
-    //mendapatkan semua user
-    public List<User> getAllUser(){
-        Cursor cursor = database.query("user",
-                allColumnsUser,
+    //mendapatkan semua pegawai
+    public List<Pegawai> getAllPegawai(){
+        Cursor cursor = database.query("pegawai",
+                allColumnsPegawai,
                 null,
                 null,
                 null,
                 null,
                 null);
 
-        List<User> users = new ArrayList<>();
+        List<Pegawai> pegawais = new ArrayList<>();
         if(cursor.getCount() > 0){
             while(cursor.moveToNext()){
-                User user = new User();
-                user.setUsername(cursor.getString(cursor.getColumnIndex("username")));
-                user.setPassword(cursor.getString(cursor.getColumnIndex("password")));
-                user.setJabatan(cursor.getString(cursor.getColumnIndex("jabatan")));
-                user.setNama_lengkap(cursor.getString(cursor.getColumnIndex("nama_lengkap")));
-                user.setNo_telepon(cursor.getString(cursor.getColumnIndex("no_telepon")));
-                users.add(user);
+                Pegawai pegawai = new Pegawai();
+                pegawai.setUsername_pegawai(cursor.getString(cursor.getColumnIndex("username_pegawai")));
+                pegawai.setKode_toko_pegawai(cursor.getLong(cursor.getColumnIndex("kode_toko_pegawai")));
+                pegawai.setPassword_pegawai(cursor.getString(cursor.getColumnIndex("password_pegawai")));
+                pegawai.setJabatan_pegawai(cursor.getString(cursor.getColumnIndex("jabatan_pegawai")));
+                pegawai.setNama_lengkap_pegawai(cursor.getString(cursor.getColumnIndex("nama_lengkap_pegawai")));
+                pegawai.setNo_telepon_pegawai(cursor.getString(cursor.getColumnIndex("no_telepon_pegawai")));
+                pegawais.add(pegawai);
             }
         }
 
-        return users;
+        return pegawais;
     }
 
-    public void updateUser(User user){
+    public void updatePegawai(Pegawai pegawai){
         ContentValues contentValues = new ContentValues();
-        contentValues.put("username", user.getUsername());
-        contentValues.put("password", user.getPassword());
-        contentValues.put("jabatan", user.getJabatan());
-        contentValues.put("nama_lengkap", user.getNama_lengkap());
-        contentValues.put("no_telepon", user.getNo_telepon());
-        database.update("user", contentValues, "username=?", new String[]{user.getUsername()});
+        contentValues.put("username_pegawai", pegawai.getUsername_pegawai());
+        contentValues.put("kode_toko_pegawai",pegawai.getKode_toko_pegawai());
+        contentValues.put("password_pegawai", pegawai.getPassword_pegawai());
+        contentValues.put("jabatan_pegawai", pegawai.getJabatan_pegawai());
+        contentValues.put("nama_lengkap_pegawai", pegawai.getNama_lengkap_pegawai());
+        contentValues.put("no_telepon_pegawai", pegawai.getNo_telepon_pegawai());
+        database.update("pegawai", contentValues, "username_pegawai=?", new String[]{pegawai.getUsername_pegawai()});
     }
 
-    public void deleteUser(User user){
-        database.delete("user", "username=?", new String[]{user.getUsername()});
+    public void deletePegawai(Pegawai pegawai){
+        database.delete("pegawai", "username_pegawai=?", new String[]{pegawai.getUsername_pegawai()});
     }
 
+//untuk table toko
+    private static final String[] allColumnsToko = {
+        "kode_toko",
+        "kode_perusahaan_toko",
+        "manager_toko",
+        "alamat_toko",
+        "no_telepon_toko"
+    };
+
+    public long addToko(Toko toko){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("kode_toko", toko.getKode_toko());
+        contentValues.put("kode_perusahaan_toko", toko.getKode_perusahaan_toko());
+        contentValues.put("manager_toko", toko.getManager_toko());
+        contentValues.put("alamat_toko", toko.getAlamat_toko());
+        contentValues.put("no_telepon_toko", toko.getNo_telepon_toko());
+        long insertid = database.insert("toko", null, contentValues);
+        return insertid;
+    }
+
+    //mendapatkan 1 toko
+    public Toko getToko(long kode_toko){
+        Cursor cursor = database.query("toko",
+                allColumnsToko,
+                "kode_toko=?",
+                new String[]{String.valueOf(kode_toko)},
+                null,
+                null,
+                null);
+
+        if(cursor != null)
+            cursor.moveToFirst();
+
+        Toko toko = new Toko(cursor.getLong(0),
+                cursor.getLong(1),
+                cursor.getString(2),
+                cursor.getString(3),
+                cursor.getString(4));
+
+        return toko;
+    }
+
+    //mendapatkan semua toko
+    public List<Toko> getAllToko(){
+        Cursor cursor = database.query("toko",
+                allColumnsToko,
+                null,
+                null,
+                null,
+                null,
+                null);
+
+        List<Toko> tokos = new ArrayList<>();
+        if(cursor.getCount() > 0){
+            while(cursor.moveToNext()){
+                Toko toko = new Toko();
+                toko.setKode_toko(cursor.getLong(cursor.getColumnIndex("kode_toko")));
+                toko.setKode_perusahaan_toko(cursor.getLong(cursor.getColumnIndex("kode_perusahaan_toko")));
+                toko.setManager_toko(cursor.getString(cursor.getColumnIndex("manager_toko")));
+                toko.setAlamat_toko(cursor.getString(cursor.getColumnIndex("alamat_toko")));
+                toko.setNo_telepon_toko(cursor.getString(cursor.getColumnIndex("no_telepon_toko")));
+                tokos.add(toko);
+            }
+        }
+
+        return tokos;
+    }
+
+    public void updateToko(Toko toko){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("kode_toko", toko.getKode_toko());
+        contentValues.put("kode_perusahaan_toko", toko.getKode_perusahaan_toko());
+        contentValues.put("manager_toko", toko.getManager_toko());
+        contentValues.put("alamat_toko", toko.getAlamat_toko());
+        contentValues.put("no_telepon_toko", toko.getNo_telepon_toko());
+        database.update("toko", contentValues, "kode_toko=?", new String[]{String.valueOf(toko.getKode_toko())});
+    }
+
+    public void deleteToko(Toko toko){
+        database.delete("toko", "kode_toko", new String[]{String.valueOf(toko.getKode_toko())});
+    }
+
+//untuk table perusahaan
+    private final String[] allColumnsPerusahaan = {
+            "kode_perusahaan",
+            "nama_pemilik_perusahaan",
+            "alamat_perusahaan",
+            "tanggal_berdiri_perusahaan",
+            "email_perusahaan",
+            "no_telepon_perusahaan"
+    };
+
+    public long addPerusahaan(Perusahaan perusahaan){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("kode_perusahaan", perusahaan.getKode_perusahaan());
+        contentValues.put("nama_pemilik_perusahaan", perusahaan.getNama_pemilik_perusahaan());
+        contentValues.put("alamat_perusahaan", perusahaan.getAlamat_perusahaan());
+        contentValues.put("tanggal_berdiri_perusahaan", perusahaan.getTanggal_berdiri_perusahaan());
+        contentValues.put("email_perusahaan", perusahaan.getEmail_perusahaan());
+        contentValues.put("no_telepon_perusahaan", perusahaan.getNo_telepon_perusahaan());
+        long insertid = database.insert("perusahaan", null, contentValues);
+        return insertid;
+    }
+
+    //mendapatkan 1 perusahaan
+    public Perusahaan getPerusahaan(long kode_perusahaan){
+        Cursor cursor = database.query("perusahaan",
+                allColumnsPerusahaan,
+                "kode_perusahaan=?",
+                new String[]{String.valueOf(kode_perusahaan)},
+                null,
+                null,
+                null);
+
+        if(cursor != null)
+            cursor.moveToFirst();
+
+        Perusahaan perusahaan = new Perusahaan(cursor.getLong(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3),
+                cursor.getString(4),
+                cursor.getString(5));
+
+        return perusahaan;
+    }
+
+    //mendapatkan semua perusahaan
+    public List<Perusahaan> getAllPerusahaan(){
+        Cursor cursor = database.query("perusahaan",
+                allColumnsPerusahaan,
+                null,
+                null,
+                null,
+                null,
+                null);
+
+        List<Perusahaan> perusahaans = new ArrayList<>();
+        if(cursor.getCount() > 0 ){
+            while(cursor.moveToNext()){
+                Perusahaan perusahaan = new Perusahaan();
+                perusahaan.setKode_perusahaan(cursor.getLong(cursor.getColumnIndex("kode_perusahaan")));
+                perusahaan.setNama_pemilik_perusahaan(cursor.getString(cursor.getColumnIndex("nama_pemilik_perusahaan")));
+                perusahaan.setAlamat_perusahaan(cursor.getString(cursor.getColumnIndex("alamat_perusahaan")));
+                perusahaan.setTanggal_berdiri_perusahaan(cursor.getString(cursor.getColumnIndex("tanggal_berdiri_perusahaan")));
+                perusahaan.setEmail_perusahaan(cursor.getString(cursor.getColumnIndex("email_perusahaan")));
+                perusahaan.setNo_telepon_perusahaan(cursor.getString(cursor.getColumnIndex("no_telepon_perusahaan")));
+                perusahaans.add(perusahaan);
+            }
+        }
+
+        return perusahaans;
+    }
+
+    public void updatePerusahaan(Perusahaan perusahaan){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("kode_perusahaan", perusahaan.getKode_perusahaan());
+        contentValues.put("nama_pemilik_perusahaan", perusahaan.getNama_pemilik_perusahaan());
+        contentValues.put("alamat_perusahaan", perusahaan.getAlamat_perusahaan());
+        contentValues.put("tanggal_berdiri_perusahaan", perusahaan.getTanggal_berdiri_perusahaan());
+        contentValues.put("email_perusahaan", perusahaan.getEmail_perusahaan());
+        contentValues.put("no_telepon_perusahaan", perusahaan.getNo_telepon_perusahaan());
+        database.update("perusahaan", contentValues, "kode_perusahaan=?", new String[]{String.valueOf(perusahaan.getKode_perusahaan())});
+    }
+
+    public void deletePerusahaan(Perusahaan perusahaan){
+        database.delete("perusahaan", "kode_perusahaan=?", new String[]{String.valueOf(perusahaan.getKode_perusahaan())});
+    }
+
+//untuk table admin
+    private final String[] allColumnsAdmin = {
+        "username_admin",
+        "kode_perusahaan_admin",
+        "password_admin",
+        "nama_lengkap_admin",
+        "no_telepon_admin"
+    };
+
+    public void addAdmin(Admin admin){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("username_admin", admin.getUsername_admin());
+        contentValues.put("kode_perusahaan_admin", admin.getKode_perusahaan_admin());
+        contentValues.put("password_admin", admin.getPassword_admin());
+        contentValues.put("nama_lengkap_admin", admin.getNama_lengkap_admin());
+        contentValues.put("no_telepon_admin", admin.getNo_telepon_admin());
+        database.insert("admin", null, contentValues);
+    }
+
+    //mendapatkan 1 admin
+    public Admin getAdmin(String username_admin){
+        Cursor cursor = database.query("admin",
+                allColumnsAdmin,
+                "username_admin=?",
+                new String[]{username_admin},
+                null,
+                null,
+                null);
+
+        if(cursor != null)
+            cursor.moveToFirst();
+
+        Admin admin = new Admin(cursor.getString(0),
+                cursor.getLong(1),
+                cursor.getString(2),
+                cursor.getString(3),
+                cursor.getString(4));
+
+        return admin;
+    }
+
+    //mendapatkan semua admin
+    public List<Admin> getAllAdmin(){
+        Cursor cursor = database.query("admin",
+                allColumnsAdmin,
+                null,
+                null,
+                null,
+                null,
+                null);
+
+        List<Admin> admins = new ArrayList<>();
+        if(cursor.getCount() > 0){
+            while (cursor.moveToNext()){
+                Admin admin = new Admin();
+                admin.setUsername_admin(cursor.getString(cursor.getColumnIndex("username_admin")));
+                admin.setKode_perusahaan_admin(cursor.getLong(cursor.getColumnIndex("kode_perusahaan_admin")));
+                admin.setPassword_admin(cursor.getString(cursor.getColumnIndex("password_admin")));
+                admin.setNama_lengkap_admin(cursor.getString(cursor.getColumnIndex("nama_lengkap_admin")));
+                admin.setNo_telepon_admin(cursor.getString(cursor.getColumnIndex("no_telepon_admin")));
+                admins.add(admin);
+            }
+        }
+
+        return admins;
+    }
+
+    public void updateAdmin(Admin admin){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("username_admin", admin.getUsername_admin());
+        contentValues.put("kode_perusahaan_admin", admin.getKode_perusahaan_admin());
+        contentValues.put("password_admin", admin.getPassword_admin());
+        contentValues.put("nama_lengkap_admin", admin.getNama_lengkap_admin());
+        contentValues.put("no_telepon_admin", admin.getNo_telepon_admin());
+        database.update("admin", contentValues, "username_admin=?", new String[]{admin.getUsername_admin()});
+    }
+
+    public void deleteAdmin(Admin admin){
+        database.delete("admin", "username_admin=?", new String[]{admin.getUsername_admin()});
+    }
 }

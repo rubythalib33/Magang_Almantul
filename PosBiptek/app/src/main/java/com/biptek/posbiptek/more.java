@@ -34,7 +34,7 @@
 //                Toast.makeText(this, "Pengaturan Toko", Toast.LENGTH_SHORT).show();
 //                return true;
 //            case R.id.ManajemenUser:
-//                Toast.makeText(this, "Pengaturan User", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Pengaturan Pegawai", Toast.LENGTH_SHORT).show();
 //                return true;
 //
 //        }

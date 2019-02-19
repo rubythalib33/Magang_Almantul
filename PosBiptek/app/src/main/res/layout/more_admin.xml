@@ -97,12 +97,10 @@
     </android.support.constraint.ConstraintLayout>
 
     <LinearLayout
-        android:layout_width="395dp"
-        android:layout_height="479dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="490dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_dark"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -110,15 +108,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout2">
 
-        <ImageButton
-            android:id="@+id/SettingButton"
+        <FrameLayout
+            android:id="@+id/popupsetting"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="8dp"
-            android:background="@android:color/holo_orange_dark"
-            app:srcCompat="@drawable/pengaturan"
-            android:onClick="ShowSetting"
-            />
+            android:layout_height="wrap_content"
+            >
+
+            <ImageButton
+                android:id="@+id/SettingButton"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/holo_orange_dark"
+                app:srcCompat="@drawable/pengaturan" />
+        </FrameLayout>
 
         <ImageButton
             android:id="@+id/BackupButton"

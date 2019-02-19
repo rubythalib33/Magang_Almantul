@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">PosBiptek</string>
     <string name="home">Dashboard</string>
-    <string name="username">User</string>
+    <string name="username_pegawai">User</string>
     <string name="Hi">Hi,</string>
     <string name="keuntungan_cardview">Keuntungan</string>
-    <string name="data">PData</string>
+    <string name="data">Data</string>
     <string name="plus">plus</string>
     <string name="report">Laporan</string>
     <string name="more">More</string>
     <string name="nama_supplier">Nama Supplier</string>
+    <string name="Judul_Apk">BIPTEK POS</string>
+    <string name="welcome_to_biptek_pos">Welcome to Biptek POS</string>
+    <string name="usernameLogin">Username</string>
+    <string name="sign_in_button">Sign in</string>
 </resources>
