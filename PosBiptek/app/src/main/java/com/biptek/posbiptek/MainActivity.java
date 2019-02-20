@@ -50,13 +50,14 @@ public class MainActivity extends AppCompatActivity {
                       String username = usernameLogin.getText().toString();
                       String password = passwordLogin.getText().toString();
                       intent.putExtra(KEY_USERNAME, username);
+                      startActivity(intent);
 //                      Boolean checkuserpass = crud.checkuserpass(username, password);
-                      if(username == null || password == null) {
-                          Toast.makeText(getApplicationContext(),"Username/Password masih kosong", Toast.LENGTH_SHORT).show();
-//                      }else if(checkuserpass==true){
-//                                  startActivity(intent1);
-                      }else
-                              Toast.makeText(getApplicationContext(),"Username/Password Salah",Toast.LENGTH_LONG).show();
+//                      if(username == null || password == null) {
+//                          Toast.makeText(getApplicationContext(),"Username/Password masih kosong", Toast.LENGTH_SHORT).show();
+////                      }else if(checkuserpass==true){
+////                                  startActivity(intent1);
+//                      }else
+//                              Toast.makeText(getApplicationContext(),"Username/Password Salah",Toast.LENGTH_LONG).show();
 
                   }
               });
