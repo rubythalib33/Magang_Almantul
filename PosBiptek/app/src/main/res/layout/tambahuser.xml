@@ -101,7 +101,6 @@
         android:layout_marginTop="70dp"
         android:layout_marginEnd="50dp"
         android:text="Simpan"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BatalDU"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SpinnerJabatan" />
@@ -114,6 +113,7 @@
         android:layout_marginTop="70dp"
         android:layout_marginEnd="50dp"
         android:text="Batal"
+        app:layout_constraintBaseline_toBaselineOf="@+id/SimpanDU"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/SimpanDU"
         app:layout_constraintTop_toBottomOf="@+id/SpinnerJabatan" />

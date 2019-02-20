@@ -13,16 +13,20 @@ import android.widget.PopupMenu;
 public class More_admin extends AppCompatActivity  {
     ImageButton setting, logout, transfer, backupdata, X;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.more_admin);
+
+        Bundle extras = getIntent().getExtras();
+
         final Fragment selectedFragment = new Fragment_Setting();
         X=(ImageButton)findViewById(R.id.imageButton2);
         X.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(More_admin.this, homeadmin.class));
+                finish();
             }
         });
 

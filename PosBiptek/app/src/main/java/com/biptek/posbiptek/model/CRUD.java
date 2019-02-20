@@ -904,6 +904,7 @@ public class CRUD {
         return pegawai;
     }
 
+
     //mendapatkan semua pegawai
     public List<Pegawai> getAllPegawai(){
         Cursor cursor = database.query("pegawai",
@@ -944,6 +945,15 @@ public class CRUD {
 
     public void deletePegawai(Pegawai pegawai){
         database.delete("pegawai", "username_pegawai=?", new String[]{pegawai.getUsername_pegawai()});
+    }
+
+    //cekuserpass
+    public boolean checkuserpass(String username_pegawai, String password_pegawai){
+        database = dbhandler.getReadableDatabase();
+        Cursor cursor = database.rawQuery("select * from pegawai where username_pegawai=? and password_pegawai=?",
+                new String[]{username_pegawai, password_pegawai});
+        if(cursor.getCount()>0) return  true;
+        else return false;
     }
 
 //untuk table toko

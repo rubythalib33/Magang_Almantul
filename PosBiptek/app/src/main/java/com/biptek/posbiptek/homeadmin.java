@@ -13,14 +13,20 @@ import android.widget.TextView;
 public class homeadmin extends AppCompatActivity {
     Button dasboard, data, plus, laporan, more;
     private BottomNavigationView bottomNavigationView;
+    private String KEY_USERNAME = "namapengguna";
+    TextView namauser;
+    private String namapengguna;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_admin);
-        Intent intent = getIntent();
-        String nama = intent.getStringExtra("namapengguna");
-        TextView nama_pengguna = findViewById(R.id.namaUser);
-        nama_pengguna.setText(nama);
+
+        namauser = (TextView)findViewById(R.id.namaUser);
+
+        Bundle extras = getIntent().getExtras();
+        namapengguna = extras.getString(KEY_USERNAME);
+        namauser.setText("Hi,"+namapengguna);
 
         //Bottom Menu
         bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomNavigation);
@@ -30,7 +36,6 @@ public class homeadmin extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch (menuItem.getItemId()){
                         case R.id.dashboard:
-                            startActivity(new Intent(homeadmin.this, homeadmin.class));
                             return true;
                         case R.id.Data:
                             selectedFragment = new Fragment_Data();
@@ -45,7 +50,7 @@ public class homeadmin extends AppCompatActivity {
                             startActivity(new Intent(homeadmin.this, More_admin.class));
                             return true;
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).addToBackStack(null).commit();
                     return true;
 
                 }
