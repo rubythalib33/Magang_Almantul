@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 15, 2019 at 01:45 PM
+-- Generation Time: Feb 18, 2019 at 03:13 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pos_biptek`
+-- Database: `al_mantul`
 --
 
 -- --------------------------------------------------------
@@ -138,6 +138,7 @@ CREATE TABLE `perusahaan` (
   `kode_perusahaan` int(11) NOT NULL,
   `nama_pemilik_perusahaan` varchar(50) NOT NULL,
   `alamat_perusahaan` text NOT NULL,
+  `tanggal_berdiri_perusahaan` date NOT NULL,
   `email_perusahaan` varchar(50) NOT NULL,
   `no_telepon_perusahaan` varchar(14) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

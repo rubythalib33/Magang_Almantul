@@ -1,24 +1,24 @@
-Nama Produk,Jumlah Stok,Stok Keluar,Keuntungan
-Habbatussauda Extra Propolis Trigon,109,41,54.1666666666667
-Habbatussauda Oil 200 Kapsul,99,16,55
-Habasyi Oil 100 Kps,85,16,50
-Habasyi Oil 210 Kps,81,18,50
-Kapsul Habbatus Sauda,81,30,58.3333333333333
-Habat Oil 369,83,49,57.1428571428571
-Habbatussauda Al-Afiat 100 Kps,113,32,42.8571428571429
-Habbatussauda Al-Afiat 200 Kps,110,20,50
-Habbatussauda Oil Al-Afiat 100 Kps,106,38,50
-Habbatussauda Oil Al-Afiat 200 Kps,99,42,54.5454545454545
-Habbatussauda Oil Al-Afiat 60 Kps,89,42,50
-Propolis Brazalian / Botol,92,50,52
-Propolis Diamond Lite 20 / Botol,89,36,54.5454545454545
-Propolis Diamond Regular / Botol,101,37,52
-Propolis Melia Nature / Botol,102,47,55
-Propolis Melia Sehat / Botol,87,22,50
-Propolis Prosmart/ Botol,83,41,55
-Madu Al-Kautsar,107,43,55.5555555555556
-Madu Batuk Al-Wadey,87,43,46.1538461538462
-Madu for Mama Al Mabruroh,100,18,53.8461538461539
-Madu Hitam Pahit 460 gram,92,42,52.9411764705882
-Madu Hutan Liar Al Wadey 500 Gram,112,49,47.9166666666667
-Madu Hutan Sialang 1 Kg,117,18,52
+Nama Produk,Jumlah Stok,Stok Keluar,Keuntungan,Harga Beli,Harga Jual
+Habbatussauda Extra Propolis Trigon,109,41,54.1666666666667,55000,120000
+Habbatussauda Oil 200 Kapsul,99,16,55,45000,100000
+Habasyi Oil 100 Kps,85,16,50,24000,48000
+Habasyi Oil 210 Kps,81,18,50,45000,90000
+Kapsul Habbatus Sauda,81,30,58.3333333333333,10000,24000
+Habat Oil 369,83,49,57.1428571428571,15000,35000
+Habbatussauda Al-Afiat 100 Kps,113,32,42.8571428571429,20000,35000
+Habbatussauda Al-Afiat 200 Kps,110,20,50,25000,50000
+Habbatussauda Oil Al-Afiat 100 Kps,106,38,50,30000,60000
+Habbatussauda Oil Al-Afiat 200 Kps,99,42,54.5454545454545,50000,110000
+Habbatussauda Oil Al-Afiat 60 Kps,89,42,50,20000,40000
+Propolis Brazalian / Botol,92,50,52,60000,125000
+Propolis Diamond Lite 20 / Botol,89,36,54.5454545454545,50000,110000
+Propolis Diamond Regular / Botol,101,37,52,60000,125000
+Propolis Melia Nature / Botol,102,47,55,45000,100000
+Propolis Melia Sehat / Botol,87,22,50,50000,100000
+Propolis Prosmart/ Botol,83,41,55,45000,100000
+Madu Al-Kautsar,107,43,55.5555555555556,40000,90000
+Madu Batuk Al-Wadey,87,43,46.1538461538462,14000,26000
+Madu for Mama Al Mabruroh,100,18,53.8461538461539,30000,65000
+Madu Hitam Pahit 460 gram,92,42,52.9411764705882,40000,85000
+Madu Hutan Liar Al Wadey 500 Gram,112,49,47.9166666666667,25000,48000
+Madu Hutan Sialang 1 Kg,117,18,52,48000,100000
