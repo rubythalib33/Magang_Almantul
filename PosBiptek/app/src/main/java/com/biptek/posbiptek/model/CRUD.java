@@ -72,7 +72,9 @@ public class CRUD {
                 null,
                 null);
 
-        if(cursor != null)
+        if(cursor.getCount() == 0)
+            return null;
+        else
             cursor.moveToFirst();
 
         BundleProduk bundleProduk = new BundleProduk(cursor.getLong(0),
@@ -184,7 +186,9 @@ public class CRUD {
                 null,
                 null);
 
-        if(cursor != null)
+        if(cursor.getCount() == 0)
+            return null;
+        else
             cursor.moveToFirst();
 
         Pemasukan pemasukan = new Pemasukan(cursor.getLong(0),
@@ -264,7 +268,9 @@ public class CRUD {
                 null,
                 null);
 
-        if(cursor != null)
+        if(cursor.getCount() == 0)
+            return null;
+        else
             cursor.moveToFirst();
 
         Pengeluaran pengeluaran = new Pengeluaran(cursor.getLong(0),
@@ -461,7 +467,9 @@ public class CRUD {
                 null,
                 null);
 
-        if(cursor != null)
+        if(cursor.getCount() == 0)
+            return null;
+        else
             cursor.moveToFirst();
 
         ProdukDiskon produkDiskon = new ProdukDiskon(cursor.getLong(0),
@@ -560,7 +568,9 @@ public class CRUD {
                 null,
                 null);
 
-        if(cursor != null)
+        if(cursor.getCount() == 0)
+            return null;
+        else
             cursor.moveToFirst();
 
         Restock restock = new Restock(cursor.getLong(0),
@@ -681,7 +691,9 @@ public class CRUD {
                 null,
                 null);
 
-        if(cursor != null)
+        if(cursor.getCount() == 0)
+            return null;
+        else
             cursor.moveToFirst();
 
         Supplier supplier = new Supplier(cursor.getLong(0),
@@ -777,7 +789,9 @@ public class CRUD {
                 null,
                 null);
 
-        if(cursor != null)
+        if(cursor.getCount() == 0)
+            return null;
+        else
             cursor.moveToFirst();
 
         TransaksiPenjualan transaksiPenjualan = new TransaksiPenjualan(cursor.getLong(0),
@@ -891,7 +905,9 @@ public class CRUD {
                 null,
                 null);
 
-        if(cursor != null)
+        if(cursor.getCount() == 0)
+            return null;
+        else
             cursor.moveToFirst();
 
         Pegawai pegawai = new Pegawai(cursor.getString(0),
@@ -986,7 +1002,9 @@ public class CRUD {
                 null,
                 null);
 
-        if(cursor != null)
+        if(cursor.getCount() == 0)
+            return null;
+        else
             cursor.moveToFirst();
 
         Toko toko = new Toko(cursor.getLong(0),
@@ -1070,7 +1088,9 @@ public class CRUD {
                 null,
                 null);
 
-        if(cursor != null)
+        if(cursor.getCount() == 0)
+            return null;
+        else
             cursor.moveToFirst();
 
         Perusahaan perusahaan = new Perusahaan(cursor.getLong(0),
@@ -1154,7 +1174,9 @@ public class CRUD {
                 null,
                 null);
 
-        if(cursor != null)
+        if(cursor.getCount() == 0)
+            return null;
+        else
             cursor.moveToFirst();
 
         Admin admin = new Admin(cursor.getString(0),
