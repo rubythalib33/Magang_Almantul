@@ -36,13 +36,15 @@ public class MainActivity extends AppCompatActivity {
                 throw new Error("UnableToUpdateDatabase");
             }
             crud = new CRUD(this);
-            crud.open();
+
 
             usernameLogin=(EditText) findViewById(R.id.usernameLogin);
             passwordLogin=(EditText) findViewById(R.id.passwordLogin);
 
         final Intent intent = new Intent(MainActivity.this, homeadmin.class);
         final Intent intent1 = new Intent(MainActivity.this, homekasir.class);
+        final Intent intent2 = new Intent(this, homeowner.class);
+
             b1=(Button) findViewById(R.id.ButtonLogin);
               b1.setOnClickListener(new View.OnClickListener() {
                   @Override
@@ -50,18 +52,24 @@ public class MainActivity extends AppCompatActivity {
                       String username = usernameLogin.getText().toString();
                       String password = passwordLogin.getText().toString();
                       intent.putExtra(KEY_USERNAME, username);
+                      crud.open();
+                      Pegawai pegawai = crud.getPegawai(username);
+                      crud.close();
+                      if(pegawai != null){
+                          if(pegawai.getPassword_pegawai().equals(password)){
+                              if(pegawai.getJabatan_pegawai().equals("admin")){
+                                  startActivity(intent);
+                              }else if(pegawai.getJabatan_pegawai().equals("kasir")){
+                                  startActivity(intent1);
+                              }else
+                                  startActivity(intent2);
+                          }else
+                              Toast.makeText(getApplicationContext(),"Username / Password Salah",Toast.LENGTH_SHORT).show();
+                      }else
+                          Toast.makeText(getApplicationContext(),"Username / Password Salah",Toast.LENGTH_SHORT).show();
                       startActivity(intent);
-//                      Boolean checkuserpass = crud.checkuserpass(username, password);
-//                      if(username == null || password == null) {
-//                          Toast.makeText(getApplicationContext(),"Username/Password masih kosong", Toast.LENGTH_SHORT).show();
-////                      }else if(checkuserpass==true){
-////                                  startActivity(intent1);
-//                      }else
-//                              Toast.makeText(getApplicationContext(),"Username/Password Salah",Toast.LENGTH_LONG).show();
-
                   }
               });
-        crud.close();
         }
 
 

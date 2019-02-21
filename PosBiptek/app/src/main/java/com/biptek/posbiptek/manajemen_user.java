@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.DatabaseHelper;
+import com.biptek.posbiptek.model.Pegawai;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,28 +36,30 @@ public class manajemen_user extends AppCompatActivity {
         listUser = (ListView)findViewById(R.id.ListUser);
         mdb = new DatabaseHelper(this);
         crud = new CRUD(this);
+
+
+        //ArrayList<String> ListDataUser = new ArrayList<>();
         crud.open();
-
-        ArrayList<String> ListDataUser = new ArrayList<>();
-        List dataUser = crud.getAllProduk();
-
-        if(dataUser.isEmpty()){
-            Toast.makeText(getApplicationContext(),"Data Kosong", Toast.LENGTH_SHORT).show();
-        }else {
-            for(int i=0; i<= dataUser.size(); i++){
-                ListDataUser.add(dataUser.get(i).toString());
-                ListAdapter listAdapter = new ArrayAdapter<>(this, R.layout.daftarproduk);
-                listUser.setAdapter(listAdapter);
-            }
-        }
+        List<Pegawai> dataUser = crud.getAllPegawai();
         crud.close();
+
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              startActivity(new Intent(manajemen_user.this, tambahuser.class));
+                startActivity(new Intent(manajemen_user.this, tambahuser.class));
             }
         });
 
+//        if(dataUser.isEmpty()){
+//            Toast.makeText(getApplicationContext(),"Data Kosong", Toast.LENGTH_SHORT).show();
+//        }else {
+//            for(int i=0; i<= dataUser.size(); i++){
+//               // ListDataUser.add(dataUser.get(i).toString());
+//                ListAdapter listAdapter = new ArrayAdapter<>(this, R.layout.manajemenuser);
+//                ((ArrayAdapter) listAdapter).addAll(dataUser);
+//                listUser.setAdapter(listAdapter);
+//            }
+//        }
     }
 }
