@@ -1,14 +1,16 @@
 package prototype;
 
-class Data{
-	
-}
+
 public class Prototype {
+	float[][] a = new float[23][5];
+	String[] b = new String[23];
+	float[][] c = new float[23][3];
+	float[][] centroid = new float[4][3];
 	
 	void  input() {
 		
 	}
-	void dist(Data a, Data b) {
+	void dist(int[][] a, int[][] b) {
 		
 	}
 	void generate_centroid() {
