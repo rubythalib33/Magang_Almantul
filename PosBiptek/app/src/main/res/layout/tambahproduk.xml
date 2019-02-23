@@ -41,6 +41,22 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
+                    android:id="@+id/kodeTambahroduk"
+                    android:layout_width="350dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:hint="Kode Produk"
+                    android:inputType="textAutoComplete"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <EditText
                     android:id="@+id/namaTambahroduk"
                     android:layout_width="350dp"
                     android:layout_height="70dp"
@@ -100,6 +116,21 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <EditText
+                    android:id="@+id/gambarTambahProduk"
+                    android:layout_width="350dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:hint="Gambar Produk"
+                    android:inputType="textUri"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
 
                 <EditText
                     android:id="@+id/hargaBeli"
@@ -110,7 +141,7 @@
                     android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:hint="Harga Beli"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -125,14 +156,14 @@
                     android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:hint="Harga Jual"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/deksripsiTambahProduk"
+                    android:id="@+id/deskripsiTambahProduk"
                     android:layout_width="350dp"
                     android:layout_height="70dp"
                     android:layout_marginStart="8dp"
@@ -170,7 +201,7 @@
                     android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:hint="Stok Produk"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -185,7 +216,7 @@
                     android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:hint="Stok Kritis"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

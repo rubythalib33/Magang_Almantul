@@ -16,12 +16,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-<<<<<<< HEAD
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            android:orientation="vertical">
-=======
-            android:layout_height="300dp"
+            android:orientation="vertical"
             android:background="@android:color/holo_orange_dark"
             android:visibility="visible"
             design:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +32,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="132dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/username_pegawai"
+                android:text="@string/username"
                 android:textColor="@android:color/background_light"
                 android:textSize="36sp"
                 android:textStyle="bold"
@@ -43,7 +40,6 @@
                 design:layout_constraintEnd_toEndOf="parent"
                 design:layout_constraintTop_toTopOf="parent"
                 design:layout_constraintVertical_bias="0.408" />
->>>>>>> e4d906e9eb8d7e7f76d077e5aa17c27b75967d7e
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"

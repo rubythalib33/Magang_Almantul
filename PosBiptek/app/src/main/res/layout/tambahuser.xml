@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/DataUser"
+        android:id="@+id/TambahUser"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
@@ -24,7 +23,7 @@
 
 
     <EditText
-        android:id="@+id/NamaLengkapDU"
+        android:id="@+id/NamaLengkapTU"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
@@ -35,12 +34,12 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DataUser" />
+        app:layout_constraintTop_toBottomOf="@+id/TambahUser" />
 
     <EditText
-        android:id="@+id/UsernameDU"
-        android:layout_height="wrap_content"
+        android:id="@+id/UsernameTU"
         android:layout_width="350dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="30dp"
@@ -49,10 +48,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NamaLengkapDU" />
+        app:layout_constraintTop_toBottomOf="@+id/NamaLengkapTU" />
 
     <EditText
-        android:id="@+id/PasswordDU"
+        android:id="@+id/PasswordTU"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -63,10 +62,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UsernameDU" />
+        app:layout_constraintTop_toBottomOf="@+id/UsernameTU" />
 
     <EditText
-        android:id="@+id/NomorTelepon"
+        android:id="@+id/NomorTeleponTU"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -77,10 +76,10 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordDU" />
+        app:layout_constraintTop_toBottomOf="@+id/PasswordTU" />
 
     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-        android:id="@+id/SpinnerJabatan"
+        android:id="@+id/JabatanTU"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -91,31 +90,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NomorTelepon" />
+        app:layout_constraintTop_toBottomOf="@+id/NomorTeleponTU" />
 
     <Button
-        android:id="@+id/SimpanDU"
+        android:id="@+id/SimpanTU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="168dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="50dp"
         android:text="Simpan"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/BatalDU"
+        app:layout_constraintEnd_toStartOf="@+id/BatalTU"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SpinnerJabatan" />
+        app:layout_constraintTop_toBottomOf="@+id/JabatanTU" />
 
     <Button
-        android:id="@+id/BatalDU"
+        android:id="@+id/BatalTU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="50dp"
         android:text="Batal"
+        app:layout_constraintBaseline_toBaselineOf="@+id/SimpanTU"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/SimpanDU"
-        app:layout_constraintTop_toBottomOf="@+id/SpinnerJabatan" />
+        app:layout_constraintStart_toEndOf="@+id/SimpanTU"
+        app:layout_constraintTop_toBottomOf="@+id/JabatanTU" />
 
 </android.support.constraint.ConstraintLayout>

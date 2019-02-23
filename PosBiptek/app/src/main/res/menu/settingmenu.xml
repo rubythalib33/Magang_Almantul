@@ -7,7 +7,7 @@
 />
     <item
         android:id="@+id/ManajemenUser"
-        android:icon="@drawable/pegawai"
+        android:icon="@drawable/user"
         android:title="Manajemen User"
 />
 </menu>
