@@ -11,18 +11,22 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class homekasir extends AppCompatActivity {
-    Button dasboard, data, plus, laporan, more;
-
+    Button dasboard, plus, more;
     private BottomNavigationView bottomNavigationView;
+    TextView namauser;
+    private String namapengguna;
+    private String KEY_USERNAME = "namapengguna";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_kasir);
 
-        Intent intent = getIntent();
-        String nama = intent.getStringExtra("namapengguna");
-        TextView nama_pengguna = findViewById(R.id.namaUser);
-        nama_pengguna.setText(nama);
+        namauser = (TextView)findViewById(R.id.namaUserkasir);
+
+        Bundle extras = getIntent().getExtras();
+        namapengguna = extras.getString(KEY_USERNAME);
+        namauser.setText("Hi,"+namapengguna);
 
         //Bottom Menu
         bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomNavigation);
@@ -34,14 +38,8 @@ public class homekasir extends AppCompatActivity {
                     case R.id.dashboard:
                         startActivity(new Intent(homekasir.this, homeadmin.class));
                         return true;
-                    case R.id.Data:
-                        selectedFragment = new Fragment_Data();
-                        break;
                     case R.id.plus:
                         selectedFragment = new Fragment_Plus();
-                        break;
-                    case R.id.Laporan:
-                        selectedFragment = new Fragment_Laporan();
                         break;
                     case R.id.More:
                         startActivity(new Intent(homekasir.this, More_admin.class));

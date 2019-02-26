@@ -922,7 +922,7 @@ public class CRUD {
 
 
     //mendapatkan semua pegawai
-    public List<Pegawai> getAllPegawai(){
+    public ArrayList<Pegawai> getAllPegawai(){
         Cursor cursor = database.query("pegawai",
                 allColumnsPegawai,
                 null,
@@ -931,7 +931,7 @@ public class CRUD {
                 null,
                 null);
 
-        List<Pegawai> pegawais = new ArrayList<>();
+        ArrayList<Pegawai> pegawais = new ArrayList<>();
         if(cursor.getCount() > 0){
             while(cursor.moveToNext()){
                 Pegawai pegawai = new Pegawai();

@@ -10,8 +10,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.biptek.posbiptek.adapter.Myadapter;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.DatabaseHelper;
 import com.biptek.posbiptek.model.Pegawai;
@@ -21,10 +23,12 @@ import java.util.List;
 
 public class manajemen_user extends AppCompatActivity {
 
-    ListView listUser;
     Button b1;
     private DatabaseHelper mdb;
     private CRUD crud;
+    ArrayList<Pegawai> arrayList;
+    Myadapter myadapter;
+    ListView listpegawai;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,17 +36,11 @@ public class manajemen_user extends AppCompatActivity {
         setContentView(R.layout.manajemenuser);
 
         b1 = (Button)findViewById(R.id.buttontambahuser);
-
-        listUser = (ListView)findViewById(R.id.ListUser);
+        listpegawai = (ListView)findViewById(R.id.ListUser);
         mdb = new DatabaseHelper(this);
         crud = new CRUD(this);
-
-
-        //ArrayList<String> ListDataUser = new ArrayList<>();
-        crud.open();
-        List<Pegawai> dataUser = crud.getAllPegawai();
-        crud.close();
-
+        arrayList = new ArrayList<>();
+        loadDataListView();
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,16 +48,14 @@ public class manajemen_user extends AppCompatActivity {
                 startActivity(new Intent(manajemen_user.this, tambahuser.class));
             }
         });
+    }
 
-//        if(dataUser.isEmpty()){
-//            Toast.makeText(getApplicationContext(),"Data Kosong", Toast.LENGTH_SHORT).show();
-//        }else {
-//            for(int i=0; i<= dataUser.size(); i++){
-//               // ListDataUser.add(dataUser.get(i).toString());
-//                ListAdapter listAdapter = new ArrayAdapter<>(this, R.layout.manajemenuser);
-//                ((ArrayAdapter) listAdapter).addAll(dataUser);
-//                listUser.setAdapter(listAdapter);
-//            }
-//        }
+    private void loadDataListView() {
+        crud.open();
+        arrayList = crud.getAllPegawai();
+        crud.close();
+        myadapter = new Myadapter(this, arrayList);
+        listpegawai.setAdapter(myadapter);
+        myadapter.notifyDataSetChanged();
     }
 }

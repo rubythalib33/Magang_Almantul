@@ -1,5 +1,6 @@
 package com.biptek.posbiptek;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.DatabaseHelper;
@@ -20,13 +22,14 @@ import java.io.IOException;
 
 public class tambahuser extends AppCompatActivity {
 
+    private Toolbar toolbar1;
     private DatabaseHelper mDBHelper;
     private CRUD crud;
     EditText NamaLengkapTU, UsernameTU, PasswordTU, NomorTeleponTU;
     MaterialBetterSpinner JabatanTU;
     Button simpanTU, batalTU;
 
-    String [] SpinnerList ={"admin", "user"};
+    String [] SpinnerList ={"admin", "kasir", "owner"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +57,6 @@ public class tambahuser extends AppCompatActivity {
 
 
         simpanTU = (Button)findViewById(R.id.SimpanTU);
-        batalTU = (Button)findViewById(R.id.BatalTU);
 
         simpanTU.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,10 +67,15 @@ public class tambahuser extends AppCompatActivity {
                 String nomorteleponTU = NomorTeleponTU.getText().toString();
                 String jabatanTU = String.valueOf(betterSpinner.getText().toString());
                 Pegawai pegawai = new Pegawai(usernameTU, (long) 0, passwordTU, jabatanTU, namaLengkapTU, nomorteleponTU);
-                crud.open();
-                crud.addPegawai(pegawai);
-                crud.close();
-                Toast.makeText(getApplicationContext(),"Data Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+
+//                if(namaLengkapTU == "" || usernameTU == "" || passwordTU == "" ||
+//                nomorteleponTU == "" || jabatanTU == ""){
+//                    Toast.makeText(getApplicationContext(),"Data Tidak Boleh Ada yang Kosong", Toast.LENGTH_LONG).show();
+//                }else
+                    crud.open();
+                    crud.addPegawai(pegawai);
+                    crud.close();
+                    Toast.makeText(getApplicationContext(),"Data Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
             }
         });
     }

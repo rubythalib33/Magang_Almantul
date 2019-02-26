@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class homeadmin extends AppCompatActivity {
     Button dasboard, data, plus, laporan, more;
     private BottomNavigationView bottomNavigationView;
-    private String KEY_USERNAME = "namapengguna";
+
     TextView namauser;
     private String namapengguna;
 
@@ -23,10 +23,12 @@ public class homeadmin extends AppCompatActivity {
         setContentView(R.layout.home_admin);
 
         namauser = (TextView)findViewById(R.id.namaUser);
+        namapengguna = MainActivity.getUsername();
+        namauser.setText("Hi, "+ namapengguna);
 
-        Bundle extras = getIntent().getExtras();
-        namapengguna = extras.getString(KEY_USERNAME);
-        namauser.setText("Hi,"+namapengguna);
+//        Bundle extras = getIntent().getExtras();
+//        namapengguna = extras.getString(KEY_USERNAME);
+//        namauser.setText("Hi,"+namapengguna);
 
         //Bottom Menu
         bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomNavigation);

@@ -31,7 +31,8 @@
         <activity android:name=".tambahproduk"></activity>
         <activity android:name=".manajemen_user"></activity>
         <activity android:name=".manajemen_toko"></activity>
-        <activity android:name=".tambahuser"></activity>
+        <activity android:name=".tambahuser"
+            android:parentActivityName=".manajemen_user"></activity>
         <activity android:name=".editUser"></activity>
     </application>
 
