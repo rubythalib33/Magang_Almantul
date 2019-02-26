@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.biptek.posbiptek.fragment.Fragment_detail;
 import com.biptek.posbiptek.R;
@@ -55,16 +56,17 @@ public class manajemen_user extends AppCompatActivity {
         pegawaiAdapter = new PegawaiAdapter(this, arrayList);
         listpegawai.setAdapter(pegawaiAdapter);
         pegawaiAdapter.notifyDataSetChanged();
+
+
         listpegawai.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String username = listpegawai.getItemAtPosition(position).toString();
-
-                Bundle bundle = new Bundle();
-                bundle.putString("Nama_Pegawai", username);
-                Fragment_detail fragment_detail = new Fragment_detail();
-                fragment_detail.setArguments(bundle);
-
+//                String username = listpegawai.getItemAtPosition(position).toString();
+//                Toast.makeText(getApplicationContext(),username, Toast.LENGTH_SHORT).show();
+//                Bundle bundle = new Bundle();
+//                bundle.putString("Nama_Pegawai", username);
+//                Fragment_detail fragment_detail = new Fragment_detail();
+//                fragment_detail.setArguments(bundle);
                 Fragment detail = new Fragment_detail();
                 getSupportFragmentManager().beginTransaction().replace(R.id.layoutdetail,detail).addToBackStack(null).commit();
             }
