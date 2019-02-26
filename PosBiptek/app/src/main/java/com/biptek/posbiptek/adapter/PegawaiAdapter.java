@@ -23,11 +23,13 @@ public class PegawaiAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+
         return this.arrayList.size();
     }
 
     @Override
     public Object getItem(int position) {
+
         return arrayList.get(position);
     }
 
@@ -44,7 +46,6 @@ public class PegawaiAdapter extends BaseAdapter {
         TextView jbtn = convertView.findViewById(R.id.jtnListPegwai);
         TextView pss = convertView.findViewById(R.id.Passview);
         Pegawai pegawai = arrayList.get(position);
-
 
         usrname.setText("Username : "+pegawai.getUsername_pegawai());
         jbtn.setText("Jabatan : "+pegawai.getJabatan_pegawai());
