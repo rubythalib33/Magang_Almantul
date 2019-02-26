@@ -1,9 +1,6 @@
 package com.biptek.posbiptek.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +8,13 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.biptek.posbiptek.R;
-import com.biptek.posbiptek.fragment.Fragment_detail;
 import com.biptek.posbiptek.model.Pegawai;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PegawaiAdapter extends BaseAdapter {
-
-    Context context;
-    ArrayList <Pegawai>  arrayList;
+    private Context context;
+    private ArrayList <Pegawai>  arrayList;
 
     public PegawaiAdapter(Context context, ArrayList <Pegawai> arrayList){
         this.context = context;
@@ -46,9 +40,9 @@ public class PegawaiAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.customlistpegawai,null);
-        TextView usrname = (TextView)convertView.findViewById(R.id.usrnamepgw);
-        TextView jbtn = (TextView)convertView.findViewById(R.id.jtnListPegwai);
-        TextView pss = (TextView)convertView.findViewById(R.id.Passview);
+        TextView usrname = convertView.findViewById(R.id.usrnamepgw);
+        TextView jbtn = convertView.findViewById(R.id.jtnListPegwai);
+        TextView pss = convertView.findViewById(R.id.Passview);
         Pegawai pegawai = arrayList.get(position);
 
 

@@ -384,7 +384,7 @@ public class CRUD {
     }
 
     //mendapatkan semua produk
-    public List<Produk> getAllProduk(){
+    public ArrayList<Produk> getAllProduk(){
         Cursor cursor = database.query("produk",
                 allColumnsProduk,
                 null,
@@ -394,7 +394,7 @@ public class CRUD {
                 null
         );
 
-        List<Produk> produks = new ArrayList<>();
+        ArrayList<Produk> produks = new ArrayList<>();
         if(cursor.getCount() > 0){
             while(cursor.moveToNext()){
                 Produk produk = new Produk();
