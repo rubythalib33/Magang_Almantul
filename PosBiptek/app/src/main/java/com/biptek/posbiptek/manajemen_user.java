@@ -5,21 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
-import com.biptek.posbiptek.adapter.Myadapter;
+import com.biptek.posbiptek.adapter.PegawaiAdapter;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.DatabaseHelper;
 import com.biptek.posbiptek.model.Pegawai;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class manajemen_user extends AppCompatActivity {
 
@@ -27,7 +21,7 @@ public class manajemen_user extends AppCompatActivity {
     private DatabaseHelper mdb;
     private CRUD crud;
     ArrayList<Pegawai> arrayList;
-    Myadapter myadapter;
+    PegawaiAdapter pegawaiAdapter;
     ListView listpegawai;
 
     @Override
@@ -54,8 +48,8 @@ public class manajemen_user extends AppCompatActivity {
         crud.open();
         arrayList = crud.getAllPegawai();
         crud.close();
-        myadapter = new Myadapter(this, arrayList);
-        listpegawai.setAdapter(myadapter);
-        myadapter.notifyDataSetChanged();
+        pegawaiAdapter = new PegawaiAdapter(this, arrayList);
+        listpegawai.setAdapter(pegawaiAdapter);
+        pegawaiAdapter.notifyDataSetChanged();
     }
 }

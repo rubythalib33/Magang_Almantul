@@ -13,12 +13,12 @@ import com.biptek.posbiptek.model.Pegawai;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Myadapter extends BaseAdapter {
+public class PegawaiAdapter extends BaseAdapter {
 
     Context context;
     ArrayList <Pegawai>  arrayList;
 
-    public Myadapter(Context context, ArrayList <Pegawai> arrayList){
+    public PegawaiAdapter(Context context, ArrayList <Pegawai> arrayList){
         this.context = context;
         this.arrayList = arrayList;
     }
