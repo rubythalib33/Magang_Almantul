@@ -1,14 +1,15 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.PopupMenu;
+
+import com.biptek.posbiptek.fragment.Fragment_Setting;
+import com.biptek.posbiptek.R;
 
 public class More_admin extends AppCompatActivity  {
     ImageButton setting, logout, transfer, backupdata, X;

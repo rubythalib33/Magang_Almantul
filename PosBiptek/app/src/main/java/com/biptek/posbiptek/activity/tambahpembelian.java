@@ -1,4 +1,4 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
+import com.biptek.posbiptek.R;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 public class tambahpembelian extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.biptek.posbiptek.R;
+import com.biptek.posbiptek.activity.daftarhutang;
+import com.biptek.posbiptek.activity.daftarkontak;
+import com.biptek.posbiptek.activity.daftarproduk;
 
 public class Fragment_Data extends Fragment {
     private BottomNavigationView bottomNavigationView;

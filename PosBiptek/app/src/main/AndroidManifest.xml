@@ -9,31 +9,31 @@
         android:roundIcon="@drawable/logo_biptek2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".homeadmin"></activity>
-        <activity android:name=".homekasir"></activity>
-        <activity android:name=".More_admin"></activity>
-        <activity android:name=".tambahpembelian"></activity>
-        <activity android:name=".pilihprodukpembelian"></activity>
-        <activity android:name=".tambahpenjualan"></activity>
-        <activity android:name=".daftarhutang"></activity>
-        <activity android:name=".daftarkontak"></activity>
-        <activity android:name=".daftarproduk"></activity>
-        <activity android:name=".hutang"></activity>
-        <activity android:name=".laporankeuangan"></activity>
-        <activity android:name=".laporanpembelian"></activity>
-        <activity android:name=".laporanpenjualan"></activity>
-        <activity android:name=".tambahproduk"></activity>
-        <activity android:name=".manajemen_user"></activity>
-        <activity android:name=".manajemen_toko"></activity>
-        <activity android:name=".tambahuser"
-            android:parentActivityName=".manajemen_user"></activity>
-        <activity android:name=".editUser"></activity>
+        <activity android:name=".activity.homeadmin"></activity>
+        <activity android:name=".activity.homekasir"></activity>
+        <activity android:name=".activity.More_admin"></activity>
+        <activity android:name=".activity.tambahpembelian"></activity>
+        <activity android:name=".activity.pilihprodukpembelian"></activity>
+        <activity android:name=".activity.tambahpenjualan"></activity>
+        <activity android:name=".activity.daftarhutang"></activity>
+        <activity android:name=".activity.daftarkontak"></activity>
+        <activity android:name=".activity.daftarproduk"></activity>
+        <activity android:name=".activity.hutang"></activity>
+        <activity android:name=".activity.laporankeuangan"></activity>
+        <activity android:name=".activity.laporanpembelian"></activity>
+        <activity android:name=".activity.laporanpenjualan"></activity>
+        <activity android:name=".activity.tambahproduk"></activity>
+        <activity android:name=".activity.manajemen_user"></activity>
+        <activity android:name=".activity.manajemen_toko"></activity>
+        <activity android:name=".activity.tambahuser"
+            android:parentActivityName=".activity.manajemen_user"></activity>
+        <activity android:name=".activity.editUser"></activity>
     </application>
 
 </manifest>

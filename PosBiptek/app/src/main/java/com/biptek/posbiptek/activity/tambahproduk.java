@@ -1,4 +1,4 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.model.*;
 
 public class tambahproduk extends AppCompatActivity {

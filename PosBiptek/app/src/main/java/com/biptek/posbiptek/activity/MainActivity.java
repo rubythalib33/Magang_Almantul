@@ -1,10 +1,7 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.activity;
 
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.support.design.widget.BottomNavigationView;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.model.*;
 
 import java.io.IOException;
@@ -58,24 +56,29 @@ public class MainActivity extends AppCompatActivity {
               b1.setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      String username = usernameLogin.getText().toString();
-                      String password = passwordLogin.getText().toString();
+                      String username = "";
+                      username = usernameLogin.getText().toString();
+                      String password = "";
+                      password = passwordLogin.getText().toString();
                       crud.open();
                       Pegawai pegawai = crud.getPegawai(username);
                       crud.close();
-                      startActivity(intent);
-//                      if(pegawai != null){
-//                          if(pegawai.getPassword_pegawai().equals(password)){
-//                              if(pegawai.getJabatan_pegawai().equals("admin")){
-//                                  startActivity(intent);
-//                              }else if(pegawai.getJabatan_pegawai().equals("kasir")){
-//                                  startActivity(intent1);
-//                              }else
-//                                  startActivity(intent2);
-//                          }else
-//                              Toast.makeText(getApplicationContext(),"Username / Password Salah",Toast.LENGTH_SHORT).show();
-//                      }else
-//                          Toast.makeText(getApplicationContext(),"Username / Password Salah",Toast.LENGTH_SHORT).show();
+                      if (username.equals("")) {
+                          usernameLogin.setError("Tidak Boleh kosong");
+                      }else if (password.equals("")) {
+                              passwordLogin.setError("Tidak Boleh Kosong");
+                          }else if (pegawai != null) {
+                          if (pegawai.getPassword_pegawai().equals(password)) {
+                              if (pegawai.getJabatan_pegawai().equals("admin")) {
+                                  startActivity(intent);
+                              } else if (pegawai.getJabatan_pegawai().equals("kasir")) {
+                                  startActivity(intent1);
+                              } else if (pegawai.getJabatan_pegawai().equals("owner"))
+                                  startActivity(intent2);
+                          } else
+                              Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
+                      } else
+                          Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
                   }
               });
         }

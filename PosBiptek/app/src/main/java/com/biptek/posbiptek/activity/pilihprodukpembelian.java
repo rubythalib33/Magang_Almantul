@@ -1,4 +1,4 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.biptek.posbiptek.R;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 public class pilihprodukpembelian extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.biptek.posbiptek.R;
+import com.biptek.posbiptek.activity.laporankeuangan;
+import com.biptek.posbiptek.activity.laporanpembelian;
+import com.biptek.posbiptek.activity.laporanpenjualan;
 
 public class Fragment_Laporan extends Fragment {
     Button b1, b2, b3, b4;

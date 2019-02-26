@@ -1,4 +1,4 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.biptek.posbiptek.fragment.Fragment_Plus;
+import com.biptek.posbiptek.R;
 
 public class homekasir extends AppCompatActivity {
     Button dasboard, plus, more;

@@ -1,4 +1,4 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import android.widget.Button;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.biptek.posbiptek.fragment.Fragment_Data;
+import com.biptek.posbiptek.fragment.Fragment_Laporan;
+import com.biptek.posbiptek.fragment.Fragment_Plus;
+import com.biptek.posbiptek.R;
 
 public class homeadmin extends AppCompatActivity {
     Button dasboard, data, plus, laporan, more;

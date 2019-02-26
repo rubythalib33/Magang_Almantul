@@ -1,18 +1,17 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.DatabaseHelper;
 import com.biptek.posbiptek.model.Pegawai;
@@ -61,21 +60,26 @@ public class tambahuser extends AppCompatActivity {
         simpanTU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String namaLengkapTU = NamaLengkapTU.getText().toString();
-                String usernameTU = UsernameTU.getText().toString();
-                String passwordTU = PasswordTU.getText().toString();
-                String nomorteleponTU = NomorTeleponTU.getText().toString();
-                String jabatanTU = String.valueOf(betterSpinner.getText().toString());
+                String namaLengkapTU = "";
+                namaLengkapTU = NamaLengkapTU.getText().toString();
+                String usernameTU = "";
+                usernameTU = UsernameTU.getText().toString();
+                String passwordTU = "";
+                passwordTU = PasswordTU.getText().toString();
+                String nomorteleponTU = "";
+                nomorteleponTU = NomorTeleponTU.getText().toString();
+                String jabatanTU = "";
+                jabatanTU = String.valueOf(betterSpinner.getText().toString());
                 Pegawai pegawai = new Pegawai(usernameTU, (long) 0, passwordTU, jabatanTU, namaLengkapTU, nomorteleponTU);
-
-//                if(namaLengkapTU == "" || usernameTU == "" || passwordTU == "" ||
-//                nomorteleponTU == "" || jabatanTU == ""){
-//                    Toast.makeText(getApplicationContext(),"Data Tidak Boleh Ada yang Kosong", Toast.LENGTH_LONG).show();
-//                }else
-                    crud.open();
-                    crud.addPegawai(pegawai);
-                    crud.close();
-                    Toast.makeText(getApplicationContext(),"Data Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                    if(namaLengkapTU.equals("")||usernameTU.equals("")||passwordTU.equals("")||
+                            nomorteleponTU.equals("")||jabatanTU.equals("")||jabatanTU.equals("")){
+                        Toast.makeText(getApplicationContext(),"Tidak Boleh kosong",Toast.LENGTH_SHORT).show();
+                    }else {
+                        crud.open();
+                        crud.addPegawai(pegawai);
+                        crud.close();
+                        startActivity(new Intent(tambahuser.this, manajemen_user.class));
+                    }
             }
         });
     }

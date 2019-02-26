@@ -1,13 +1,17 @@
-package com.biptek.posbiptek;
+package com.biptek.posbiptek.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.biptek.posbiptek.fragment.Fragment_detail;
+import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.adapter.PegawaiAdapter;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.DatabaseHelper;
@@ -51,5 +55,19 @@ public class manajemen_user extends AppCompatActivity {
         pegawaiAdapter = new PegawaiAdapter(this, arrayList);
         listpegawai.setAdapter(pegawaiAdapter);
         pegawaiAdapter.notifyDataSetChanged();
+        listpegawai.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String username = listpegawai.getItemAtPosition(position).toString();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("Nama_Pegawai", username);
+                Fragment_detail fragment_detail = new Fragment_detail();
+                fragment_detail.setArguments(bundle);
+
+                Fragment detail = new Fragment_detail();
+                getSupportFragmentManager().beginTransaction().replace(R.id.layoutdetail,detail).addToBackStack(null).commit();
+            }
+        });
     }
 }
