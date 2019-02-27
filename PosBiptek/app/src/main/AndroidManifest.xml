@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.homeadmin"></activity>
+        <activity android:name=".activity.homeowner"></activity>
         <activity android:name=".activity.homekasir"></activity>
         <activity android:name=".activity.More_admin"></activity>
         <activity android:name=".activity.tambahpembelian"></activity>

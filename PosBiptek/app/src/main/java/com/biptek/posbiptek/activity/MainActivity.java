@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         final Intent intent = new Intent(MainActivity.this, homeadmin.class);
         final Intent intent1 = new Intent(MainActivity.this, homekasir.class);
-        final Intent intent2 = new Intent(this, homeowner.class);
+        final Intent intent2 = new Intent(MainActivity.this, homeowner.class);
 
             b1=(Button) findViewById(R.id.ButtonLogin);
               b1.setOnClickListener(new View.OnClickListener() {
@@ -62,19 +62,17 @@ public class MainActivity extends AppCompatActivity {
                       password = passwordLogin.getText().toString();
                       crud.open();
                       Pegawai pegawai = crud.getPegawai(username);
+                      String jabatan = pegawai.getJabatan_pegawai();
                       crud.close();
-                      if (username.equals("")) {
-                          usernameLogin.setError("Tidak Boleh kosong");
-                          //startActivity(intent);
-                      }else if (password.equals("")) {
-                              passwordLogin.setError("Tidak Boleh Kosong");
-                          }else if (pegawai != null) {
+                      if (pegawai.equals(null)) {
+                          Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
+                      }else if (pegawai != null) {
                           if (pegawai.getPassword_pegawai().equals(password)) {
-                              if (pegawai.getJabatan_pegawai().equals("admin")) {
+                              if (jabatan.equals("admin")) {
                                   startActivity(intent);
-                              } else if (pegawai.getJabatan_pegawai().equals("kasir")) {
+                              } else if (jabatan.equals("kasir")) {
                                   startActivity(intent1);
-                              } else if (pegawai.getJabatan_pegawai().equals("owner"))
+                              } else if (jabatan.equals("owner"))
                                   startActivity(intent2);
                           } else
                               Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();

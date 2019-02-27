@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:design="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="-300dp"
-        android:background="@android:color/secondary_text_light">
+        android:background="@android:color/holo_orange_light">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,6 +41,7 @@
                 design:layout_constraintTop_toTopOf="parent"
                 design:layout_constraintVertical_bias="0.408" />
 
+
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="550dp"
@@ -50,10 +51,10 @@
                     android:id="@+id/namaUserkasir"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="162dp"
+                    android:layout_marginStart="161dp"
                     android:layout_marginTop="350dp"
                     android:layout_marginEnd="162dp"
-                    android:layout_marginBottom="143dp"
+                    android:layout_marginBottom="8dp"
                     android:text="User"
                     android:textColor="@android:color/white"
                     android:textSize="18pt"
@@ -61,7 +62,8 @@
                     design:layout_constraintBottom_toBottomOf="parent"
                     design:layout_constraintEnd_toEndOf="parent"
                     design:layout_constraintStart_toStartOf="parent"
-                    design:layout_constraintTop_toTopOf="parent" />
+                    design:layout_constraintTop_toTopOf="parent"
+                    design:layout_constraintVertical_bias="0.0" />
 
             </android.support.constraint.ConstraintLayout>
 
@@ -88,20 +90,19 @@
                 android:layout_marginBottom="100dp" />
 
         </LinearLayout>
-
     </ScrollView>
+
     <FrameLayout
-        android:id="@+id/layoutBottom"
+        android:id="@+id/fragment_containerkasir"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
-
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/bottomNavigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/darker_gray"
-            design:menu="@menu/menu_kasir" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomNavigation2">
     </FrameLayout>
-
-</android.support.design.widget.CoordinatorLayout>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottomNavigation2"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@android:color/darker_gray"
+        design:menu="@menu/menu_kasir"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

@@ -14,7 +14,6 @@ import com.biptek.posbiptek.fragment.Fragment_Plus;
 import com.biptek.posbiptek.R;
 
 public class homekasir extends AppCompatActivity {
-    Button dasboard, plus, more;
     private BottomNavigationView bottomNavigationView;
     TextView namauser;
     private String namapengguna;
@@ -27,19 +26,19 @@ public class homekasir extends AppCompatActivity {
 
         namauser = (TextView)findViewById(R.id.namaUserkasir);
 
-        Bundle extras = getIntent().getExtras();
-        namapengguna = extras.getString(KEY_USERNAME);
-        namauser.setText("Hi,"+namapengguna);
+//        Bundle extras = getIntent().getExtras();
+//        namapengguna = extras.getString(KEY_USERNAME);
+//        namauser.setText("Hi,"+namapengguna);
 
         //Bottom Menu
-        bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomNavigation);
+        bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomNavigation2);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Fragment selectedFragment = null;
                 switch (menuItem.getItemId()){
                     case R.id.dashboard:
-                        startActivity(new Intent(homekasir.this, homeadmin.class));
+                        startActivity(new Intent(homekasir.this, homekasir.class));
                         return true;
                     case R.id.plus:
                         selectedFragment = new Fragment_Plus();
@@ -48,7 +47,7 @@ public class homekasir extends AppCompatActivity {
                         startActivity(new Intent(homekasir.this, More_admin.class));
                         return true;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerkasir,selectedFragment).addToBackStack(null).commit();
                 return true;
 
             }

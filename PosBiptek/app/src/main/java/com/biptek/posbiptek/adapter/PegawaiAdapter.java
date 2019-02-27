@@ -42,6 +42,7 @@ public class PegawaiAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.customlistpegawai,null);
+
         TextView usrname = convertView.findViewById(R.id.usrnamepgw);
         TextView jbtn = convertView.findViewById(R.id.jtnListPegwai);
         TextView pss = convertView.findViewById(R.id.Passview);
