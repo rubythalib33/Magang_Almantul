@@ -47,9 +47,9 @@ public class ProdukAdapter extends BaseAdapter {
 
         Produk produk = produkArrayList.get(position);
 
-        namaProduk.setText(produk.getNama_produk());
-        stokProduk.setText(produk.getStok_produk());
-        hargaProduk.setText(produk.getHarga_jual_produk());
+        namaProduk.setText("Nama: "+produk.getNama_produk());
+        stokProduk.setText("Stok: "+String.valueOf(produk.getStok_produk()));
+        hargaProduk.setText("Harga: Rp. "+String.valueOf(produk.getHarga_jual_produk()));
 
         return convertView;
     }

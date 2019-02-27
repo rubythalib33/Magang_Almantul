@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                       crud.close();
                       if (username.equals("")) {
                           usernameLogin.setError("Tidak Boleh kosong");
+                          //startActivity(intent);
                       }else if (password.equals("")) {
                               passwordLogin.setError("Tidak Boleh Kosong");
                           }else if (pegawai != null) {
