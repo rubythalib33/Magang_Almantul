@@ -34,24 +34,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-            mDBHelper =new DatabaseHelper(this);
+        mDBHelper = new DatabaseHelper(this);
 
-            try { mDBHelper.updateDataBase();
-            } catch(IOException mIOException) {
-                throw new Error("UnableToUpdateDatabase");
-            }
-            crud = new CRUD(this);
+        try {
+            mDBHelper.updateDataBase();
+        } catch (IOException mIOException) {
+            throw new Error("UnableToUpdateDatabase");
+        }
+        crud = new CRUD(this);
 
 
-            usernameLogin=(EditText) findViewById(R.id.usernameLogin);
-            passwordLogin=(EditText) findViewById(R.id.passwordLogin);
+        usernameLogin = (EditText) findViewById(R.id.usernameLogin);
+        passwordLogin = (EditText) findViewById(R.id.passwordLogin);
 
-            setUsername(usernameLogin.getText().toString());
+        setUsername(usernameLogin.getText().toString());
 
         final Intent intent = new Intent(MainActivity.this, homeadmin.class);
         final Intent intent1 = new Intent(MainActivity.this, homekasir.class);
         final Intent intent2 = new Intent(MainActivity.this, homeowner.class);
 
+<<<<<<< HEAD
             b1=(Button) findViewById(R.id.ButtonLogin);
               b1.setOnClickListener(new View.OnClickListener() {
                   @Override
@@ -129,48 +131,37 @@ public class MainActivity extends AppCompatActivity {
 //        textView.append(crud.getAllTransaksiPenjualan().toString());
 //        //textView.append(crud.getListProdukTerjual(transaksiPenjualan.getKode_penjualan()).toString());
 //        crud.close()
+=======
+        b1 = (Button) findViewById(R.id.ButtonLogin);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = "";
+                username = usernameLogin.getText().toString();
+                String password = "";
+                password = passwordLogin.getText().toString();
+                crud.open();
+                Pegawai pegawai = crud.getPegawai(username);
+                crud.close();
+                if (username.equals("")) {
+                    usernameLogin.setError("Tidak Boleh kosong");
+                    //startActivity(intent);
+                } else if (password.equals("")) {
+                    passwordLogin.setError("Tidak Boleh Kosong");
+                } else if (pegawai != null) {
+                    if (pegawai.getPassword_pegawai().equals(password)) {
+                        if (pegawai.getJabatan_pegawai().equals("admin")) {
+                            startActivity(intent);
+                        } else if (pegawai.getJabatan_pegawai().equals("kasir")) {
+                            startActivity(intent1);
+                        } else if (pegawai.getJabatan_pegawai().equals("owner"))
+                            startActivity(intent2);
+                    } else
+                        Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
+            }
+        });
+>>>>>>> e99a84c7fd9e8d9ff3e9881d16239b8aeead6c5b
     }
-
-
-
-
-
-
-//    private Pegawai pegawai;
-//
-//
-//    public void onCreate(Bundle savedInstanceState){
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//
-//        crud.open();
-//        mDBHelper = new DatabaseHelper(this);
-//        try {
-//            mDBHelper.updateDataBase();
-//        } catch (IOException mIOException) {
-//            throw new Error("UnableToUpdateDatabase");
-//        }
-//
-//
-//        usernameLogin=(EditText)findViewById(R.id.LoginUsername);
-//        passwordLogin=(EditText)findViewById(R.id.LoginPasssword);
-//        b1=(Button)findViewById(R.id.ButtonLogin);
-//        b1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String username = usernameLogin.getText().toString();
-//                String password = passwordLogin.getText().toString();
-//                if(crud.getPegawai(username) == null){
-//                    Toast.makeText(getApplicationContext(),"Username Tidak Terdaftar",Toast.LENGTH_SHORT).show();
-//                }else if(pegawai.getJabatan_pegawai() == "admin"){
-//                    Toast.makeText(getApplicationContext(),"Masuk admin",Toast.LENGTH_SHORT).show();
-//                }else if(pegawai.getJabatan_pegawai() == "kasir") {
-//                    Toast.makeText(getApplicationContext(),"Masuk KAsir",Toast.LENGTH_SHORT).show();
-//
-//                }
-//                crud.close();
-//            }
-//        });
-//    }
-//}
-
+}
