@@ -4,7 +4,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activity.daftarproduk">
+
+    <Button
+        android:id="@+id/buttonCariProduk"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/loupe"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/ListProduk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.833" />
+
+    <Button
+        android:id="@+id/buttontambahproduk"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="306dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/plus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ListProduk" />
 
     <ListView
         android:id="@+id/ListProduk"
@@ -45,34 +75,5 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonCariProduk"
         app:layout_constraintEnd_toStartOf="@+id/buttonCariProduk"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonCariProduk"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/loupe"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/ListProduk"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.833" />
-
-    <Button
-        android:id="@+id/buttontambahproduk"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="306dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/plus"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ListProduk" />
 
 </android.support.constraint.ConstraintLayout>

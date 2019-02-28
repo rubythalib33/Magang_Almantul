@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="Tambah User"
@@ -18,8 +18,8 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <EditText
@@ -94,27 +94,18 @@
 
     <Button
         android:id="@+id/SimpanTU"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Simpan"
-        app:layout_constraintEnd_toStartOf="@+id/BatalTU"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/JabatanTU" />
-
-    <Button
-        android:id="@+id/BatalTU"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="50dp"
-        android:text="Batal"
-        app:layout_constraintBaseline_toBaselineOf="@+id/SimpanTU"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/SimpanTU"
-        app:layout_constraintTop_toBottomOf="@+id/JabatanTU" />
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/JabatanTU"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
