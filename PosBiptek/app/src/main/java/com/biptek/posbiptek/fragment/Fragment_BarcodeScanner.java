@@ -1,6 +1,7 @@
 package com.biptek.posbiptek.fragment;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
@@ -33,11 +35,13 @@ public class Fragment_BarcodeScanner extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.barcode_scanner, container, false);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
         surfaceView = view.findViewById(R.id.barcodeScanner);
         barcodeDetector = new BarcodeDetector.Builder(getActivity()).setBarcodeFormats(Barcode.DATA_MATRIX | Barcode.QR_CODE).build();
         cameraSource = new
-                CameraSource.Builder(getActivity(), barcodeDetector).setRequestedPreviewSize(surfaceView.getWidth(), surfaceView.getHeight()).build();
+                CameraSource.Builder(getActivity(), barcodeDetector).setRequestedPreviewSize(displayMetrics.widthPixels, displayMetrics.heightPixels).build();
 
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
