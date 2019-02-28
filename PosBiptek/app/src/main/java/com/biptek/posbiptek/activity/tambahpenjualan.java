@@ -42,7 +42,7 @@ public class tambahpenjualan extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new Fragment_BarcodeScanner();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.barcodeScanner, fragment).addToBackStack(null).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.scanBarcode, fragment).addToBackStack(null).commit();
             }
         });
 

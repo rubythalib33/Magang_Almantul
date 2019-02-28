@@ -83,6 +83,7 @@ public class Prototype {
 						points.add(c[j]);
 					}
 				}
+				
 			}
 		}
 		
