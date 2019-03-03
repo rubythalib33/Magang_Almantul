@@ -706,7 +706,7 @@ public class CRUD {
     }
 
     //mendapatkan semua supplier
-    public List<Supplier> getAllSupplier(){
+    public ArrayList<Supplier> getAllSupplier(){
         Cursor cursor = database.query("supplier",
                 allColumnsSupplier,
                 null,
@@ -715,7 +715,7 @@ public class CRUD {
                 null,
                 null);
 
-        List<Supplier> suppliers = new ArrayList<>();
+        ArrayList<Supplier> suppliers = new ArrayList<>();
         if(cursor.getCount() > 0){
             while (cursor.moveToNext()){
                 Supplier supplier = new Supplier();
@@ -827,7 +827,7 @@ public class CRUD {
     }
 
     //mendapatkan semua data transaksi penjualan
-    public List<TransaksiPenjualan> getAllTransaksiPenjualan(){
+    public ArrayList<TransaksiPenjualan> getAllTransaksiPenjualan(){
         Cursor cursor = database.query("transaksi_penjualan",
                 allColumnsTransaksiPenjualan,
                 null,

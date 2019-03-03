@@ -23,7 +23,6 @@ public class PegawaiAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-
         return this.arrayList.size();
     }
 

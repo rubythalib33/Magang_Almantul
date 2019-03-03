@@ -10,35 +10,45 @@
         android:id="@+id/usrnamepgw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="32dp"
         android:text="Username"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/jtnListPegwai"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="14dp"
         android:layout_marginTop="8dp"
         android:text="Jabatan"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/usrnamepgw" />
 
     <TextView
         android:id="@+id/Passview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="14dp"
         android:layout_marginTop="8dp"
         android:text="Password"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/jtnListPegwai" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/user" />
 </android.support.constraint.ConstraintLayout>
