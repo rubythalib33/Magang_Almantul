@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CRUD {
     private static final String LOGTAG = "POS_BIPTEK_SYS";
@@ -37,12 +36,13 @@ public class CRUD {
     };
 
     private static final String[] allColumnsBundleList ={
+            "id_list_produk_bundle",
             "kode_bundle_list",
             "kode_produk_list_bundle",
             "jumlah_produk_bundle"
     };
 
-    public long addBundleProduk(BundleProduk bundleProduk, List<ListProdukBundle> listProdukBundles){
+    public long addBundleProduk(BundleProduk bundleProduk, ArrayList<ListProdukBundle> listProdukBundles){
 
         //untuk table bundle
         ContentValues contentValues = new ContentValues();
@@ -85,7 +85,7 @@ public class CRUD {
     }
 
     //mendapatkan semua data bundle produk
-    public List<BundleProduk> getAllBundleProduk(){
+    public ArrayList<BundleProduk> getAllBundleProduk(){
         Cursor cursor = database.query("bundle",
                 allColumnsBundle,
                 null,
@@ -94,7 +94,7 @@ public class CRUD {
                 null,
                 null);
 
-        List<BundleProduk> bundleProduks = new ArrayList<>();
+        ArrayList<BundleProduk> bundleProduks = new ArrayList<>();
         if(cursor.getCount() > 0){
             while(cursor.moveToNext()){
                 BundleProduk bundleProduk = new BundleProduk();
@@ -109,7 +109,7 @@ public class CRUD {
     }
 
     //mendapatkan list barang yang dibundle pada produk bundle tertentu
-    public List<ListProdukBundle> getListProdukBundle(long kode_bundle_list){
+    public ArrayList<ListProdukBundle> getListProdukBundle(long kode_bundle_list){
         Cursor cursor = database.query("list_produk_bundle",
                 allColumnsBundleList,
                 "kode_bundle_list",
@@ -118,10 +118,11 @@ public class CRUD {
                 null,
                 null);
 
-        List<ListProdukBundle> listProdukBundles = new ArrayList<>();
+        ArrayList<ListProdukBundle> listProdukBundles = new ArrayList<>();
         if(cursor.getCount() > 0){
             while(cursor.moveToNext()){
                 ListProdukBundle produkBundle = new ListProdukBundle();
+                produkBundle.setId_list_produk_bundle(cursor.getLong(cursor.getColumnIndex("id_list_produk_bundle")));
                 produkBundle.setKode_bundle_list(cursor.getLong(cursor.getColumnIndex("kode_bundle_list")));
                 produkBundle.setKode_produk_list_bundle(cursor.getString(cursor.getColumnIndex("kode_produk_list_bundle")));
                 produkBundle.setJumlah_produk_bundle(cursor.getInt(cursor.getColumnIndex("jumlah_produk_bundle")));
@@ -132,7 +133,7 @@ public class CRUD {
         return listProdukBundles;
     }
 
-    public void updateBundleProduk(BundleProduk bundleProduk, List<ListProdukBundle> listProdukBundles){
+    public void updateBundleProduk(BundleProduk bundleProduk, ArrayList<ListProdukBundle> listProdukBundles){
 
         //untuk table bundle_produk
         ContentValues contentValues = new ContentValues();
@@ -201,7 +202,7 @@ public class CRUD {
     }
 
     //mendapatkan semua data pemasukan
-    public List<Pemasukan> getAllPemasukan(){
+    public ArrayList<Pemasukan> getAllPemasukan(){
         Cursor cursor = database.query("pemasukan",
                 allColumnsPemasukan,
                 null,
@@ -210,7 +211,7 @@ public class CRUD {
                 null,
                 null);
 
-        List<Pemasukan> pemasukans = new ArrayList<>();
+        ArrayList<Pemasukan> pemasukans = new ArrayList<>();
         if(cursor.getCount() > 0){
             while (cursor.moveToNext()){
                 Pemasukan pemasukan = new Pemasukan();
@@ -283,7 +284,7 @@ public class CRUD {
     }
 
     //mendapatkan semua data pengeluaran
-    public List<Pengeluaran> getAllPengeluaran(){
+    public ArrayList<Pengeluaran> getAllPengeluaran(){
         Cursor cursor = database.query("pengeluaran",
                 allColumnsPengeluaran,
                 null,
@@ -292,7 +293,7 @@ public class CRUD {
                 null,
                 null);
 
-        List<Pengeluaran> pengeluarans = new ArrayList<>();
+        ArrayList<Pengeluaran> pengeluarans = new ArrayList<>();
         if(cursor.getCount() > 0){
             while (cursor.moveToNext()){
                 Pengeluaran pengeluaran = new Pengeluaran();
@@ -482,7 +483,7 @@ public class CRUD {
     }
 
     //mendapatkan semua data diskon produk
-    public List<ProdukDiskon> getAllProdukDiskon(){
+    public ArrayList<ProdukDiskon> getAllProdukDiskon(){
         Cursor cursor = database.query("produk_diskon",
                 allColumnsProdukDiskon,
                 null,
@@ -491,7 +492,7 @@ public class CRUD {
                 null,
                 null);
 
-        List<ProdukDiskon> produkDiskons = new ArrayList<>();
+        ArrayList<ProdukDiskon> produkDiskons = new ArrayList<>();
         if(cursor.getCount() > 0){
             while(cursor.moveToNext()){
                 ProdukDiskon produkDiskon = new ProdukDiskon();
@@ -530,12 +531,13 @@ public class CRUD {
     };
 
     private static final String[] allColumnsRestockList = {
+            "id_list_produk_restock",
             "kode_restock_list",
             "kode_produk_list_restock",
             "jumlah_produk_restock"
     };
 
-    public long addRestock(Restock restock, List<ListProdukRestock> listProdukRestocks){
+    public long addRestock(Restock restock, ArrayList<ListProdukRestock> listProdukRestocks){
 
         //untuk table restock
         ContentValues contentValues = new ContentValues();
@@ -584,7 +586,7 @@ public class CRUD {
     }
 
     //mendapatkan semua data restock
-    public List<Restock> getAllRestock(){
+    public ArrayList<Restock> getAllRestock(){
         Cursor cursor = database.query("restock",
                 allColumnsRestock,
                 null,
@@ -593,7 +595,7 @@ public class CRUD {
                 null,
                 null);
 
-        List<Restock> restocks = new ArrayList<>();
+        ArrayList<Restock> restocks = new ArrayList<>();
         if(cursor.getCount() > 0){
             while(cursor.moveToNext()){
                 Restock restock = new Restock();
@@ -611,7 +613,7 @@ public class CRUD {
     }
 
     //mendapatkan list barang yang direstock pada data restock tertentu
-    public List<ListProdukRestock> getListProdukRestock(long kode_restock_list){
+    public ArrayList<ListProdukRestock> getListProdukRestock(long kode_restock_list){
         Cursor cursor = database.query("list_produk_restock",
                 allColumnsRestockList,
                 "kode_restock_list",
@@ -620,10 +622,11 @@ public class CRUD {
                 null,
                 null);
 
-        List<ListProdukRestock> listProdukRestocks = new ArrayList<>();
+        ArrayList<ListProdukRestock> listProdukRestocks = new ArrayList<>();
         if(cursor.getCount() > 0){
             while(cursor.moveToNext()){
                 ListProdukRestock ProdukRestock = new ListProdukRestock();
+                ProdukRestock.setId_list_produk_restock(cursor.getLong(cursor.getColumnIndex("id_list_produk_restock")));
                 ProdukRestock.setKode_restock_list(cursor.getLong(cursor.getColumnIndex("kode_restock_list")));
                 ProdukRestock.setKode_produk_list_restock(cursor.getString(cursor.getColumnIndex("kode_produk_list_restock")));
                 ProdukRestock.setJumlah_produk_restock(cursor.getInt(cursor.getColumnIndex("jumlah_produk_restock")));
@@ -634,7 +637,7 @@ public class CRUD {
         return listProdukRestocks;
     }
 
-    public void updateRestock(Restock restock, List<ListProdukRestock> listProdukRestocks){
+    public void updateRestock(Restock restock, ArrayList<ListProdukRestock> listProdukRestocks){
 
         //untuk table restock
         ContentValues contentValues = new ContentValues();
@@ -706,7 +709,7 @@ public class CRUD {
     }
 
     //mendapatkan semua supplier
-    public List<Supplier> getAllSupplier(){
+    public ArrayList<Supplier> getAllSupplier(){
         Cursor cursor = database.query("supplier",
                 allColumnsSupplier,
                 null,
@@ -715,7 +718,7 @@ public class CRUD {
                 null,
                 null);
 
-        List<Supplier> suppliers = new ArrayList<>();
+        ArrayList<Supplier> suppliers = new ArrayList<>();
         if(cursor.getCount() > 0){
             while (cursor.moveToNext()){
                 Supplier supplier = new Supplier();
@@ -753,12 +756,13 @@ public class CRUD {
     };
 
     private static final String[] allColumnsListProdukTerjual = {
+            "id_list_produk_terjual",
             "kode_penjualan_list",
             "kode_produk_list_terjual",
             "jumlah_produk_terjual"
     };
 
-    public long addTransaksiPenjualan(TransaksiPenjualan transaksiPenjualan, List<ListProdukTerjual> listProdukTerjuals){
+    public long addTransaksiPenjualan(TransaksiPenjualan transaksiPenjualan, ArrayList<ListProdukTerjual> listProdukTerjuals){
 
         //untuk table transaksi_penjualan
         ContentValues contentValues = new ContentValues();
@@ -803,7 +807,7 @@ public class CRUD {
     }
 
     //mendapatkan list barang yang terjual pada transaksi tertentu
-    public List<ListProdukTerjual> getListProdukTerjual(long kode_penjualan_list){
+    public ArrayList<ListProdukTerjual> getListProdukTerjual(long kode_penjualan_list){
         Cursor cursor = database.query("list_produk_terjual",
                 allColumnsListProdukTerjual,
                 "kode_penjualan_list=?",
@@ -812,10 +816,11 @@ public class CRUD {
                 null,
                 null);
 
-        List<ListProdukTerjual> listProdukTerjuals = new ArrayList<>();
+        ArrayList<ListProdukTerjual> listProdukTerjuals = new ArrayList<>();
         if(cursor.getCount() > 0){
             while(cursor.moveToNext()){
                 ListProdukTerjual produkTerjual = new ListProdukTerjual();
+                produkTerjual.setId_list_produk_terjual(cursor.getLong(cursor.getColumnIndex("id_list_produk_terjual")));
                 produkTerjual.setKode_penjualan_list(cursor.getLong(cursor.getColumnIndex("kode_penjualan_list")));
                 produkTerjual.setKode_produk_list_terjual(cursor.getString(cursor.getColumnIndex("kode_produk_list_terjual")));
                 produkTerjual.setJumlah_produk_terjual(cursor.getInt(cursor.getColumnIndex("jumlah_produk_terjual")));
@@ -827,7 +832,7 @@ public class CRUD {
     }
 
     //mendapatkan semua data transaksi penjualan
-    public List<TransaksiPenjualan> getAllTransaksiPenjualan(){
+    public ArrayList<TransaksiPenjualan> getAllTransaksiPenjualan(){
         Cursor cursor = database.query("transaksi_penjualan",
                 allColumnsTransaksiPenjualan,
                 null,
@@ -836,7 +841,7 @@ public class CRUD {
                 null,
                 null);
 
-        List<TransaksiPenjualan> transaksiPenjualans = new ArrayList<>();
+        ArrayList<TransaksiPenjualan> transaksiPenjualans = new ArrayList<>();
         if(cursor.getCount() > 0){
             while (cursor.moveToNext()){
                 TransaksiPenjualan transaksiPenjualan = new TransaksiPenjualan();
@@ -851,7 +856,7 @@ public class CRUD {
         return transaksiPenjualans;
     }
 
-    public void updateTransaksiPenjualan(TransaksiPenjualan transaksiPenjualan , List<ListProdukTerjual> listProdukTerjuals){
+    public void updateTransaksiPenjualan(TransaksiPenjualan transaksiPenjualan , ArrayList<ListProdukTerjual> listProdukTerjuals){
 
         //update di table transaksi_penjualan
         ContentValues contentValues = new ContentValues();
@@ -1017,7 +1022,7 @@ public class CRUD {
     }
 
     //mendapatkan semua toko
-    public List<Toko> getAllToko(){
+    public ArrayList<Toko> getAllToko(){
         Cursor cursor = database.query("toko",
                 allColumnsToko,
                 null,
@@ -1026,7 +1031,7 @@ public class CRUD {
                 null,
                 null);
 
-        List<Toko> tokos = new ArrayList<>();
+        ArrayList<Toko> tokos = new ArrayList<>();
         if(cursor.getCount() > 0){
             while(cursor.moveToNext()){
                 Toko toko = new Toko();
@@ -1060,6 +1065,7 @@ public class CRUD {
     private final String[] allColumnsPerusahaan = {
             "kode_perusahaan",
             "nama_pemilik_perusahaan",
+            "password_perusahaan",
             "alamat_perusahaan",
             "tanggal_berdiri_perusahaan",
             "email_perusahaan",
@@ -1070,6 +1076,7 @@ public class CRUD {
         ContentValues contentValues = new ContentValues();
         contentValues.put("kode_perusahaan", perusahaan.getKode_perusahaan());
         contentValues.put("nama_pemilik_perusahaan", perusahaan.getNama_pemilik_perusahaan());
+        contentValues.put("password_perusahaan", perusahaan.getPassword_perusahaan());
         contentValues.put("alamat_perusahaan", perusahaan.getAlamat_perusahaan());
         contentValues.put("tanggal_berdiri_perusahaan", perusahaan.getTanggal_berdiri_perusahaan());
         contentValues.put("email_perusahaan", perusahaan.getEmail_perusahaan());
@@ -1098,13 +1105,14 @@ public class CRUD {
                 cursor.getString(2),
                 cursor.getString(3),
                 cursor.getString(4),
-                cursor.getString(5));
+                cursor.getString(5),
+                cursor.getString(6));
 
         return perusahaan;
     }
 
     //mendapatkan semua perusahaan
-    public List<Perusahaan> getAllPerusahaan(){
+    public ArrayList<Perusahaan> getAllPerusahaan(){
         Cursor cursor = database.query("perusahaan",
                 allColumnsPerusahaan,
                 null,
@@ -1113,13 +1121,14 @@ public class CRUD {
                 null,
                 null);
 
-        List<Perusahaan> perusahaans = new ArrayList<>();
+        ArrayList<Perusahaan> perusahaans = new ArrayList<>();
         if(cursor.getCount() > 0 ){
             while(cursor.moveToNext()){
                 Perusahaan perusahaan = new Perusahaan();
                 perusahaan.setKode_perusahaan(cursor.getLong(cursor.getColumnIndex("kode_perusahaan")));
                 perusahaan.setNama_pemilik_perusahaan(cursor.getString(cursor.getColumnIndex("nama_pemilik_perusahaan")));
                 perusahaan.setAlamat_perusahaan(cursor.getString(cursor.getColumnIndex("alamat_perusahaan")));
+                perusahaan.setPassword_perusahaan(cursor.getString(cursor.getColumnIndex("password_perusahaan")));
                 perusahaan.setTanggal_berdiri_perusahaan(cursor.getString(cursor.getColumnIndex("tanggal_berdiri_perusahaan")));
                 perusahaan.setEmail_perusahaan(cursor.getString(cursor.getColumnIndex("email_perusahaan")));
                 perusahaan.setNo_telepon_perusahaan(cursor.getString(cursor.getColumnIndex("no_telepon_perusahaan")));
@@ -1135,6 +1144,7 @@ public class CRUD {
         contentValues.put("kode_perusahaan", perusahaan.getKode_perusahaan());
         contentValues.put("nama_pemilik_perusahaan", perusahaan.getNama_pemilik_perusahaan());
         contentValues.put("alamat_perusahaan", perusahaan.getAlamat_perusahaan());
+        contentValues.put("password_perusahaan", perusahaan.getPassword_perusahaan());
         contentValues.put("tanggal_berdiri_perusahaan", perusahaan.getTanggal_berdiri_perusahaan());
         contentValues.put("email_perusahaan", perusahaan.getEmail_perusahaan());
         contentValues.put("no_telepon_perusahaan", perusahaan.getNo_telepon_perusahaan());
@@ -1189,7 +1199,7 @@ public class CRUD {
     }
 
     //mendapatkan semua admin
-    public List<Admin> getAllAdmin(){
+    public ArrayList<Admin> getAllAdmin(){
         Cursor cursor = database.query("admin",
                 allColumnsAdmin,
                 null,
@@ -1198,7 +1208,7 @@ public class CRUD {
                 null,
                 null);
 
-        List<Admin> admins = new ArrayList<>();
+        ArrayList<Admin> admins = new ArrayList<>();
         if(cursor.getCount() > 0){
             while (cursor.moveToNext()){
                 Admin admin = new Admin();

@@ -15,20 +15,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.homeadmin"></activity>
+        <activity android:name=".activity.homeowner"></activity>
         <activity android:name=".activity.homekasir"></activity>
         <activity android:name=".activity.More_admin"></activity>
         <activity android:name=".activity.tambahpembelian"></activity>
         <activity android:name=".activity.pilihprodukpembelian"></activity>
         <activity android:name=".activity.tambahpenjualan"></activity>
         <activity android:name=".activity.daftarhutang"></activity>
-        <activity android:name=".activity.daftarkontak"></activity>
-        <activity android:name=".activity.daftarproduk"></activity>
+        <activity android:name=".activity.daftarkontak">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.daftarproduk">
+        </activity>
         <activity android:name=".activity.hutang"></activity>
         <activity android:name=".activity.laporankeuangan"></activity>
         <activity android:name=".activity.laporanpembelian"></activity>

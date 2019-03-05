@@ -1,18 +1,33 @@
 package com.biptek.posbiptek.model;
 
 public class ListProdukTerjual {
+    private long id_list_produk_terjual;
     private long kode_penjualan_list;
     private String kode_produk_list_terjual;
     private int jumlah_produk_terjual;
 
-    public ListProdukTerjual(long kode_penjualan_list, String kode_produk_list_terjual, int jumlah_produk_terjual) {
+    public ListProdukTerjual(long id_list_produk_terjual, long kode_penjualan_list, String kode_produk_list_terjual, int jumlah_produk_terjual) {
+        this.id_list_produk_terjual = id_list_produk_terjual;
         this.kode_penjualan_list = kode_penjualan_list;
+        this.kode_produk_list_terjual = kode_produk_list_terjual;
+        this.jumlah_produk_terjual = jumlah_produk_terjual;
+    }
+
+    public ListProdukTerjual(String kode_produk_list_terjual, int jumlah_produk_terjual) {
         this.kode_produk_list_terjual = kode_produk_list_terjual;
         this.jumlah_produk_terjual = jumlah_produk_terjual;
     }
 
     public ListProdukTerjual() {
 
+    }
+
+    public long getId_list_produk_terjual() {
+        return id_list_produk_terjual;
+    }
+
+    public void setId_list_produk_terjual(long id_list_produk_terjual) {
+        this.id_list_produk_terjual = id_list_produk_terjual;
     }
 
     public long getKode_penjualan_list() {

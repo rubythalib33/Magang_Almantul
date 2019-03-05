@@ -16,7 +16,7 @@ import com.biptek.posbiptek.fragment.Fragment_Plus;
 import com.biptek.posbiptek.R;
 
 public class homeadmin extends AppCompatActivity {
-    Button dasboard, data, plus, laporan, more;
+    Button dasboard, data, plus, laporan, more, x;
     private BottomNavigationView bottomNavigationView;
 
     TextView namauser;
