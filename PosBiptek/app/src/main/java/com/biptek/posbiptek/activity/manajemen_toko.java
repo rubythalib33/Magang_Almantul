@@ -12,7 +12,7 @@ import com.biptek.posbiptek.model.Perusahaan;
 
 public class manajemen_toko extends AppCompatActivity {
     private CRUD crud;
-    EditText NamaPerusahaan,AlamatLengkapPT,NamaPemilikPT,TanggalBerdiriPT,EmailPerusahaan,PasswordPT;
+    EditText NamaPerusahaan,AlamatLengkapPT,NamaPemilikPT,TanggalBerdiriPT,EmailPerusahaan,PasswordLamaPT,PasswordPT;
     Button SimpanPT,BatalPT;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,7 +25,8 @@ public class manajemen_toko extends AppCompatActivity {
         NamaPemilikPT= findViewById(R.id.NamaPemilikPT);
         TanggalBerdiriPT=findViewById(R.id.TanggalBerdiriPT);
         EmailPerusahaan=findViewById(R.id.EmailPerusahaan);
-        PasswordPT=findViewById(R.id.PasswordPT);
+        PasswordLamaPT=findViewById(R.id.PasswordLamaPT);
+        PasswordPT=findViewById(R.id.passwordPT);
 
         SimpanPT=findViewById(R.id.SimpanPT);
 
