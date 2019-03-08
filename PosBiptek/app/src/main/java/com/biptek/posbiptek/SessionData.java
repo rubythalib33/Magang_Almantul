@@ -19,16 +19,16 @@ public class SessionData {
     }
 
     public String getUsername(){
-        String username = sharedPreferences.getString("username", null);
+        String username = sharedPreferences.getString("USERNAME", null);
         return username;
     }
 
-    public void setKodePerusahaan(){
-
+    public void setKodePerusahaan(long kodePerusahaan){
+        sharedPreferences.edit().putLong("KODEPERUSAHAAN", kodePerusahaan).commit();
     }
 
     public long getKodePerusahaan(){
-
+        return sharedPreferences.getLong("KODEPERUSAHAAN", -1);
     }
 
 }

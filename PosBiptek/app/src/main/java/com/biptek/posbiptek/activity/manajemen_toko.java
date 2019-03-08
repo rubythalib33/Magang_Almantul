@@ -7,19 +7,24 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.biptek.posbiptek.R;
+import com.biptek.posbiptek.SessionData;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Perusahaan;
 
 public class manajemen_toko extends AppCompatActivity {
     private CRUD crud;
-    EditText NamaPerusahaan,AlamatLengkapPT,NamaPemilikPT,TanggalBerdiriPT,EmailPerusahaan,PasswordLamaPT,PasswordPT;
-    Button SimpanPT,BatalPT;
+    private EditText NamaPerusahaan,AlamatLengkapPT,NamaPemilikPT,TanggalBerdiriPT,EmailPerusahaan,PasswordLamaPT,PasswordPT;
+    private Button SimpanPT,BatalPT;
+    private SessionData sessionData;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manajementoko);
         crud = new CRUD(this);
+
         Perusahaan perusahaan = new Perusahaan();
+        sessionData = new SessionData(this);
         NamaPerusahaan=findViewById(R.id.NamaPerusahaan);
         AlamatLengkapPT=findViewById(R.id.AlamatLengkapPT);
         NamaPemilikPT= findViewById(R.id.NamaPemilikPT);
@@ -32,7 +37,7 @@ public class manajemen_toko extends AppCompatActivity {
 
         crud.open();;
         //nanti ngambil data di shared preferences
-        perusahaan = crud.getPerusahaan(1);
+        perusahaan = crud.getPerusahaan(sessionData.getKodePerusahaan());
         crud.close();
 
         NamaPerusahaan.setText(perusahaan.getNama_perusahaan());
