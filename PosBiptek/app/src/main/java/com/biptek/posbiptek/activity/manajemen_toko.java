@@ -12,7 +12,7 @@ import com.biptek.posbiptek.model.Perusahaan;
 
 public class manajemen_toko extends AppCompatActivity {
     private CRUD crud;
-    EditText NamaPerusahaan,AlamatLengkapPT,NamaPemilikPT;
+    EditText NamaPerusahaan,AlamatLengkapPT,NamaPemilikPT,TanggalBerdiriPT,EmailPerusahaan,PasswordPT;
     Button SimpanPT,BatalPT;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,14 +23,23 @@ public class manajemen_toko extends AppCompatActivity {
         NamaPerusahaan=findViewById(R.id.NamaPerusahaan);
         AlamatLengkapPT=findViewById(R.id.AlamatLengkapPT);
         NamaPemilikPT= findViewById(R.id.NamaPemilikPT);
+        TanggalBerdiriPT=findViewById(R.id.TanggalBerdiriPT);
+        EmailPerusahaan=findViewById(R.id.EmailPerusahaan);
+        PasswordPT=findViewById(R.id.PasswordPT);
 
-        SimpanPT=findViewById(R.id,SimpanPT);
+        SimpanPT=findViewById(R.id.SimpanPT);
 
         crud.open();;
         //nanti ngambil data di shared preferences
         perusahaan = crud.getPerusahaan(1);
         crud.close();
 
-        NamaPerusahaan.setText();
+        NamaPerusahaan.setText(perusahaan.getNama_perusahaan());
+        AlamatLengkapPT.setText(perusahaan.getAlamat_perusahaan());
+        NamaPemilikPT.setText(perusahaan.getNama_pemilik_perusahaan());
+        TanggalBerdiriPT.setText(perusahaan.getTanggal_berdiri_perusahaan());
+        EmailPerusahaan.setText(perusahaan.getEmail_perusahaan());
+
+        
     }
 }
