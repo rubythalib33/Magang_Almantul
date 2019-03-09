@@ -33,14 +33,14 @@ public class daftarkontak extends AppCompatActivity {
         listSupplier = (ListView)findViewById(R.id.listviewKontak);
         crud = new CRUD(this);
         supplier = new ArrayList<>();
-        loadDataListView();
+//        loadDataListView();
 
     }
 
     private void loadDataListView() {
-        crud.open();
-        supplier = crud.getAllSupplier();
-        crud.close();
+    //    crud.open();
+  //      supplier = crud.getAllSupplier();
+  //      crud.close();
 
         if(supplier.isEmpty()){
             Toast.makeText(getApplicationContext(),"Data Kosong", Toast.LENGTH_SHORT).show();

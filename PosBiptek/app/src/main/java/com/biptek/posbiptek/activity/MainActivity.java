@@ -6,26 +6,39 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+<<<<<<< HEAD
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+=======
+>>>>>>> b67cfea7b7dce3a1a70975074e5fd22e4a3855c2
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
+<<<<<<< HEAD
 import com.biptek.posbiptek.adapter.PenjualanAdapter;
 import com.biptek.posbiptek.model.*;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
+=======
+import com.biptek.posbiptek.SessionData;
+import com.biptek.posbiptek.model.CRUD;
+import com.biptek.posbiptek.model.DatabaseHelper;
+import com.biptek.posbiptek.model.Pegawai;
+>>>>>>> b67cfea7b7dce3a1a70975074e5fd22e4a3855c2
 
 import java.io.IOException;
 import java.security.acl.Owner;
 
 public class MainActivity extends AppCompatActivity {
+    private EditText usernameLogin, passwordLogin;
+    private Intent intent;
     private DatabaseHelper mDBHelper;
-    EditText usernameLogin, passwordLogin;
-    Button b1;
     private CRUD crud;
-    private static String username;
+    private SessionData sessionData;
+    private Pegawai pegawai;
+    private String username, password;
 
+<<<<<<< HEAD
     MaterialBetterSpinner jabatan;
     String [] SpinnerList ={"admin", "pegawai"};
 
@@ -37,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+=======
+
+    @Override
+>>>>>>> b67cfea7b7dce3a1a70975074e5fd22e4a3855c2
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -47,21 +64,22 @@ public class MainActivity extends AppCompatActivity {
         betterSpinner.setAdapter(arrayAdapter);
 
         mDBHelper = new DatabaseHelper(this);
+        sessionData = new SessionData(this);
+        crud = new CRUD(this);
 
         try {
             mDBHelper.updateDataBase();
         } catch (IOException mIOException) {
             throw new Error("UnableToUpdateDatabase");
         }
-        crud = new CRUD(this);
 
 
         usernameLogin = (EditText) findViewById(R.id.usernameLogin);
         passwordLogin = (EditText) findViewById(R.id.passwordLogin);
         jabatan = (MaterialBetterSpinner)findViewById(R.id.JabatanLogin);
 
-        setUsername(usernameLogin.getText().toString());
 
+<<<<<<< HEAD
         final Intent intent = new Intent(MainActivity.this, homeadmin.class);
         final Intent intent1 = new Intent(MainActivity.this, homekasir.class);
 
@@ -98,8 +116,61 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }else{
                     Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
-                }
+=======
+        if(sessionData.getUsername() != null){
+            crud.open();
+            pegawai = crud.getPegawai(sessionData.getUsername());
+            crud.close();
+            switch (pegawai.getJabatan_pegawai()) {
+                case "admin":
+                    intent = new Intent(MainActivity.this, homeadmin.class);
+                    startActivity(intent);
+                    break;
+                case "kasir":
+                    intent = new Intent(MainActivity.this, homekasir.class);
+                    startActivity(intent);
+                    break;
+                case "owner":
+                    intent = new Intent(MainActivity.this, homeowner.class);
+                    startActivity(intent);
+                    break;
             }
-        });
-       }
+        }
     }
+
+    public void clickLogin (View view){
+        username = usernameLogin.getText().toString();
+        password = passwordLogin.getText().toString();
+        crud.open();
+        pegawai = crud.getPegawai(username);
+        crud.close();
+        if (username.equals("")) {
+            usernameLogin.setError("Tidak Boleh kosong");
+            //startActivity(intent);
+        } else if (password.equals("")) {
+            passwordLogin.setError("Tidak Boleh Kosong");
+        } else if (pegawai != null) {
+            if (pegawai.getPassword_pegawai().equals(password)) {
+                switch (pegawai.getJabatan_pegawai()) {
+                    case "admin":
+                        sessionData.setUsername(pegawai.getUsername_pegawai());
+                        Toast.makeText(this, sessionData.getUsername(), Toast.LENGTH_LONG).show();
+                        intent = new Intent(MainActivity.this, homeadmin.class);
+                        startActivity(intent);
+                        break;
+                    case "kasir":
+                        intent = new Intent(MainActivity.this, homekasir.class);
+                        startActivity(intent);
+                        break;
+                    case "owner":
+                        intent = new Intent(MainActivity.this, homekasir.class);
+                        startActivity(intent);
+                        break;
+>>>>>>> b67cfea7b7dce3a1a70975074e5fd22e4a3855c2
+                }
+            } else
+                Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
+        } else
+            Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
+    }
+}

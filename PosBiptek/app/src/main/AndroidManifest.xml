@@ -28,8 +28,15 @@
         <activity android:name=".activity.pilihprodukpembelian"></activity>
         <activity android:name=".activity.tambahpenjualan"></activity>
         <activity android:name=".activity.daftarhutang"></activity>
+<<<<<<< HEAD
         <activity android:name=".activity.daftarkontak"></activity>
         <activity android:name=".activity.daftarproduk"></activity>
+=======
+        <activity android:name=".activity.daftarkontak">
+        </activity>
+        <activity android:name=".activity.daftarproduk">
+        </activity>
+>>>>>>> b67cfea7b7dce3a1a70975074e5fd22e4a3855c2
         <activity android:name=".activity.hutang"></activity>
         <activity android:name=".activity.laporankeuangan"></activity>
         <activity android:name=".activity.laporanpembelian"></activity>

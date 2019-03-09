@@ -10,6 +10,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.biptek.posbiptek.SessionData;
 import com.biptek.posbiptek.fragment.Fragment_Data;
 import com.biptek.posbiptek.fragment.Fragment_Laporan;
 import com.biptek.posbiptek.fragment.Fragment_Plus;
@@ -18,6 +19,7 @@ import com.biptek.posbiptek.R;
 public class homeadmin extends AppCompatActivity {
     Button dasboard, data, plus, laporan, more, x;
     private BottomNavigationView bottomNavigationView;
+    private SessionData sessionData;
 
     TextView namauser;
     private String namapengguna;
@@ -27,13 +29,11 @@ public class homeadmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_admin);
 
-        namauser = (TextView)findViewById(R.id.namaUser);
-        namapengguna = MainActivity.getUsername();
-        namauser.setText("Hi, "+ namapengguna);
+        sessionData = new SessionData(this);
 
-//        Bundle extras = getIntent().getExtras();
-//        namapengguna = extras.getString(KEY_USERNAME);
-//        namauser.setText("Hi,"+namapengguna);
+        namauser = (TextView)findViewById(R.id.namaUser);
+        namapengguna = sessionData.getUsername();
+        namauser.setText("Hi, "+ namapengguna);
 
         //Bottom Menu
         bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomNavigation);

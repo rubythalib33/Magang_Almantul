@@ -1064,6 +1064,7 @@ public class CRUD {
 //untuk table perusahaan
     private final String[] allColumnsPerusahaan = {
             "kode_perusahaan",
+            "nama_perusahaan",
             "nama_pemilik_perusahaan",
             "password_perusahaan",
             "alamat_perusahaan",
@@ -1075,6 +1076,7 @@ public class CRUD {
     public long addPerusahaan(Perusahaan perusahaan){
         ContentValues contentValues = new ContentValues();
         contentValues.put("kode_perusahaan", perusahaan.getKode_perusahaan());
+        contentValues.put("nama_perusahaan", perusahaan.getNama_perusahaan());
         contentValues.put("nama_pemilik_perusahaan", perusahaan.getNama_pemilik_perusahaan());
         contentValues.put("password_perusahaan", perusahaan.getPassword_perusahaan());
         contentValues.put("alamat_perusahaan", perusahaan.getAlamat_perusahaan());
@@ -1106,7 +1108,8 @@ public class CRUD {
                 cursor.getString(3),
                 cursor.getString(4),
                 cursor.getString(5),
-                cursor.getString(6));
+                cursor.getString(6),
+                cursor.getString(7));
 
         return perusahaan;
     }
@@ -1126,6 +1129,7 @@ public class CRUD {
             while(cursor.moveToNext()){
                 Perusahaan perusahaan = new Perusahaan();
                 perusahaan.setKode_perusahaan(cursor.getLong(cursor.getColumnIndex("kode_perusahaan")));
+                perusahaan.setNama_perusahaan(cursor.getString(cursor.getColumnIndex("nama_perusahaan")));
                 perusahaan.setNama_pemilik_perusahaan(cursor.getString(cursor.getColumnIndex("nama_pemilik_perusahaan")));
                 perusahaan.setAlamat_perusahaan(cursor.getString(cursor.getColumnIndex("alamat_perusahaan")));
                 perusahaan.setPassword_perusahaan(cursor.getString(cursor.getColumnIndex("password_perusahaan")));
@@ -1142,6 +1146,7 @@ public class CRUD {
     public void updatePerusahaan(Perusahaan perusahaan){
         ContentValues contentValues = new ContentValues();
         contentValues.put("kode_perusahaan", perusahaan.getKode_perusahaan());
+        contentValues.put("nama_perusahaan", perusahaan.getNama_perusahaan());
         contentValues.put("nama_pemilik_perusahaan", perusahaan.getNama_pemilik_perusahaan());
         contentValues.put("alamat_perusahaan", perusahaan.getAlamat_perusahaan());
         contentValues.put("password_perusahaan", perusahaan.getPassword_perusahaan());

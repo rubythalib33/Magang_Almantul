@@ -2,6 +2,7 @@ package com.biptek.posbiptek.model;
 
 public class Perusahaan {
     private long kode_perusahaan;
+    private String nama_perusahaan;
     private String nama_pemilik_perusahaan;
     private String password_perusahaan;
     private String alamat_perusahaan;
@@ -9,8 +10,9 @@ public class Perusahaan {
     private String email_perusahaan;
     private String no_telepon_perusahaan;
 
-    public Perusahaan(long kode_perusahaan, String nama_pemilik_perusahaan, String password_perusahaan, String alamat_perusahaan, String tanggal_berdiri_perusahaan, String email_perusahaan, String no_telepon_perusahaan) {
+    public Perusahaan(long kode_perusahaan, String nama_perusahaan, String nama_pemilik_perusahaan, String password_perusahaan, String alamat_perusahaan, String tanggal_berdiri_perusahaan, String email_perusahaan, String no_telepon_perusahaan) {
         this.kode_perusahaan = kode_perusahaan;
+        this.nama_perusahaan = nama_perusahaan;
         this.nama_pemilik_perusahaan = nama_pemilik_perusahaan;
         this.password_perusahaan = password_perusahaan;
         this.alamat_perusahaan = alamat_perusahaan;
@@ -29,6 +31,14 @@ public class Perusahaan {
 
     public void setKode_perusahaan(long kode_perusahaan) {
         this.kode_perusahaan = kode_perusahaan;
+    }
+
+    public String getNama_perusahaan() {
+        return nama_perusahaan;
+    }
+
+    public void setNama_perusahaan(String nama_perusahaan) {
+        this.nama_perusahaan = nama_perusahaan;
     }
 
     public String getNama_pemilik_perusahaan() {
