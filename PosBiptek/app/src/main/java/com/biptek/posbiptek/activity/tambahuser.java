@@ -12,6 +12,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.biptek.posbiptek.R;
+import com.biptek.posbiptek.model.Admin;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.DatabaseHelper;
 import com.biptek.posbiptek.model.Pegawai;
@@ -28,7 +29,7 @@ public class tambahuser extends AppCompatActivity {
     MaterialBetterSpinner JabatanTU;
     Button simpanTU, batalTU;
 
-    String [] SpinnerList ={"admin", "kasir", "owner"};
+    String [] SpinnerList ={"admin", "pegawai"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,16 +71,23 @@ public class tambahuser extends AppCompatActivity {
                 nomorteleponTU = NomorTeleponTU.getText().toString();
                 String jabatanTU = "";
                 jabatanTU = String.valueOf(betterSpinner.getText().toString());
-                Pegawai pegawai = new Pegawai(usernameTU, (long) 0, passwordTU, jabatanTU, namaLengkapTU, nomorteleponTU);
-                    if(namaLengkapTU.equals("")||usernameTU.equals("")||passwordTU.equals("")||
-                            nomorteleponTU.equals("")||jabatanTU.equals("")||jabatanTU.equals("")){
-                        Toast.makeText(getApplicationContext(),"Tidak Boleh kosong",Toast.LENGTH_SHORT).show();
-                    }else {
-                        crud.open();
-                        crud.addPegawai(pegawai);
-                        crud.close();
-                        startActivity(new Intent(tambahuser.this, manajemen_user.class));
-                    }
+
+                if(namaLengkapTU.equals("")||usernameTU.equals("")||passwordTU.equals("")||
+                        nomorteleponTU.equals("")||jabatanTU.equals("")||jabatanTU.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Tidak Boleh kosong", Toast.LENGTH_SHORT).show();
+                }else if(jabatanTU.equals("admin")){
+                    Admin admin = new Admin(usernameTU, (long) 0, passwordTU, namaLengkapTU, nomorteleponTU);
+                    crud.open();
+                    crud.addAdmin(admin);
+                    crud.close();
+                }else if(jabatanTU.equals("pegawai")){
+                    Pegawai pegawai = new Pegawai(usernameTU, (long) 0, passwordTU, jabatanTU, namaLengkapTU, nomorteleponTU);
+                    crud.open();
+                    crud.addPegawai(pegawai);
+                    crud.close();
+                }else{
+                    Toast.makeText(getApplicationContext(),"Data tidak bisa ditambahkan", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

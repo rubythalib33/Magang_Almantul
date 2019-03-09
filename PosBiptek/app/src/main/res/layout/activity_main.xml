@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/Judul_Apk"
@@ -44,14 +44,12 @@
         android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="100dp"
         android:text="@string/sign_in_button"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/JabatanLogin" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -73,12 +71,10 @@
         android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="68dp"
-        android:layout_marginBottom="20dp"
         android:hint="@string/usernameLogin"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -91,12 +87,25 @@
         android:layout_marginStart="68dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="68dp"
-        android:layout_marginBottom="18dp"
         android:hint="password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/ButtonLogin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameLogin" />
+
+    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+        android:id="@+id/JabatanLogin"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="68dp"
+        android:hint="Jabatan"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
 
 </android.support.constraint.ConstraintLayout>
