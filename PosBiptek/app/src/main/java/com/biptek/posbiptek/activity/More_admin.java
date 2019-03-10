@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.biptek.posbiptek.SessionData;
 import com.biptek.posbiptek.fragment.Fragment_Setting;
 import com.biptek.posbiptek.R;
 
@@ -61,7 +62,11 @@ public class More_admin extends AppCompatActivity  {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SessionData sessionData = new SessionData(getApplicationContext());
+                sessionData.setUsername(null);
+                sessionData.setJabatanLogIn(null);
                 startActivity(new Intent(More_admin.this, MainActivity.class));
+                finish();
             }
         });
     }

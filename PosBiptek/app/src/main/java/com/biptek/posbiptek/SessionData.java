@@ -19,8 +19,7 @@ public class SessionData {
     }
 
     public String getUsername(){
-        String username = sharedPreferences.getString("USERNAME", null);
-        return username;
+        return sharedPreferences.getString("USERNAME", null);
     }
 
     public void setKodePerusahaan(long kodePerusahaan){
@@ -31,4 +30,11 @@ public class SessionData {
         return sharedPreferences.getLong("KODEPERUSAHAAN", -1);
     }
 
+    public void setJabatanLogIn(String jabatan){
+        sharedPreferences.edit().putString("JABATAN", jabatan).commit();
+    }
+
+    public String getJabatanLogIn(){
+        return sharedPreferences.getString("JABATAN", null);
+    }
 }

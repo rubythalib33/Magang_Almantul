@@ -4,25 +4,27 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.SessionData;
+import com.biptek.posbiptek.model.Admin;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.DatabaseHelper;
 import com.biptek.posbiptek.model.Pegawai;
+import com.biptek.posbiptek.model.Perusahaan;
 
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
     private EditText usernameLogin, passwordLogin;
-    private Intent intent;
-    private DatabaseHelper mDBHelper;
+    private Spinner loginSpinner;
     private CRUD crud;
     private SessionData sessionData;
-    private Pegawai pegawai;
-    private String username, password;
 
 
     @Override
@@ -30,74 +32,113 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDBHelper = new DatabaseHelper(this);
+        DatabaseHelper mDBHelper = new DatabaseHelper(this);
         sessionData = new SessionData(this);
         crud = new CRUD(this);
 
+        //Mengecek database(belum ada/terjadi perubahan versi database)
         try {
             mDBHelper.updateDataBase();
         } catch (IOException mIOException) {
             throw new Error("UnableToUpdateDatabase");
         }
 
+        usernameLogin = findViewById(R.id.usernameLogin);
+        passwordLogin = findViewById(R.id.passwordLogin);
+        loginSpinner = findViewById(R.id.SpinnerLogin);
 
-        usernameLogin = (EditText) findViewById(R.id.usernameLogin);
-        passwordLogin = (EditText) findViewById(R.id.passwordLogin);
+        ArrayAdapter<String> listJabatan = new ArrayAdapter<>(this,
+                R.layout.support_simple_spinner_dropdown_item,
+                new String[]{"owner", "admin", "pegawai"});
+        loginSpinner.setAdapter(listJabatan);
 
+        //Mengecek kode perusahaan (apakah perlu signUp)
+        if(sessionData.getKodePerusahaan() == -1){
+            startActivity(new Intent(MainActivity.this, SignUp.class));
+            finish();
+        }
 
+        //mengecek apakah sebelumnya user sudah login dengan akun tertentu (Owner, Admin, Pegawai)
         if(sessionData.getUsername() != null){
-            crud.open();
-            pegawai = crud.getPegawai(sessionData.getUsername());
-            crud.close();
-            switch (pegawai.getJabatan_pegawai()) {
+            switch (sessionData.getJabatanLogIn()) {
                 case "admin":
-                    intent = new Intent(MainActivity.this, homeadmin.class);
-                    startActivity(intent);
+                    startActivity(new Intent(MainActivity.this, homeadmin.class));
+                    finish();
                     break;
-                case "kasir":
-                    intent = new Intent(MainActivity.this, homekasir.class);
-                    startActivity(intent);
+                case "pegawai":
+                    startActivity(new Intent(MainActivity.this, homekasir.class));
+                    finish();
                     break;
                 case "owner":
-                    intent = new Intent(MainActivity.this, homeowner.class);
-                    startActivity(intent);
+                    startActivity(new Intent(MainActivity.this, homeowner.class));
+                    finish();
                     break;
             }
         }
+
+        loginSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(loginSpinner.getSelectedItemPosition() == 0)
+                    usernameLogin.setVisibility(View.INVISIBLE);
+                else
+                    usernameLogin.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     public void clickLogin (View view){
-        username = usernameLogin.getText().toString();
-        password = passwordLogin.getText().toString();
-        crud.open();
-        pegawai = crud.getPegawai(username);
-        crud.close();
-        if (username.equals("")) {
+        String username = usernameLogin.getText().toString();
+        String password = passwordLogin.getText().toString();
+
+        if (username.equals("") && loginSpinner.getSelectedItemPosition() != 0)
             usernameLogin.setError("Tidak Boleh kosong");
-            //startActivity(intent);
-        } else if (password.equals("")) {
+        else if (password.equals(""))
             passwordLogin.setError("Tidak Boleh Kosong");
-        } else if (pegawai != null) {
-            if (pegawai.getPassword_pegawai().equals(password)) {
-                switch (pegawai.getJabatan_pegawai()) {
-                    case "admin":
+        else {
+            switch (loginSpinner.getSelectedItem().toString()) {
+                case "admin":
+                    crud.open();
+                    Admin admin = crud.getAdmin(username);
+                    crud.close();
+                    if(admin != null && admin.getPassword_admin().equals(password)){
+                        sessionData.setUsername(admin.getUsername_admin());
+                        sessionData.setJabatanLogIn("admin");
+                        startActivity(new Intent(MainActivity.this, homeadmin.class));
+                    }
+                    else Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
+                    finish();
+                    break;
+                case "pegawai":
+                    crud.open();
+                    Pegawai pegawai = crud.getPegawai(username);
+                    crud.close();
+                    if(pegawai != null && pegawai.getPassword_pegawai().equals(password)){
                         sessionData.setUsername(pegawai.getUsername_pegawai());
-                        Toast.makeText(this, sessionData.getUsername(), Toast.LENGTH_LONG).show();
-                        intent = new Intent(MainActivity.this, homeadmin.class);
-                        startActivity(intent);
-                        break;
-                    case "kasir":
-                        intent = new Intent(MainActivity.this, homekasir.class);
-                        startActivity(intent);
-                        break;
-                    case "owner":
-                        intent = new Intent(MainActivity.this, homekasir.class);
-                        startActivity(intent);
-                        break;
-                }
-            } else
-                Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
-        } else
-            Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
+                        sessionData.setJabatanLogIn("pegawai");
+                        startActivity(new Intent(MainActivity.this, homekasir.class));
+                    }
+                    else Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
+                    finish();
+                    break;
+                case "owner":
+                    crud.open();
+                    Perusahaan perusahaan = crud.getPerusahaan(sessionData.getKodePerusahaan());
+                    crud.close();
+                    if(perusahaan.getPassword_perusahaan().equals(password)){
+                        sessionData.setUsername(perusahaan.getNama_pemilik_perusahaan());
+                        sessionData.setJabatanLogIn("owner");
+                        startActivity(new Intent(MainActivity.this, homekasir.class));
+                    }
+                    else Toast.makeText(getApplicationContext(), "Password Salah", Toast.LENGTH_SHORT).show();
+                    finish();
+                    break;
+            }
+        }
     }
 }
