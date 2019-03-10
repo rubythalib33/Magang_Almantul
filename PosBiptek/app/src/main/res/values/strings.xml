@@ -13,4 +13,5 @@
     <string name="welcome_to_biptek_pos">Welcome to Biptek POS</string>
     <string name="usernameLogin">Username</string>
     <string name="sign_in_button">Sign in</string>
+    <string name="simpan">SIMPAN</string>
 </resources>

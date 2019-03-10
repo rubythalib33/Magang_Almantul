@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.biptek.posbiptek">
-    
+
     <uses-permission android:name="android.permission.CAMERA"></uses-permission>
     <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
     <uses-permission-sdk-23 android:name="android.permission.CAMERA"></uses-permission-sdk-23>
@@ -28,25 +28,19 @@
         <activity android:name=".activity.pilihprodukpembelian"></activity>
         <activity android:name=".activity.tambahpenjualan"></activity>
         <activity android:name=".activity.daftarhutang"></activity>
-<<<<<<< HEAD
-        <activity android:name=".activity.daftarkontak"></activity>
-        <activity android:name=".activity.daftarproduk"></activity>
-=======
         <activity android:name=".activity.daftarkontak">
         </activity>
         <activity android:name=".activity.daftarproduk">
         </activity>
->>>>>>> b67cfea7b7dce3a1a70975074e5fd22e4a3855c2
         <activity android:name=".activity.hutang"></activity>
         <activity android:name=".activity.laporankeuangan"></activity>
         <activity android:name=".activity.laporanpembelian"></activity>
         <activity android:name=".activity.laporanpenjualan"></activity>
         <activity android:name=".activity.tambahproduk"></activity>
-        <activity android:name=".activity.manajemen_user">
-        </activity>
+        <activity android:name=".activity.manajemen_user"></activity>
         <activity android:name=".activity.manajemen_toko"></activity>
-        <activity android:name=".activity.tambahuser">
-        </activity>
+        <activity android:name=".activity.tambahuser"
+            android:parentActivityName=".activity.manajemen_user"></activity>
         <activity android:name=".activity.editUser"></activity>
     </application>
 

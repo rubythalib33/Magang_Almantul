@@ -5,12 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/scanBarcode"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
-
     <EditText
         android:id="@+id/editText5"
         android:layout_width="250dp"
@@ -55,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginEnd="43dp"
-        android:text="Simpan"
+        android:text="@string/simpan"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonbatalpenjualan"
         app:layout_constraintEnd_toStartOf="@+id/buttonbatalpenjualan"
         app:layout_constraintStart_toStartOf="parent" />
@@ -88,5 +82,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.576" />
 
+    <FrameLayout
+        android:id="@+id/scanBarcode"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
