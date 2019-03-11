@@ -12,11 +12,6 @@ import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.SessionData;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Perusahaan;
-import com.mobsandgeeks.saripaar.annotation.Checked;
-import com.mobsandgeeks.saripaar.annotation.ConfirmPassword;
-import com.mobsandgeeks.saripaar.annotation.Order;
-import com.mobsandgeeks.saripaar.annotation.Password;
-import com.mobsandgeeks.saripaar.annotation.Pattern;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,38 +20,7 @@ import java.util.Locale;
 public class SignUp extends AppCompatActivity {
     Calendar calendar;
     DatePickerDialog.OnDateSetListener date;
-
-    @Order(1)
-    @Checked(message = "Tidak boleh kosong !")
-    EditText nama;
-
-    @Order(2)
-    @Checked(message = "Tidak boleh kosong !")
-    EditText nama_pemilik;
-
-    @Order(3)
-    @Password(min = 6, scheme = Password.Scheme.ANY, message = "Password minimal 6 karakter !")
-    EditText password;
-
-    @Order(4)
-    @ConfirmPassword(message = "Password tidak sesuai !")
-    EditText passwordRe;
-
-    @Order(5)
-    @Checked(message = "Tidak boleh kosong !")
-    EditText alamat;
-
-    @Order(6)
-    @Checked(message = "Pilih tanggal terlebih dahulu !")
-    EditText tanggal_berdiri;
-
-    @Order(7)
-    @Pattern(regex = "[a-zA-Z0-9._-]+@[a-z]+\\\\.+[a-z]+", message = "Silahkan isi dengan Format Email !")
-    EditText email;
-
-    @Order(8)
-    @Pattern(regex = "^[0-9,+]{10,}$", message = "Silahkan isi no telepon")
-    EditText no_telepon;
+    EditText nama, nama_pemilik, password, passwordRe, alamat, tanggal_berdiri, email, no_telepon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,19 +65,53 @@ public class SignUp extends AppCompatActivity {
         Perusahaan perusahaan = new Perusahaan();
         SessionData sessionData = new SessionData(this);
 
-        perusahaan.setNama_perusahaan(nama.getText().toString());
-        perusahaan.setNama_pemilik_perusahaan(nama_pemilik.getText().toString());
-        perusahaan.setPassword_perusahaan(password.getText().toString());
-        perusahaan.setAlamat_perusahaan(alamat.getText().toString());
-        perusahaan.setTanggal_berdiri_perusahaan(tanggal_berdiri.getText().toString());
-        perusahaan.setEmail_perusahaan(email.getText().toString());
-        perusahaan.setNo_telepon_perusahaan(no_telepon.getText().toString());
+        if(nama.getText().toString().equals(""))
+            nama.setError("Tidak boleh kosong !");
+        else
+            perusahaan.setNama_perusahaan(nama.getText().toString());
+
+        if(nama_pemilik.getText().toString().equals(""))
+            nama_pemilik.setError("Tidak boleh kosong !");
+        else
+            perusahaan.setNama_pemilik_perusahaan(nama_pemilik.getText().toString());
+
+        if(!password.getText().toString().matches(".{6,}"))
+            password.setError("Password minimal 6 karakter !");
+
+        if(passwordRe.getText().toString().matches(".{6,}"))
+            passwordRe.setError("Password minimal 6 karakter !");
+        else if(passwordRe.getText().toString().equals(password))
+            perusahaan.setPassword_perusahaan(password.getText().toString());
+        else
+            passwordRe.setError("Password tidak sama !");
+
+        if(alamat.getText().toString().equals(""))
+            alamat.setError("tidak boleh kosong !");
+        else
+            perusahaan.setAlamat_perusahaan(alamat.getText().toString());
+
+        if(tanggal_berdiri.getText().toString().equals(""))
+            tanggal_berdiri.setError("Tidak boleh kosong !");
+        else
+            perusahaan.setTanggal_berdiri_perusahaan(tanggal_berdiri.getText().toString());
+
+        if(email.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+\\\\\\\\.+[a-z]+"))
+            perusahaan.setEmail_perusahaan(email.getText().toString());
+        else
+            email.setError("Silahkan isi dengan format email !");
+
+        if(no_telepon.getText().toString().matches("^[0-9,+]{10,}$"))
+            perusahaan.setNo_telepon_perusahaan(no_telepon.getText().toString());
+        else
+            no_telepon.setError("Silahkan isi no telepon dengan benar !");
 
         crud.open();
         long idPerusahaan = crud.addPerusahaan(perusahaan);
         crud.close();
-        sessionData.setKodePerusahaan(idPerusahaan);
-        startActivity(new Intent(SignUp.this, MainActivity.class));
-        finish();
+        if(idPerusahaan != -1){
+            sessionData.setKodePerusahaan(idPerusahaan);
+            startActivity(new Intent(SignUp.this, MainActivity.class));
+            finish();
+        }
     }
 }
