@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -17,26 +16,18 @@ import com.biptek.posbiptek.fragment.Fragment_Plus;
 import com.biptek.posbiptek.R;
 
 public class homeadmin extends AppCompatActivity {
-    Button dasboard, data, plus, laporan, more, x;
-    private BottomNavigationView bottomNavigationView;
-    private SessionData sessionData;
-
-    TextView namauser;
-    private String namapengguna;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_admin);
 
-        sessionData = new SessionData(this);
-
-        namauser = (TextView)findViewById(R.id.namaUser);
-        namapengguna = sessionData.getUsername();
-        namauser.setText("Hi, "+ namapengguna);
+        SessionData sessionData = new SessionData(this);
+        TextView namauser = (TextView) findViewById(R.id.namaUser);
+        namauser.setText("Hi, "+ sessionData.getUsername());
 
         //Bottom Menu
-        bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomNavigation);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
             bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

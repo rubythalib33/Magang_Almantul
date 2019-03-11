@@ -11,21 +11,22 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.biptek.posbiptek.R;
+import com.biptek.posbiptek.SessionData;
 import com.biptek.posbiptek.fragment.Fragment_Laporan;
 import com.biptek.posbiptek.fragment.Fragment_Plus;
 
 public class homeowner extends AppCompatActivity {
-    private BottomNavigationView bottomNavigationView;
-    TextView namauser;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_owner);
 
-        namauser = (TextView)findViewById(R.id.namaUserOwner);
+        SessionData sessionData = new SessionData(this);
+        TextView namauser = findViewById(R.id.namaUserOwner);
+        namauser.setText("Hi, "+sessionData.getUsername());
 
-        bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomNavigation3);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation3);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
