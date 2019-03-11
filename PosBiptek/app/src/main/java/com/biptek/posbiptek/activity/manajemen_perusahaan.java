@@ -11,7 +11,7 @@ import com.biptek.posbiptek.SessionData;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Perusahaan;
 
-public class manajemen_toko extends AppCompatActivity {
+public class manajemen_perusahaan extends AppCompatActivity {
     private CRUD crud;
     private EditText NamaPerusahaan,AlamatLengkapPT,NamaPemilikPT,TanggalBerdiriPT,EmailPerusahaan,PasswordLamaPT,PasswordPT;
     private Button SimpanPT,BatalPT;
@@ -20,7 +20,7 @@ public class manajemen_toko extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.manajementoko);
+        setContentView(R.layout.manajemenperusahaan);
         crud = new CRUD(this);
 
         Perusahaan perusahaan = new Perusahaan();

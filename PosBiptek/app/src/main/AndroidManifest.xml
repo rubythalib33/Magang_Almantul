@@ -39,7 +39,7 @@
         <activity android:name=".activity.laporanpenjualan"></activity>
         <activity android:name=".activity.tambahproduk"></activity>
         <activity android:name=".activity.manajemen_user"></activity>
-        <activity android:name=".activity.manajemen_toko"></activity>
+        <activity android:name=".activity.manajemen_perusahaan"></activity>
         <activity android:name=".activity.tambahuser"
             android:parentActivityName=".activity.manajemen_user"></activity>
         <activity android:name=".activity.editUser"></activity>

@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 
 import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.activity.More_admin;
-import com.biptek.posbiptek.activity.manajemen_toko;
+import com.biptek.posbiptek.activity.manajemen_perusahaan;
 import com.biptek.posbiptek.activity.manajemen_user;
 
 public class Fragment_Setting extends Fragment {
@@ -36,7 +36,7 @@ public class Fragment_Setting extends Fragment {
                 b1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getActivity(), manajemen_toko.class);
+                        Intent intent = new Intent(getActivity(), manajemen_perusahaan.class);
                         startActivity(intent);
                     }
                 });
