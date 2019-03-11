@@ -36,9 +36,14 @@ public class ManajemenToko extends AppCompatActivity {
         loadListToko();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        loadListToko();
+    }
+
     public void clickTambahToko(View view){
         bundle.putInt("mode", 1);
-        bundle.putLong("idToko", -1);
         popUpToko.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerManajemenToko, popUpToko).addToBackStack(null).commit();
     }

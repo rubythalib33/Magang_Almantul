@@ -988,7 +988,6 @@ public class CRUD {
 
     public long addToko(Toko toko){
         ContentValues contentValues = new ContentValues();
-        contentValues.put("kode_toko", toko.getKode_toko());
         contentValues.put("kode_perusahaan_toko", toko.getKode_perusahaan_toko());
         contentValues.put("nama_toko", toko.getNama_toko());
         contentValues.put("alamat_toko", toko.getAlamat_toko());
