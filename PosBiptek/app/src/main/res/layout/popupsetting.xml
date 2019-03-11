@@ -23,6 +23,14 @@
             android:layout_marginTop="15dp"
             android:background="@android:color/holo_orange_dark"
             android:src="@drawable/settingup"/>
+        <Button
+            android:id="@+id/buttonmanajemenperusahaan"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:background="@android:color/holo_orange_dark"
+            android:text="manajemen perusahaan"
+            android:layout_marginTop="8dp"/>
         <ImageButton
             android:id="@+id/buttonmanajementoko"
             android:layout_width="300dp"

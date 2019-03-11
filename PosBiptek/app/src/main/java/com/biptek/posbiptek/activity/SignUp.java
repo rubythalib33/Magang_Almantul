@@ -49,7 +49,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void updateLabel(){
-        String calendarFormat = "mm/dd/yy";
+        String calendarFormat = "MM/dd/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(calendarFormat, Locale.US);
         tanggal_berdiri.setText(sdf.format(calendar.getTime()));
     }
@@ -78,9 +78,9 @@ public class SignUp extends AppCompatActivity {
         if(!password.getText().toString().matches(".{6,}"))
             password.setError("Password minimal 6 karakter !");
 
-        if(passwordRe.getText().toString().matches(".{6,}"))
+        if(!passwordRe.getText().toString().matches(".{6,}"))
             passwordRe.setError("Password minimal 6 karakter !");
-        else if(passwordRe.getText().toString().equals(password))
+        else if(passwordRe.getText().toString().equals(password.getText().toString()))
             perusahaan.setPassword_perusahaan(password.getText().toString());
         else
             passwordRe.setError("Password tidak sama !");
@@ -95,7 +95,7 @@ public class SignUp extends AppCompatActivity {
         else
             perusahaan.setTanggal_berdiri_perusahaan(tanggal_berdiri.getText().toString());
 
-        if(email.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+\\\\\\\\.+[a-z]+"))
+        if(email.getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+.+[a-z]+"))
             perusahaan.setEmail_perusahaan(email.getText().toString());
         else
             email.setError("Silahkan isi dengan format email !");

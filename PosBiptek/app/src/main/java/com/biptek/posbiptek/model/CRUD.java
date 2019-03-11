@@ -981,7 +981,7 @@ public class CRUD {
     private static final String[] allColumnsToko = {
         "kode_toko",
         "kode_perusahaan_toko",
-        "manager_toko",
+        "nama_toko",
         "alamat_toko",
         "no_telepon_toko"
     };
@@ -990,7 +990,7 @@ public class CRUD {
         ContentValues contentValues = new ContentValues();
         contentValues.put("kode_toko", toko.getKode_toko());
         contentValues.put("kode_perusahaan_toko", toko.getKode_perusahaan_toko());
-        contentValues.put("manager_toko", toko.getManager_toko());
+        contentValues.put("nama_toko", toko.getNama_toko());
         contentValues.put("alamat_toko", toko.getAlamat_toko());
         contentValues.put("no_telepon_toko", toko.getNo_telepon_toko());
         long insertid = database.insert("toko", null, contentValues);
@@ -1037,7 +1037,7 @@ public class CRUD {
                 Toko toko = new Toko();
                 toko.setKode_toko(cursor.getLong(cursor.getColumnIndex("kode_toko")));
                 toko.setKode_perusahaan_toko(cursor.getLong(cursor.getColumnIndex("kode_perusahaan_toko")));
-                toko.setManager_toko(cursor.getString(cursor.getColumnIndex("manager_toko")));
+                toko.setNama_toko(cursor.getString(cursor.getColumnIndex("nama_toko")));
                 toko.setAlamat_toko(cursor.getString(cursor.getColumnIndex("alamat_toko")));
                 toko.setNo_telepon_toko(cursor.getString(cursor.getColumnIndex("no_telepon_toko")));
                 tokos.add(toko);
@@ -1051,7 +1051,7 @@ public class CRUD {
         ContentValues contentValues = new ContentValues();
         contentValues.put("kode_toko", toko.getKode_toko());
         contentValues.put("kode_perusahaan_toko", toko.getKode_perusahaan_toko());
-        contentValues.put("manager_toko", toko.getManager_toko());
+        contentValues.put("nama_toko", toko.getNama_toko());
         contentValues.put("alamat_toko", toko.getAlamat_toko());
         contentValues.put("no_telepon_toko", toko.getNo_telepon_toko());
         database.update("toko", contentValues, "kode_toko=?", new String[]{String.valueOf(toko.getKode_toko())});

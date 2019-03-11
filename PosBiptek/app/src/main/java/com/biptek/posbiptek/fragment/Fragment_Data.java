@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -18,17 +17,16 @@ import com.biptek.posbiptek.activity.daftarkontak;
 import com.biptek.posbiptek.activity.daftarproduk;
 
 public class Fragment_Data extends Fragment {
-    private BottomNavigationView bottomNavigationView;
     Button b1, b2, b3, b4, b5;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.popupmenudata, container, false);
-            b1 = (Button)view.findViewById(R.id.button7);
-            b2 = (Button)view.findViewById(R.id.button10);
-            b3 = (Button)view.findViewById(R.id.button13);
-            b4 = (Button)view.findViewById(R.id.button14);
-            b5 = (Button)view.findViewById(R.id.buttonXdata);
+            b1 = view.findViewById(R.id.button7);
+            b2 = view.findViewById(R.id.button10);
+            b3 = view.findViewById(R.id.button13);
+            b4 = view.findViewById(R.id.button14);
+            b5 = view.findViewById(R.id.buttonXdata);
 
             b1.setOnClickListener(new View.OnClickListener() {
                 @Override

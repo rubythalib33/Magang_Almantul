@@ -3,14 +3,14 @@ package com.biptek.posbiptek.model;
 public class Toko {
     private long kode_toko;
     private long kode_perusahaan_toko;
-    private String manager_toko;
+    private String nama_toko;
     private String alamat_toko;
     private String no_telepon_toko;
 
-    public Toko(long kode_toko, long kode_perusahaan_toko, String manager_toko, String alamat_toko, String no_telepon_toko) {
+    public Toko(long kode_toko, long kode_perusahaan_toko, String nama_toko, String alamat_toko, String no_telepon_toko) {
         this.kode_toko = kode_toko;
         this.kode_perusahaan_toko = kode_perusahaan_toko;
-        this.manager_toko = manager_toko;
+        this.nama_toko = nama_toko;
         this.alamat_toko = alamat_toko;
         this.no_telepon_toko = no_telepon_toko;
     }
@@ -35,12 +35,12 @@ public class Toko {
         this.kode_perusahaan_toko = kode_perusahaan_toko;
     }
 
-    public String getManager_toko() {
-        return manager_toko;
+    public String getNama_toko() {
+        return nama_toko;
     }
 
-    public void setManager_toko(String manager_toko) {
-        this.manager_toko = manager_toko;
+    public void setNama_toko(String nama_toko) {
+        this.nama_toko = nama_toko;
     }
 
     public String getAlamat_toko() {
@@ -64,7 +64,7 @@ public class Toko {
         return "Toko{" +
                 "kode_toko=" + kode_toko +
                 ", kode_perusahaan_toko=" + kode_perusahaan_toko +
-                ", manager_toko='" + manager_toko + '\'' +
+                ", nama_toko='" + nama_toko + '\'' +
                 ", alamat_toko='" + alamat_toko + '\'' +
                 ", no_telepon_toko='" + no_telepon_toko + '\'' +
                 '}';

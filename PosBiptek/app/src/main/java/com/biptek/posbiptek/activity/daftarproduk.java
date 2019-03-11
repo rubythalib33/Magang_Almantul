@@ -18,7 +18,6 @@ import com.biptek.posbiptek.model.Produk;
 import java.util.ArrayList;
 
 public class daftarproduk extends AppCompatActivity {
-    private Button cari, tambah;
     private ListView listProduk;
     private ArrayList<Produk> produks;
     private CRUD crud;
@@ -28,8 +27,8 @@ public class daftarproduk extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.daftarproduk);
 
-        cari = findViewById(R.id.buttonCariProduk);
-        tambah = findViewById(R.id.buttontambahproduk);
+        Button cari = findViewById(R.id.buttonCariProduk);
+        Button tambah = findViewById(R.id.buttontambahproduk);
         listProduk = findViewById(R.id.ListProduk);
         crud = new CRUD(this);
         produks = new ArrayList<>();
