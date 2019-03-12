@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.biptek.posbiptek.R;
+import com.biptek.posbiptek.SessionData;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Toko;
 
@@ -29,7 +30,7 @@ public class FragmentManajemenToko extends Fragment {
         Button batalToko = view.findViewById(R.id.fragmentTokoBatal);
 
         //untuk update toko
-        if(getArguments().getLong("idToko", -1) != -1){
+        if(getArguments().getLong("idToko") != -1){
             crud.open();
             Toko toko = crud.getToko(getArguments().getLong("idToko"));
             crud.close();
@@ -42,10 +43,13 @@ public class FragmentManajemenToko extends Fragment {
         simpanToko.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SessionData sessionData = new SessionData(getActivity());
                 Toko toko = new Toko();
+                toko.setKode_perusahaan_toko(sessionData.getKodePerusahaan());
                 EditText namaToko = view.findViewById(R.id.fragmentNamaToko);
                 EditText alamatToko = view.findViewById(R.id.fragmentAlamatToko);
                 EditText noTelpToko = view.findViewById(R.id.fragmentNoTelpToko);
+
 
                 if (namaToko.getText().toString().equals(""))
                     namaToko.setError("Tidak boleh kosong !");

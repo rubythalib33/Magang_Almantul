@@ -21,7 +21,6 @@ public class ManajemenToko extends AppCompatActivity {
     private CRUD crud;
     private ArrayList<Toko> tokoArrayList;
     private Fragment popUpToko;
-    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +30,6 @@ public class ManajemenToko extends AppCompatActivity {
         daftarToko = findViewById(R.id.ListToko);
         crud = new CRUD(this);
         tokoArrayList = new ArrayList<>();
-        bundle = new Bundle();
         popUpToko = new FragmentManajemenToko();
         loadListToko();
     }
@@ -43,7 +41,9 @@ public class ManajemenToko extends AppCompatActivity {
     }
 
     public void clickTambahToko(View view){
+        Bundle bundle = new Bundle();
         bundle.putInt("mode", 1);
+        bundle.putLong("idToko", -1);
         popUpToko.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerManajemenToko, popUpToko).addToBackStack(null).commit();
     }
@@ -65,6 +65,7 @@ public class ManajemenToko extends AppCompatActivity {
         daftarToko.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundle = new Bundle();
                 bundle.putInt("mode", 2);
                 bundle.putLong("idToko", tokoArrayList.get(position).getKode_toko());
                 popUpToko.setArguments(bundle);
