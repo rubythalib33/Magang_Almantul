@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.adapter.TokoAdapter;
+import com.biptek.posbiptek.fragment.FragmentDeleteConfirmation;
 import com.biptek.posbiptek.fragment.FragmentManajemenToko;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Toko;
@@ -43,7 +44,6 @@ public class ManajemenToko extends AppCompatActivity {
     public void clickTambahToko(View view){
         Bundle bundle = new Bundle();
         bundle.putInt("mode", 1);
-        bundle.putLong("idToko", -1);
         popUpToko.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerManajemenToko, popUpToko).addToBackStack(null).commit();
     }
@@ -56,12 +56,11 @@ public class ManajemenToko extends AppCompatActivity {
         if(tokoArrayList.isEmpty()){
             Toast.makeText(getApplicationContext(), "Data Toko Kosong !", Toast.LENGTH_SHORT).show();
         }
-        else {
+
             TokoAdapter tokoAdapter = new TokoAdapter(this, tokoArrayList);
             daftarToko.setAdapter(tokoAdapter);
             tokoAdapter.notifyDataSetChanged();
-        }
-
+            
         daftarToko.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -70,6 +69,18 @@ public class ManajemenToko extends AppCompatActivity {
                 bundle.putLong("idToko", tokoArrayList.get(position).getKode_toko());
                 popUpToko.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerManajemenToko, popUpToko).addToBackStack(null).commit();
+            }
+        });
+
+        daftarToko.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Fragment deleteConfirmation = new FragmentDeleteConfirmation();
+                Bundle bundle = new Bundle();
+                bundle.putLong("idToko", tokoArrayList.get(position).getKode_toko());
+                deleteConfirmation.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerManajemenToko, deleteConfirmation).addToBackStack(null).commit();
+                return true;
             }
         });
     }

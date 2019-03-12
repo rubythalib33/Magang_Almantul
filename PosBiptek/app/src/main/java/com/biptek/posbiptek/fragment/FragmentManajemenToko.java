@@ -19,12 +19,13 @@ import com.biptek.posbiptek.model.Toko;
 import java.util.Objects;
 
 public class FragmentManajemenToko extends Fragment {
+    private View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_manajemen_toko, container, false);
-        final CRUD crud = new CRUD(getActivity());
+        view = inflater.inflate(R.layout.fragment_manajemen_toko, container, false);
+        final CRUD crud = new CRUD(getContext());
 
         Button simpanToko = view.findViewById(R.id.fragmentTokoSimpan);
         Button batalToko = view.findViewById(R.id.fragmentTokoBatal);
@@ -32,21 +33,10 @@ public class FragmentManajemenToko extends Fragment {
         final EditText alamatToko = view.findViewById(R.id.fragmentAlamatToko);
         final EditText noTelpToko = view.findViewById(R.id.fragmentNoTelpToko);
 
-        //untuk update toko
-        if(getArguments().getLong("idToko") != -1){
-            crud.open();
-            Toko toko = crud.getToko(getArguments().getLong("idToko"));
-            crud.close();
-            ((TextView)view.findViewById(R.id.fragmentDataToko)).setText("Update Toko");
-            namaToko.setText(toko.getNama_toko());
-            alamatToko.setText(toko.getAlamat_toko());
-            noTelpToko.setText(toko.getNo_telepon_toko());
-        }
-
         simpanToko.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SessionData sessionData = new SessionData(getActivity());
+                SessionData sessionData = new SessionData(getContext());
                 Toko toko = new Toko();
                 toko.setKode_perusahaan_toko(sessionData.getKodePerusahaan());
 
@@ -75,6 +65,7 @@ public class FragmentManajemenToko extends Fragment {
                 }
                 //untuk update toko
                 else if (getArguments().getInt("mode") == 2){
+                    toko.setKode_toko(getArguments().getLong("idToko"));
                     crud.open();
                     crud.updateToko(toko);
                     crud.close();
@@ -92,5 +83,28 @@ public class FragmentManajemenToko extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        CRUD crud = new CRUD(getContext());
+
+        //untuk update toko
+        if(getArguments().getInt("mode") == 2){
+            crud.open();
+            Toko toko = crud.getToko(getArguments().getLong("idToko"));
+            crud.close();
+            ((TextView) view.findViewById(R.id.fragmentDataToko)).setText("Update Toko");
+            ((EditText)view.findViewById(R.id.fragmentNamaToko)).setText(toko.getNama_toko());
+            ((EditText)view.findViewById(R.id.fragmentAlamatToko)).setText(toko.getAlamat_toko());
+            ((EditText)view.findViewById(R.id.fragmentNoTelpToko)).setText(toko.getNo_telepon_toko());
+        }
+        else if(getArguments().getInt("mode") == 1) {
+            ((EditText)view.findViewById(R.id.fragmentNamaToko)).setText("");
+            ((EditText)view.findViewById(R.id.fragmentAlamatToko)).setText("");
+            ((EditText)view.findViewById(R.id.fragmentNoTelpToko)).setText("");
+        }
+
     }
 }

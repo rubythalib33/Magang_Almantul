@@ -1056,8 +1056,8 @@ public class CRUD {
         database.update("toko", contentValues, "kode_toko=?", new String[]{String.valueOf(toko.getKode_toko())});
     }
 
-    public void deleteToko(Toko toko){
-        database.delete("toko", "kode_toko", new String[]{String.valueOf(toko.getKode_toko())});
+    public void deleteToko(long kode_toko){
+        database.delete("toko", "kode_toko=?", new String[]{String.valueOf(kode_toko)});
     }
 
 //untuk table perusahaan
