@@ -3,10 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:alpha="0.8"
-    android:background="@drawable/backgroun_tansparant"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.FragmentManajemenToko">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.8"
+        android:background="@drawable/backgroun_tansparant"
+        >
+
+    </FrameLayout>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="280dp"
