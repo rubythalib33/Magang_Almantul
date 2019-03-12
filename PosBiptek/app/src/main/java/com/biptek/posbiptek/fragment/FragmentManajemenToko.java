@@ -28,6 +28,9 @@ public class FragmentManajemenToko extends Fragment {
 
         Button simpanToko = view.findViewById(R.id.fragmentTokoSimpan);
         Button batalToko = view.findViewById(R.id.fragmentTokoBatal);
+        final EditText namaToko = view.findViewById(R.id.fragmentNamaToko);
+        final EditText alamatToko = view.findViewById(R.id.fragmentAlamatToko);
+        final EditText noTelpToko = view.findViewById(R.id.fragmentNoTelpToko);
 
         //untuk update toko
         if(getArguments().getLong("idToko") != -1){
@@ -35,9 +38,9 @@ public class FragmentManajemenToko extends Fragment {
             Toko toko = crud.getToko(getArguments().getLong("idToko"));
             crud.close();
             ((TextView)view.findViewById(R.id.fragmentDataToko)).setText("Update Toko");
-            ((EditText)view.findViewById(R.id.fragmentNamaToko)).setText(toko.getNama_toko());
-            ((EditText)view.findViewById(R.id.fragmentAlamatToko)).setText(toko.getAlamat_toko());
-            ((EditText)view.findViewById(R.id.fragmentNoTelpToko)).setText(toko.getNo_telepon_toko());
+            namaToko.setText(toko.getNama_toko());
+            alamatToko.setText(toko.getAlamat_toko());
+            noTelpToko.setText(toko.getNo_telepon_toko());
         }
 
         simpanToko.setOnClickListener(new View.OnClickListener() {
@@ -46,10 +49,6 @@ public class FragmentManajemenToko extends Fragment {
                 SessionData sessionData = new SessionData(getActivity());
                 Toko toko = new Toko();
                 toko.setKode_perusahaan_toko(sessionData.getKodePerusahaan());
-                EditText namaToko = view.findViewById(R.id.fragmentNamaToko);
-                EditText alamatToko = view.findViewById(R.id.fragmentAlamatToko);
-                EditText noTelpToko = view.findViewById(R.id.fragmentNoTelpToko);
-
 
                 if (namaToko.getText().toString().equals(""))
                     namaToko.setError("Tidak boleh kosong !");
