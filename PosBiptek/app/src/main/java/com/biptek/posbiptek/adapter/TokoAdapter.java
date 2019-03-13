@@ -41,7 +41,7 @@ public class TokoAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.list_view_toko, null);
 
-        TextView namaToko = convertView.findViewById(R.id.textViewNamaToko);
+        TextView namaToko = convertView.findViewById(R.id.textViewNamaSupplier);
         TextView alamatToko = convertView.findViewById(R.id.textViewAlamatToko);
         TextView noTeleponToko = convertView.findViewById(R.id.textViewNoTeleponToko);
 
