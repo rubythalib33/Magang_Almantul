@@ -22,10 +22,8 @@ import java.util.Objects;
 
 public class Fragment_Admin extends Fragment {
 
-    EditText namalengkap, username, password, nomortelepon;
+    private EditText namalengkap, username, password, nomortelepon;
     private CRUD crud;
-    Button simpan, batal;
-    private View view;
 
     @Nullable
     @Override
@@ -37,8 +35,8 @@ public class Fragment_Admin extends Fragment {
         username = (EditText)view.findViewById(R.id.fragmentUsernameAdmin);
         password = (EditText)view.findViewById(R.id.fragmentPasswordAdmin);
         nomortelepon = (EditText)view.findViewById(R.id.fragmentNomorTeleponAdmin);
-        simpan = (Button)view.findViewById(R.id.fragmentAdminSimpan);
-        batal = (Button)view.findViewById(R.id.fragmentAdminBatal);
+        Button simpan = (Button) view.findViewById(R.id.fragmentAdminSimpan);
+        Button batal = (Button) view.findViewById(R.id.fragmentAdminBatal);
 
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,11 +101,11 @@ public class Fragment_Admin extends Fragment {
             crud.open();
             Admin admin = crud.getAdmin(getArguments().getString("USERNAMEADMIN"));
             crud.close();
-            ((TextView) view.findViewById(R.id.fragmentdetailadmin)).setText("Update Admin");
-            ((EditText)view.findViewById(R.id.fragmentNamaLengkapAdmin)).setText(admin.getNama_lengkap_admin());
-            ((EditText)view.findViewById(R.id.fragmentUsernameAdmin)).setText(admin.getUsername_admin());
-            ((EditText)view.findViewById(R.id.fragmentPasswordAdmin)).setText(admin.getPassword_admin());
-            ((EditText)view.findViewById(R.id.fragmentNomorTeleponAdmin)).setText(admin.getNo_telepon_admin());
+            ((TextView) this.getView().findViewById(R.id.fragmentdetailadmin)).setText("Update Admin");
+            ((EditText)this.getView().findViewById(R.id.fragmentNamaLengkapAdmin)).setText(admin.getNama_lengkap_admin());
+            ((EditText)this.getView().findViewById(R.id.fragmentUsernameAdmin)).setText(admin.getUsername_admin());
+            ((EditText)this.getView().findViewById(R.id.fragmentPasswordAdmin)).setText(admin.getPassword_admin());
+            ((EditText)this.getView().findViewById(R.id.fragmentNomorTeleponAdmin)).setText(admin.getNo_telepon_admin());
 
         }
         else if(getArguments().getInt("key") == 20) {

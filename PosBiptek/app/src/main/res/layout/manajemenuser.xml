@@ -35,19 +35,7 @@
 
 
     <ListView
-        android:id="@+id/ListUser"
-        android:layout_width="395dp"
-        android:layout_height="484dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerJabatanMU" />
-
-    <ListView
-        android:id="@+id/ListAdmin"
+        android:id="@+id/ListVIewManajemenUser"
         android:layout_width="395dp"
         android:layout_height="484dp"
         android:layout_marginStart="8dp"
@@ -70,7 +58,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ListUser" />
+        app:layout_constraintTop_toBottomOf="@+id/ListVIewManajemenUser" />
 
     <FrameLayout
         android:id="@+id/layoutdetail"
@@ -78,80 +66,4 @@
         android:layout_height="match_parent">
     </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/layoutdetail2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
-
 </android.support.constraint.ConstraintLayout>
-
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<android.support.constraint.ConstraintLayout-->
-    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
-
-
-
-
-    <!--<TextView-->
-        <!--android:id="@+id/hello_yo"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="16dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:text="Manajemen User"-->
-        <!--android:textColor="@android:color/black"-->
-        <!--android:textSize="18sp"-->
-        <!--android:textStyle="bold"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--<ListView-->
-        <!--android:id="@+id/ListUser"-->
-        <!--android:layout_width="395dp"-->
-        <!--android:layout_height="605dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.0"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/hello_yo" />-->
-        <!--&lt;!&ndash;app:layout_constraintTop_toBottomOf="@+id/spinnerJabatanMU" />&ndash;&gt;-->
-
-    <!--<Button-->
-        <!--android:id="@+id/buttontambahuser"-->
-        <!--android:layout_width="50dp"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_marginStart="300dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginBottom="32dp"-->
-        <!--android:background="@drawable/plus"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/ListUser"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.0"-->
-        <!--app:layout_constraintStart_toStartOf="parent" />-->
-
-    <!--<FrameLayout-->
-        <!--android:id="@+id/layoutdetail"-->
-        <!--android:layout_width="394dp"-->
-        <!--android:layout_height="719dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="4dp"-->
-        <!--android:layout_marginEnd="9dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.0"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="1.0">-->
-    <!--</FrameLayout>-->
-
-<!--</android.support.constraint.ConstraintLayout>-->

@@ -435,8 +435,8 @@ public class CRUD {
         database.update("produk", contentValues, "kode_produk=?", new String[]{produk.getKode_produk()});
     }
 
-    public void deleteProduk(Produk produk){
-        database.delete("produk", "kode_produk=?", new String[] {produk.getKode_produk()});
+    public void deleteProduk(String kode_produk){
+        database.delete("produk", "kode_produk=?", new String[] {kode_produk});
     }
 
 //Untuk table produk_diskon
@@ -743,8 +743,8 @@ public class CRUD {
         database.update("supplier", contentValues, "kode_supplier=?", new String[]{String.valueOf(supplier.getKode_supplier())});
     }
 
-    public void deleteSupplier(Supplier supplier){
-        database.delete("supplier", "kode_supplier", new String[]{String.valueOf(supplier.getKode_supplier())});
+    public void deleteSupplier(String kode_supplier){
+        database.delete("supplier", "kode_supplier", new String[]{String.valueOf(kode_supplier)});
     }
 
 //Untuk table transaksi_penjualan dan list_produk_terjual
@@ -965,8 +965,8 @@ public class CRUD {
         database.update("pegawai", contentValues, "username_pegawai=?", new String[]{pegawai.getUsername_pegawai()});
     }
 
-    public void deletePegawai(Pegawai pegawai){
-        database.delete("pegawai", "username_pegawai=?", new String[]{pegawai.getUsername_pegawai()});
+    public void deletePegawai(String username_pegawai){
+        database.delete("pegawai", "username_pegawai=?", new String[]{username_pegawai});
     }
 
     //cekuserpass
@@ -1240,7 +1240,7 @@ public class CRUD {
         database.update("admin", contentValues, "username_admin=?", new String[]{admin.getUsername_admin()});
     }
 
-    public void deleteAdmin(Admin admin){
-        database.delete("admin", "username_admin=?", new String[]{admin.getUsername_admin()});
+    public void deleteAdmin(String username_admin){
+        database.delete("admin", "username_admin=?", new String[]{username_admin});
     }
 }

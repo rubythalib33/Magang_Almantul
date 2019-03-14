@@ -1,7 +1,5 @@
 package com.biptek.posbiptek.fragment;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,10 +14,8 @@ import android.widget.TextView;
 
 import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.SessionData;
-import com.biptek.posbiptek.model.Admin;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Pegawai;
-import com.biptek.posbiptek.model.Toko;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.Objects;
@@ -118,7 +114,7 @@ public class Fragment_Pegawai extends Fragment {
             crud.open();
             Pegawai pegawai = crud.getPegawai(getArguments().getString("USERNAME"));
             crud.close();
-            ((TextView)this.getView().findViewById(R.id.fragmentdetailpegawai)).setText("Update User");
+            ((TextView)this.getView().findViewById(R.id.fragmentdetailpegawai)).setText("Update Pegawai");
             ((EditText)this.getView().findViewById(R.id.fragmentNamaLengkapUser)).setText(pegawai.getNama_lengkap_pegawai());
             ((EditText)this.getView().findViewById(R.id.fragmentUsernameUser)).setText(pegawai.getUsername_pegawai());
             ((EditText)this.getView().findViewById(R.id.fragmentPasswordUser)).setText(pegawai.getPassword_pegawai());

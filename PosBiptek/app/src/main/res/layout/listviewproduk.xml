@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/imageView_gambarProduk"
         android:layout_width="50dp"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/produk"

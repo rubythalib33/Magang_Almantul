@@ -20,23 +20,19 @@ import com.biptek.posbiptek.adapter.PegawaiAdapter;
 import com.biptek.posbiptek.fragment.Fragment_Pegawai;
 import com.biptek.posbiptek.model.Admin;
 import com.biptek.posbiptek.model.CRUD;
-import com.biptek.posbiptek.model.DatabaseHelper;
 import com.biptek.posbiptek.model.Pegawai;
 
 import java.util.ArrayList;
 
 public class manajemen_user extends AppCompatActivity {
 
-    Button b1;
-    private DatabaseHelper mdb;
+    private Button b1;
     private CRUD crud;
     private Fragment popupUser, popAdmin;
     private Spinner jabatan;
-    ArrayList<Pegawai> arrayList;
-    ArrayList<Admin> arrayList1;
-    PegawaiAdapter pegawaiAdapter;
-    AdminAdapter adminAdapter;
-    ListView listpegawai,listadmin;
+    private ArrayList<Pegawai> arrayList;
+    private ArrayList<Admin> arrayList1;
+    private ListView listUser;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,13 +48,11 @@ public class manajemen_user extends AppCompatActivity {
 
 
         b1 = (Button)findViewById(R.id.buttonTambahUser);
-        listpegawai = (ListView)findViewById(R.id.ListUser);
-        listadmin = (ListView)findViewById(R.id.ListAdmin);
+        listUser = (ListView)findViewById(R.id.ListVIewManajemenUser);
         popupUser = new Fragment_Pegawai();
         popAdmin = new Fragment_Admin();
         crud = new CRUD(this);
         String jbtn = "";
-        jbtn = jabatan.getSelectedItem().toString();
         arrayList = new ArrayList<>();
         arrayList1 = new ArrayList<>();
 
@@ -67,8 +61,6 @@ public class manajemen_user extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(jabatan.getSelectedItemPosition()==0){
-                    listadmin.setVisibility(View.INVISIBLE);
-                    listpegawai.setVisibility(View.VISIBLE);
                     loadDataListView();
                     b1.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -80,8 +72,6 @@ public class manajemen_user extends AppCompatActivity {
                         }
                     });
                 }else if(jabatan.getSelectedItemPosition()==1){
-                    listpegawai.setVisibility(View.INVISIBLE);
-                    listadmin.setVisibility(View.VISIBLE);
                     loadDataListView1();
                     b1.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -102,7 +92,16 @@ public class manajemen_user extends AppCompatActivity {
 
     }
 
-    //fungsi menampilkan data user
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(jabatan.getSelectedItemPosition() == 0)
+            loadDataListView();
+        else if(jabatan.getSelectedItemPosition() == 1)
+            loadDataListView1();
+    }
+
+    //fungsi menampilkan data pegawai
     private void loadDataListView() {
         crud.open();
         arrayList = crud.getAllPegawai();
@@ -111,12 +110,11 @@ public class manajemen_user extends AppCompatActivity {
         if(arrayList.isEmpty()){
             Toast.makeText(getApplicationContext(),"Data Kosong!", Toast.LENGTH_SHORT).show();
         }
-        pegawaiAdapter = new PegawaiAdapter(this, arrayList);
-        listpegawai.setAdapter(pegawaiAdapter);
-        pegawaiAdapter.notifyDataSetChanged();
 
+        PegawaiAdapter pegawaiAdapter = new PegawaiAdapter(this, arrayList);
+        listUser.setAdapter(pegawaiAdapter);
 
-        listpegawai.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
@@ -127,15 +125,16 @@ public class manajemen_user extends AppCompatActivity {
             }
         });
 
-        listpegawai.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        listUser.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Fragment delete = new FragmentDeleteConfirmation();
                 Bundle bundle = new Bundle();
                 bundle.putString("USERNAME", arrayList.get(position).getUsername_pegawai());
+                bundle.putString("menu", "pegawai");
                 delete.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.layoutdetail, delete).addToBackStack(null).commit();
-                return false;
+                return true;
             }
         });
 
@@ -149,32 +148,32 @@ public class manajemen_user extends AppCompatActivity {
 
         if(arrayList1.isEmpty()){
             Toast.makeText(getApplicationContext(),"Data Kosong!",Toast.LENGTH_SHORT).show();
-        }else
+        }
 
-        adminAdapter = new AdminAdapter(this, arrayList1);
-        listadmin.setAdapter(adminAdapter);
-        pegawaiAdapter.notifyDataSetChanged();
+        AdminAdapter adminAdapter = new AdminAdapter(this, arrayList1);
+        listUser.setAdapter(adminAdapter);
 
-        listadmin.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("key", 21);
                 bundle.putString("USERNAMEADMIN", arrayList1.get(position).getUsername_admin());
-                popupUser.setArguments(bundle);
-                getSupportFragmentManager().beginTransaction().replace(R.id.layoutdetail2, popAdmin).addToBackStack(null).commit();
+                popAdmin.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.layoutdetail, popAdmin).addToBackStack(null).commit();
             }
         });
 
-        listadmin.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        listUser.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Fragment delete = new FragmentDeleteConfirmation();
                 Bundle bundle = new Bundle();
                 bundle.putString("USERNAMEADMIN", arrayList1.get(position).getUsername_admin());
+                bundle.putString("menu", "admin");
                 delete.setArguments(bundle);
-                getSupportFragmentManager().beginTransaction().replace(R.id.layoutdetail2, delete).addToBackStack(null).commit();
-                return false;
+                getSupportFragmentManager().beginTransaction().replace(R.id.layoutdetail, delete).addToBackStack(null).commit();
+                return true;
             }
         });
 

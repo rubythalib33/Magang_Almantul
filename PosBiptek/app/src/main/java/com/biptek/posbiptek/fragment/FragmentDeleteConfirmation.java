@@ -29,8 +29,24 @@ public class FragmentDeleteConfirmation extends Fragment {
             public void onClick(View v) {
                 CRUD crud = new CRUD(getContext());
                 crud.open();
-                crud.deleteToko(getArguments().getLong("idToko"));
-                crud.close();
+                switch (getArguments().getString("menu")){
+                    case "toko":
+                        crud.deleteToko(getArguments().getLong("idToko"));
+                        crud.close();
+                        break;
+                    case "pegawai":
+                        crud.deletePegawai(getArguments().getString("USERNAME"));
+                        crud.close();
+                        break;
+                    case "admin":
+                        crud.deleteAdmin(getArguments().getString("USERNAMEADMIN"));
+                        crud.close();
+                        break;
+                    case "produk":
+                        crud.deleteProduk(getArguments().getString("KODEPRODUK"));
+                        crud.close();
+                        break;
+                }
                 Objects.requireNonNull(getActivity()).onBackPressed();
             }
         });

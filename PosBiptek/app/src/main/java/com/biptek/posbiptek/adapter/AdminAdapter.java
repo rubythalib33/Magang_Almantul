@@ -49,14 +49,6 @@ public class AdminAdapter extends BaseAdapter {
         usrname.setText("Nama Lengkap : "+admin.getNama_lengkap_admin());
         jbtn.setText("Username : "+admin.getUsername_admin());
         pss.setText("Password : "+admin.getPassword_admin());
-
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         return convertView;
     }
 }

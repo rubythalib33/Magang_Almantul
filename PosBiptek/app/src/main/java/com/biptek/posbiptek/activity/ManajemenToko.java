@@ -59,8 +59,7 @@ public class ManajemenToko extends AppCompatActivity {
 
             TokoAdapter tokoAdapter = new TokoAdapter(this, tokoArrayList);
             daftarToko.setAdapter(tokoAdapter);
-            tokoAdapter.notifyDataSetChanged();
-            
+
         daftarToko.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -78,6 +77,7 @@ public class ManajemenToko extends AppCompatActivity {
                 Fragment deleteConfirmation = new FragmentDeleteConfirmation();
                 Bundle bundle = new Bundle();
                 bundle.putLong("idToko", tokoArrayList.get(position).getKode_toko());
+                bundle.putString("menu", "toko");
                 deleteConfirmation.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerManajemenToko, deleteConfirmation).addToBackStack(null).commit();
                 return true;
