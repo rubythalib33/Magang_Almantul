@@ -889,7 +889,7 @@ public class CRUD {
             "no_telepon_pegawai"
     };
 
-    public void addPegawai(Pegawai pegawai){
+    public long addPegawai(Pegawai pegawai){
         ContentValues contentValues = new ContentValues();
         contentValues.put("username_pegawai", pegawai.getUsername_pegawai());
         contentValues.put("kode_toko_pegawai",pegawai.getKode_toko_pegawai());
@@ -897,7 +897,8 @@ public class CRUD {
         contentValues.put("jabatan_pegawai", pegawai.getJabatan_pegawai());
         contentValues.put("nama_lengkap_pegawai", pegawai.getNama_lengkap_pegawai());
         contentValues.put("no_telepon_pegawai", pegawai.getNo_telepon_pegawai());
-        database.insert("pegawai", null, contentValues);
+        long insertID = database.insert("pegawai", null, contentValues);
+        return insertID;
     }
 
     //mendapatkan 1 pegawai
@@ -1168,14 +1169,15 @@ public class CRUD {
         "no_telepon_admin"
     };
 
-    public void addAdmin(Admin admin){
+    public long addAdmin(Admin admin){
         ContentValues contentValues = new ContentValues();
         contentValues.put("username_admin", admin.getUsername_admin());
         contentValues.put("kode_perusahaan_admin", admin.getKode_perusahaan_admin());
         contentValues.put("password_admin", admin.getPassword_admin());
         contentValues.put("nama_lengkap_admin", admin.getNama_lengkap_admin());
         contentValues.put("no_telepon_admin", admin.getNo_telepon_admin());
-        database.insert("admin", null, contentValues);
+        long insertId = database.insert("admin", null, contentValues);
+        return insertId;
     }
 
     //mendapatkan 1 admin

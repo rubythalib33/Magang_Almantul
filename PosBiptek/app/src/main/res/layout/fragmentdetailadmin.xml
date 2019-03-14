@@ -17,15 +17,15 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="280dp"
-        android:layout_height="380dp"
+        android:layout_height="350dp"
         android:layout_gravity="center"
         android:background="@android:color/white">
 
         <TextView
-            android:id="@+id/fragmentdetailpegawai"
+            android:id="@+id/fragmentdetailadmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tambah User"
+            android:text="Tambah Admin"
             android:textSize="20sp"
             android:layout_marginTop="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -33,49 +33,49 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
-            android:id="@+id/fragmentNamaLengkapUser"
+            android:id="@+id/fragmentNamaLengkapAdmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:hint="Nama Lengkap User"
+            android:hint="Nama Lengkap Admin"
             android:inputType="textPersonName"
             android:textSize="16sp"
             android:ems="12"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentdetailpegawai"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentdetailadmin"
             />
 
         <EditText
-            android:id="@+id/fragmentUsernameUser"
+            android:id="@+id/fragmentUsernameAdmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:hint="Username User"
+            android:hint="Username Admin"
             android:inputType="textPersonName"
             android:textSize="16sp"
             android:ems="12"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentNamaLengkapUser"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentNamaLengkapAdmin"
             />
 
         <EditText
-            android:id="@+id/fragmentPasswordUser"
+            android:id="@+id/fragmentPasswordAdmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:hint="Password User"
+            android:hint="Password Admin"
             android:inputType="textPersonName"
             android:textSize="16sp"
             android:ems="12"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentUsernameUser"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentUsernameAdmin"
             />
 
         <EditText
-            android:id="@+id/fragmentNomorTeleponUser"
+            android:id="@+id/fragmentNomorTeleponAdmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -85,23 +85,11 @@
             android:textSize="16sp"
             android:ems="12"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentPasswordUser"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentPasswordAdmin"
             />
 
-        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-            android:id="@+id/fragmentJabatanUSer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:hint="Jabatan"
-            android:textStyle="bold"
-            android:ems="12"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentNomorTeleponUser" />
-
         <Button
-            android:id="@+id/fragmentUserSimpan"
+            android:id="@+id/fragmentAdminSimpan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/simpan"
@@ -111,7 +99,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <Button
-            android:id="@+id/fragmentUserBatal"
+            android:id="@+id/fragmentAdminBatal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/batal"
@@ -123,30 +111,5 @@
     </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

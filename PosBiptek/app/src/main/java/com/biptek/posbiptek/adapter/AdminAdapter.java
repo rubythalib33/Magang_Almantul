@@ -8,19 +8,18 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.biptek.posbiptek.R;
-import com.biptek.posbiptek.model.Pegawai;
+import com.biptek.posbiptek.model.Admin;
 
 import java.util.ArrayList;
 
-public class PegawaiAdapter extends BaseAdapter {
+public class AdminAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList <Pegawai>  arrayList;
+    private ArrayList<Admin> arrayList;
 
-    public PegawaiAdapter(Context context, ArrayList <Pegawai> arrayList){
+    public AdminAdapter(Context context, ArrayList <Admin> arrayList){
         this.context = context;
         this.arrayList = arrayList;
     }
-
     @Override
     public int getCount() {
         return this.arrayList.size();
@@ -28,7 +27,6 @@ public class PegawaiAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-
         return arrayList.get(position);
     }
 
@@ -46,11 +44,20 @@ public class PegawaiAdapter extends BaseAdapter {
         TextView jbtn = convertView.findViewById(R.id.jtnListPegwai);
         TextView pss = convertView.findViewById(R.id.Passview);
 
-        Pegawai pegawai = arrayList.get(position);
+        Admin admin = arrayList.get(position);
 
-        usrname.setText("Nama Lengkap : "+pegawai.getNama_lengkap_pegawai());
-        jbtn.setText("Jabatan : "+pegawai.getJabatan_pegawai());
-        pss.setText("Password : "+pegawai.getPassword_pegawai());
+        usrname.setText("Nama Lengkap : "+admin.getNama_lengkap_admin());
+        jbtn.setText("Username : "+admin.getUsername_admin());
+        pss.setText("Password : "+admin.getPassword_admin());
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         return convertView;
     }
 }
+

@@ -30,6 +30,13 @@ public class SessionData {
         return sharedPreferences.getLong("KODEPERUSAHAAN", -1);
     }
 
+    public void setKodeToko(long kodeToko){
+        sharedPreferences.edit().putLong("KODETOKO", kodeToko).commit();
+    }
+    public long getKodeToko(){
+        return sharedPreferences.getLong("KODETOKO", -1);
+    }
+
     public void setJabatanLogIn(String jabatan){
         sharedPreferences.edit().putString("JABATAN", jabatan).commit();
     }
