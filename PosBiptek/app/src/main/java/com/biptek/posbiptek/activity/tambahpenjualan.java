@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
-import com.biptek.posbiptek.fragment.Fragment_BarcodeScanner;
 
 public class tambahpenjualan extends AppCompatActivity {
     Button simpan, batal, barcode;
@@ -33,16 +32,14 @@ public class tambahpenjualan extends AppCompatActivity {
         batal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(tambahpenjualan.this, homeadmin.class);
-                startActivity(intent);
+                startActivity(new Intent(tambahpenjualan.this, homeadmin.class));
             }
         });
 
         barcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new Fragment_BarcodeScanner();
-                getSupportFragmentManager().beginTransaction().replace(R.id.scanBarcode, fragment).addToBackStack(null).commit();
+                startActivity(new Intent(tambahpenjualan.this, BarcodeScanner.class));
             }
         });
 
