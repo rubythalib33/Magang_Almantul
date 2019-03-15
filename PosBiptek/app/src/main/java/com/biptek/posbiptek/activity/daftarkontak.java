@@ -47,7 +47,7 @@ public class daftarkontak extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putInt("mode", 1);
         popUpSupplier.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerSupplier, popUpSupplier);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerSupplier, popUpSupplier).addToBackStack(null).commit();
     }
 
     private void loadListToko(){
@@ -69,7 +69,7 @@ public class daftarkontak extends AppCompatActivity {
                 bundle.putInt("mode", 2);
                 bundle.putLong("idSupplier", supplier.get(position).getKode_supplier());
                 popUpSupplier.setArguments(bundle);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerManajemenToko, popUpSupplier).addToBackStack(null).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerSupplier, popUpSupplier).addToBackStack(null).commit();
             }
         });
 
@@ -79,8 +79,9 @@ public class daftarkontak extends AppCompatActivity {
                 Fragment deleteConfirmation = new FragmentDeleteConfirmation();
                 Bundle bundle = new Bundle();
                 bundle.putLong("idSupplier", supplier.get(position).getKode_supplier());
+                bundle.putString("menu", "supplier");
                 deleteConfirmation.setArguments(bundle);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerManajemenToko, deleteConfirmation).addToBackStack(null).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerSupplier, deleteConfirmation).addToBackStack(null).commit();
                 return true;
             }
         });

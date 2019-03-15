@@ -59,9 +59,10 @@ public class FragmentSupplier extends Fragment {
                 if (emailSupplier.getText().toString().equals(""))
                     emailSupplier.setError("Tidak boleh kosong !");
                 else if(emailSupplier.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+.+[a-z]+"))
-                    emailSupplier.setError("Email Tidak Valid");
-                else
                     supplier.setEmail_supplier(emailSupplier.getText().toString());
+                else
+                    emailSupplier.setError("Email Tidak Valid");
+
                 //Untuk tambah Supplier
                 if(getArguments().getInt("mode") == 1){
                     crud.open();

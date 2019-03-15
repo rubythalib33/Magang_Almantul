@@ -669,7 +669,7 @@ public class CRUD {
     private static final String[] allColumnsSupplier = {
             "kode_supplier",
             "nama_supplier",
-            "email_supllier",
+            "email_supplier",
             "no_telepon_supplier",
             "alamat_supplier"
     };
@@ -743,8 +743,8 @@ public class CRUD {
         database.update("supplier", contentValues, "kode_supplier=?", new String[]{String.valueOf(supplier.getKode_supplier())});
     }
 
-    public void deleteSupplier(String kode_supplier){
-        database.delete("supplier", "kode_supplier", new String[]{String.valueOf(kode_supplier)});
+    public void deleteSupplier(Long kode_supplier){
+        database.delete("supplier", "kode_supplier=?", new String[]{String.valueOf(kode_supplier)});
     }
 
 //Untuk table transaksi_penjualan dan list_produk_terjual

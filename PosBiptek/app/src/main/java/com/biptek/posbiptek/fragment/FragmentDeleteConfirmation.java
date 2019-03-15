@@ -46,6 +46,10 @@ public class FragmentDeleteConfirmation extends Fragment {
                         crud.deleteProduk(getArguments().getString("KODEPRODUK"));
                         crud.close();
                         break;
+                    case "supplier":
+                        crud.deleteSupplier(getArguments().getLong("idSupplier"));
+                        crud.close();
+                        break;
                 }
                 Objects.requireNonNull(getActivity()).onBackPressed();
             }
