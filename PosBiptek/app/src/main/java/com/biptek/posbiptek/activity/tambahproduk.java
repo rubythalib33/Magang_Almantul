@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.model.*;
@@ -42,15 +43,32 @@ public class tambahproduk extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(data.getStringExtra("mode").equals("update")){
+    protected void onResume() {
+        super.onResume();
+        if (getIntent().getStringExtra("mode").equals("update")) {
             CRUD crud = new CRUD(this);
             crud.open();
-            Produk produk = crud.getProduk(data.getStringExtra("kode_produk"));
+            Produk produk = crud.getProduk(getIntent().getStringExtra("kode_produk"));
             crud.close();
             kodeProduk.setText(produk.getKode_produk());
-            jenisProduk.setSelection();
+
+            if (!produk.getJenis_produk().equals(jenisProduk.getSelectedItem().toString()))
+                jenisProduk.setSelection(1);
+
+            kategoriProduk.setText(produk.getKategori_produk());
+            namaProduk.setText(produk.getNama_produk());
+            deskripsiProduk.setText(produk.getDeskripsi_produk());
+            hargaJual.setText(String.valueOf(produk.getHarga_jual_produk()));
+            hargaBeli.setText(String.valueOf(produk.getHarga_beli_produk()));
+            satuanProduk.setText(produk.getSatuan_produk());
+            gambarProduk.setText(produk.getGambar_produk());
+            stokProduk.setText(String.valueOf(produk.getStok_produk()));
+            stokKritisProduk.setText(String.valueOf(produk.getStok_kritis_produk()));
+            statusProduk.setText(produk.getStatus_produk());
+
+            TextView updateProduk = findViewById(R.id.textViewTambahProduk);
+            updateProduk.setText("Update Produk");
+
         }
     }
 
