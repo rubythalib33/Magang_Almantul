@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.biptek.posbiptek.R;
@@ -12,7 +14,7 @@ import com.biptek.posbiptek.model.Produk;
 
 import java.util.ArrayList;
 
-public class ProdukAdapter extends BaseAdapter {
+public class ProdukAdapter extends BaseAdapter implements Filterable {
     private Context context;
     private ArrayList<Produk> produkArrayList;
 
@@ -52,5 +54,11 @@ public class ProdukAdapter extends BaseAdapter {
         hargaProduk.setText("Harga: Rp. "+String.valueOf(produk.getHarga_jual_produk()));
 
         return convertView;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return null;
+
     }
 }

@@ -11,7 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.biptek.posbiptek.R;
-import com.biptek.posbiptek.model.*;
+import com.biptek.posbiptek.model.CRUD;
+import com.biptek.posbiptek.model.Produk;
 
 public class tambahproduk extends AppCompatActivity {
     EditText kodeProduk, kategoriProduk, namaProduk, deskripsiProduk, hargaJual,
@@ -72,6 +73,13 @@ public class tambahproduk extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK)
+            kodeProduk.setText(data.getStringExtra("barcodeResult"));
+    }
+
     public void clickTambahProduk(View view){
         CRUD crud = new CRUD(this);
         crud.open();
@@ -98,6 +106,6 @@ public class tambahproduk extends AppCompatActivity {
     }
 
     public void clickBarcodeTambahProduk(View view){
-        startActivity(new Intent(tambahproduk.this, BarcodeScanner.class));
+        startActivityForResult(new Intent(tambahproduk.this, BarcodeScanner.class), 1);
     }
 }

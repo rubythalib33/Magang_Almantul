@@ -1,6 +1,6 @@
 package com.biptek.posbiptek.activity;
 
-import android.support.v7.app.AlertDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,13 +27,10 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
     public void handleResult(Result result) {
         Log.v("TAG", result.getText());
         Log.v("TAG", result.getBarcodeFormat().toString());
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Scan Result");
-        builder.setMessage(result.getText());
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-
-        mScannerView.resumeCameraPreview(this);
+        Intent intent = new Intent();
+        intent.putExtra("barcodeResult", result.getText());
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     @Override
