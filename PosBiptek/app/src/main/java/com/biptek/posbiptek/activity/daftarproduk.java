@@ -31,7 +31,7 @@ public class daftarproduk extends AppCompatActivity {
         setContentView(R.layout.daftarproduk);
 
         Button cari = findViewById(R.id.buttonCariProduk);
-        Button tambah = findViewById(R.id.buttontambahproduk);
+        final Button tambah = findViewById(R.id.buttontambahproduk);
         listProduk = findViewById(R.id.ListProduk);
         EditText editTextSearchProduk = (EditText) findViewById(R.id.editTextSearchProduk);
         crud = new CRUD(this);
@@ -48,7 +48,9 @@ public class daftarproduk extends AppCompatActivity {
         tambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(daftarproduk.this, tambahproduk.class));
+                Intent addProduk = new Intent(daftarproduk.this, tambahproduk.class);
+                addProduk.putExtra("mode", "add");
+                startActivity(addProduk);
             }
         });
 
@@ -70,6 +72,12 @@ public class daftarproduk extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadDataListView();
+    }
+
     private void loadDataListView(){
         crud.open();
         produks = crud.getAllProduk();
@@ -87,7 +95,10 @@ public class daftarproduk extends AppCompatActivity {
         listProduk.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent updateProduk = new Intent(daftarproduk.this, tambahproduk.class);
+                updateProduk.putExtra("mode", "update");
+                updateProduk.putExtra("kode_produk", produks.get(position).getKode_produk());
+                startActivity(updateProduk);
             }
         });
     }
