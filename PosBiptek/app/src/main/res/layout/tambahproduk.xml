@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,234 +18,242 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="700dp"
-                android:layout_margin="8dp"
-                android:orientation="vertical">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Tambah Produk"
-                    android:textColor="@android:color/black"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textViewTambahProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="139dp"
+                android:layout_marginTop="31dp"
+                android:layout_marginEnd="139dp"
+                android:text="Tambah Produk"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
-                    android:id="@+id/kodeTambahroduk"
-                    android:layout_width="350dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:hint="Kode Produk"
-                    android:inputType="textAutoComplete"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/kodeTambahProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Kode Produk"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:ems="12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTambahProduk"
+                />
 
+            <Button
+                android:id="@+id/BarcodePenjualan"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/barcode"
+                android:onClick="clickBarcodeTambahProduk"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTambahProduk"
+                app:layout_constraintHorizontal_bias="0.42"
+                app:layout_constraintLeft_toRightOf="@+id/kodeTambahProduk"
+                app:layout_constraintVertical_bias="0.576" />
 
-                <EditText
-                    android:id="@+id/namaTambahroduk"
-                    android:layout_width="350dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:hint="Nama Produk"
-                    android:inputType="textPersonName"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textViewTambahJenisProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                android:text="Jenis Produk :"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/kodeTambahProduk"
+                app:layout_constraintStart_toStartOf="parent"/>
 
-                <EditText
-                    android:id="@+id/kategoriTambahProduk"
-                    android:layout_width="350dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:hint="Kategori"
-                    android:inputType="textPersonName"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <Spinner
+                android:id="@+id/jenisTambahProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Jenis Produk"
+                android:inputType="textPersonName"
+                android:textSize="12sp"
+                android:ems="12"
+                app:layout_constraintLeft_toRightOf="@+id/textViewTambahJenisProduk"
+                app:layout_constraintTop_toBottomOf="@+id/kodeTambahProduk"
+                />
 
-                <EditText
-                    android:id="@+id/jenisTambahProduk"
-                    android:layout_width="350dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:hint="Jenis Produk"
-                    android:inputType="textPersonName"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/kategoriTambahProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Kategori Produk"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:ems="12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/jenisTambahProduk"
+                />
 
-                <EditText
-                    android:id="@+id/satuanTambahProduk"
-                    android:layout_width="350dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:hint="Satuan Produk"
-                    android:inputType="textPersonName"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/namaTambahProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Nama Produk"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:ems="12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/kategoriTambahProduk"
+                />
 
-                <EditText
-                    android:id="@+id/gambarTambahProduk"
-                    android:layout_width="350dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:hint="Gambar Produk"
-                    android:inputType="textUri"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/deskripsiTambahProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Deskripsi Produk"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:ems="12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/namaTambahProduk"
+                />
 
+            <EditText
+                android:id="@+id/hargaJualTambahProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Harga Jual Produk"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:ems="12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/deskripsiTambahProduk"
+                />
 
-                <EditText
-                    android:id="@+id/hargaBeli"
-                    android:layout_width="350dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:hint="Harga Beli"
-                    android:inputType="number"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/hargaBeliTambahProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Harga Beli Produk"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:ems="12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hargaJualTambahProduk"
+                />
 
-                <EditText
-                    android:id="@+id/hargaJual"
-                    android:layout_width="350dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:hint="Harga Jual"
-                    android:inputType="number"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/satuanTambahProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Satuan Produk"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:ems="12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hargaBeliTambahProduk"
+                />
 
-                <EditText
-                    android:id="@+id/deskripsiTambahProduk"
-                    android:layout_width="350dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:hint="Dekskripsi Produk"
-                    android:inputType="textPersonName"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/gambarTambahProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Gambar Produk"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:ems="12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/satuanTambahProduk"
+                />
 
-                <EditText
-                    android:id="@+id/statusTambahProduk"
-                    android:layout_width="350dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:hint="Status Produk"
-                    android:inputType="textPersonName"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/StokTambahProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Stok Produk"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:ems="12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gambarTambahProduk"
+                />
 
-                <EditText
-                    android:id="@+id/StokTambahProduk"
-                    android:layout_width="350dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:hint="Stok Produk"
-                    android:inputType="number"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/StokKritisTambahProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Stok Kritis Produk"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:ems="12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/StokTambahProduk"
+                />
 
-                <EditText
-                    android:id="@+id/StokKritisProduk"
-                    android:layout_width="350dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:hint="Stok Kritis"
-                    android:inputType="number"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/statusTambahProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Status Produk"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:ems="12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/StokKritisTambahProduk"
+                />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+            <Button
+                android:id="@+id/TambahProdukSimpan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/simpan"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:onClick="clickTambahProduk"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statusTambahProduk"/>
 
-                    <Button
-                        android:id="@+id/buttonsimpantambahproduk"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/simpan"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="36dp"
-                        android:layout_marginRight="32dp"
-                        android:layout_marginLeft="32dp"
-                        />
-                    <Button
-                        android:id="@+id/bataltambahproduk"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Batal"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="36dp"/>
-                </LinearLayout>
+            <Button
+                android:id="@+id/TambahProdukBatal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/batal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:onClick="clickBatalTambahProduk"
+                app:layout_constraintTop_toBottomOf="@id/statusTambahProduk"
+                app:layout_constraintRight_toLeftOf="@+id/TambahProdukSimpan"
+                />
 
+        </android.support.constraint.ConstraintLayout>
 
-            </LinearLayout>
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

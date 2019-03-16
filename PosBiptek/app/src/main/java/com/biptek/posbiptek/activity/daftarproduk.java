@@ -49,6 +49,12 @@ public class daftarproduk extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadDataListView();
+    }
+
     private void loadDataListView(){
         crud.open();
         produks = crud.getAllProduk();
@@ -66,7 +72,11 @@ public class daftarproduk extends AppCompatActivity {
         listProduk.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent updateProduk = new Intent(daftarproduk.this, tambahproduk.class);
+                updateProduk.putExtra("mode", "update");
+                updateProduk.putExtra("kode_produk", produks.get(position).getKode_produk());
+                setResult(RESULT_OK, updateProduk);
+                startActivityForResult(updateProduk, 1);
             }
         });
     }
