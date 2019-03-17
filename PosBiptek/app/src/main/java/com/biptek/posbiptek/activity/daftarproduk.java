@@ -3,6 +3,7 @@ package com.biptek.posbiptek.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.adapter.ProdukAdapter;
+import com.biptek.posbiptek.fragment.FragmentDeleteConfirmation;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Produk;
 
@@ -78,6 +80,12 @@ public class daftarproduk extends AppCompatActivity {
         loadDataListView();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        loadDataListView();
+    }
+
     private void loadDataListView(){
         crud.open();
         produks = crud.getAllProduk();
@@ -85,12 +93,11 @@ public class daftarproduk extends AppCompatActivity {
 
         if(produks.isEmpty()){
             Toast.makeText(getApplicationContext(),"Data Kosong", Toast.LENGTH_SHORT).show();
-        }else {
-            ProdukAdapter produkAdapter = new ProdukAdapter(this, produks);
-            listProduk.setAdapter(produkAdapter);
-            produkAdapter.notifyDataSetChanged();
-
         }
+
+        ProdukAdapter produkAdapter = new ProdukAdapter(this, produks);
+        listProduk.setAdapter(produkAdapter);
+        produkAdapter.notifyDataSetChanged();
 
         listProduk.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -99,6 +106,19 @@ public class daftarproduk extends AppCompatActivity {
                 updateProduk.putExtra("mode", "update");
                 updateProduk.putExtra("kode_produk", produks.get(position).getKode_produk());
                 startActivity(updateProduk);
+            }
+        });
+
+        listProduk.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Fragment deleteConfirmation = new FragmentDeleteConfirmation();
+                Bundle bundle = new Bundle();
+                bundle.putString("KODEPRODUK", produks.get(position).getKode_produk());
+                bundle.putString("menu", "produk");
+                deleteConfirmation.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerProduk, deleteConfirmation).addToBackStack(null).commit();
+                return true;
             }
         });
     }

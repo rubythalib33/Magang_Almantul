@@ -3,6 +3,7 @@ package com.biptek.posbiptek.model;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -338,7 +339,7 @@ public class CRUD {
             "status_produk"
     };
 
-    public void addProduk(Produk produk){
+    public boolean addProduk(Produk produk){
         ContentValues contentValues = new ContentValues();
         contentValues.put("kode_produk", produk.getKode_produk());
         contentValues.put("jenis_produk", produk.getJenis_produk());
@@ -352,7 +353,12 @@ public class CRUD {
         contentValues.put("stok_produk", produk.getStok_produk());
         contentValues.put("stok_kritis_produk", produk.getStok_kritis_produk());
         contentValues.put("status_produk", produk.getStatus_produk());
-        database.insert("produk", null, contentValues);
+
+        boolean success = true;
+        if(database.insert("produk", null, contentValues) == -1)
+            success = false;
+
+        return success;
     }
 
     //mendapatkan 1 produk

@@ -6,9 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.model.CRUD;
@@ -51,9 +53,12 @@ public class tambahproduk extends AppCompatActivity {
             crud.open();
             Produk produk = crud.getProduk(getIntent().getStringExtra("kode_produk"));
             crud.close();
-            kodeProduk.setText(produk.getKode_produk());
+            kodeProduk.setText("Kode Produk : "+produk.getKode_produk());
+            kodeProduk.setEnabled(false);
+            Button barcodeScanner = findViewById(R.id.BarcodeTambahProduk);
+            barcodeScanner.setVisibility(View.INVISIBLE);
 
-            if (!produk.getJenis_produk().equals(jenisProduk.getSelectedItem().toString()))
+            if (!produk.getJenis_produk().equals(jenisProduk.getItemAtPosition(0).toString()))
                 jenisProduk.setSelection(1);
 
             kategoriProduk.setText(produk.getKategori_produk());
@@ -81,9 +86,7 @@ public class tambahproduk extends AppCompatActivity {
     }
 
     public void clickTambahProduk(View view){
-        CRUD crud = new CRUD(this);
-        crud.open();
-        crud.addProduk(new Produk(
+        Produk produk = new Produk(
                 kodeProduk.getText().toString(),
                 jenisProduk.getSelectedItem().toString(),
                 kategoriProduk.getText().toString(),
@@ -96,9 +99,20 @@ public class tambahproduk extends AppCompatActivity {
                 Integer.parseInt(stokProduk.getText().toString()),
                 Integer.parseInt(stokKritisProduk.getText().toString()),
                 statusProduk.getText().toString()
-        ));
+        );
+        CRUD crud = new CRUD(this);
+        crud.open();
+        if (getIntent().getStringExtra("mode").equals("update")) {
+            crud.updateProduk(produk);
+        }
+        else if (crud.addProduk(produk)) {
+            onBackPressed();
+        }
+        else {
+            Toast.makeText(this, "Kode Produk sudah digunakan sebelumnya !", Toast.LENGTH_LONG).show();
+        }
         crud.close();
-        onBackPressed();
+
     }
 
     public void clickBatalTambahProduk(View view){

@@ -75,4 +75,11 @@
         app:layout_constraintEnd_toStartOf="@+id/buttonCariProduk"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <FrameLayout
+        android:id="@+id/fragmentContainerProduk"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
 </android.support.constraint.ConstraintLayout>
