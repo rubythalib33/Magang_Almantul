@@ -43,11 +43,7 @@ public class tambahproduk extends AppCompatActivity {
                 R.layout.support_simple_spinner_dropdown_item,
                 new String[]{"barang", "jasa"});
         jenisProduk.setAdapter(listJenisProduk);
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
         if (getIntent().getStringExtra("mode").equals("update")) {
             CRUD crud = new CRUD(this);
             crud.open();
@@ -58,7 +54,7 @@ public class tambahproduk extends AppCompatActivity {
             Button barcodeScanner = findViewById(R.id.BarcodeTambahProduk);
             barcodeScanner.setVisibility(View.INVISIBLE);
 
-            if (!produk.getJenis_produk().equals(jenisProduk.getItemAtPosition(0).toString()))
+            if (!produk.getJenis_produk().equals(jenisProduk.getItemAtPosition(0)))
                 jenisProduk.setSelection(1);
 
             kategoriProduk.setText(produk.getKategori_produk());
@@ -104,15 +100,17 @@ public class tambahproduk extends AppCompatActivity {
         crud.open();
         if (getIntent().getStringExtra("mode").equals("update")) {
             crud.updateProduk(produk);
+            crud.close();
+            onBackPressed();
         }
         else if (crud.addProduk(produk)) {
+            crud.close();
             onBackPressed();
         }
         else {
             Toast.makeText(this, "Kode Produk sudah digunakan sebelumnya !", Toast.LENGTH_LONG).show();
+            crud.close();
         }
-        crud.close();
-
     }
 
     public void clickBatalTambahProduk(View view){

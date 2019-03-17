@@ -98,7 +98,7 @@ public class daftarproduk extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent updateProduk = new Intent(daftarproduk.this, tambahproduk.class);
                 updateProduk.putExtra("mode", "update");
-                updateProduk.putExtra("kode_produk", produks.get(position).getKode_produk());
+                updateProduk.putExtra("kode_produk", ((Produk) produkAdapter.getItem(position)).getKode_produk());
                 startActivity(updateProduk);
             }
         });

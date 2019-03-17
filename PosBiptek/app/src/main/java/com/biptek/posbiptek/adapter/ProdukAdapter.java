@@ -51,7 +51,7 @@ public class ProdukAdapter extends BaseAdapter implements Filterable {
         TextView stokProduk = convertView.findViewById(R.id.textView_stokProduk);
         TextView hargaProduk = convertView.findViewById(R.id.textView_hargaProduk);
 
-        Produk produk = produkArrayList.get(position);
+        Produk produk = filteredProduk.get(position);
 
         namaProduk.setText("Nama: "+produk.getNama_produk());
         stokProduk.setText("Stok: "+String.valueOf(produk.getStok_produk()));
