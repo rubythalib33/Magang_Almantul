@@ -16,7 +16,7 @@ import com.biptek.posbiptek.activity.tambahpembelian;
 import com.biptek.posbiptek.activity.tambahpenjualan;
 
 public class Fragment_Plus extends Fragment {
-    Button b1, b2, b3, b4;
+    Button b1, b2, b4;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -24,7 +24,6 @@ public class Fragment_Plus extends Fragment {
 
         b1 = (Button) view.findViewById(R.id.buttonpenjualan);
         b2 = (Button) view.findViewById(R.id.buttonpembelian);
-        b3 = (Button) view.findViewById(R.id.buttonhutang);
         b4 = (Button) view.findViewById(R.id.button15);
 
         b1.setOnClickListener(new View.OnClickListener() {
@@ -40,13 +39,6 @@ public class Fragment_Plus extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), tambahpembelian.class);
                 startActivity(intent);
-            }
-        });
-
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
 

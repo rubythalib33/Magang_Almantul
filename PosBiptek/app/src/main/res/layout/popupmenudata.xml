@@ -103,19 +103,14 @@
             android:text="X"
             android:textSize="18sp"
             android:textStyle="bold"
-            design:layout_constraintBottom_toTopOf="@+id/button13"
-            design:layout_constraintEnd_toEndOf="parent"
-            design:layout_constraintHorizontal_bias="1.0"
-            design:layout_constraintStart_toEndOf="@+id/textView6"
-            design:layout_constraintTop_toTopOf="parent"
-            design:layout_constraintVertical_bias="0.368" />
+            design:layout_constraintRight_toRightOf="parent"
+            design:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginEnd="35dp"
+            android:layout_marginEnd="10dp"
             android:text="Kontak"
             android:textColor="@android:color/black"
             android:textSize="14sp"
@@ -128,27 +123,17 @@
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="20dp"
             android:layout_marginEnd="32dp"
             android:text="Produk"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             android:textStyle="bold"
-            design:layout_constraintEnd_toStartOf="@+id/textView13"
+            design:layout_constraintEnd_toStartOf="@+id/textView15"
             design:layout_constraintHorizontal_bias="0.641"
             design:layout_constraintStart_toEndOf="@+id/textView11"
             design:layout_constraintTop_toBottomOf="@+id/button10" />
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pembayaran"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            design:layout_constraintEnd_toEndOf="parent"
-            design:layout_constraintTop_toBottomOf="@+id/button13" />
 
         <TextView
             android:id="@+id/textView14"
@@ -165,16 +150,15 @@
             android:id="@+id/textView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="205dp"
+            android:layout_marginStart="200dp"
             android:layout_marginEnd="19dp"
             android:layout_marginBottom="98dp"
             android:text="Hutang"
             android:textColor="@android:color/black"
             android:textStyle="bold"
-            design:layout_constraintBottom_toBottomOf="parent"
             design:layout_constraintEnd_toEndOf="parent"
             design:layout_constraintStart_toStartOf="parent"
-            design:layout_constraintTop_toBottomOf="@+id/textView13" />
+            design:layout_constraintTop_toBottomOf="@+id/button13" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
