@@ -8,21 +8,6 @@
     tools:context=".activity.daftarproduk">
 
     <Button
-        android:id="@+id/buttonCariProduk"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/loupe"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/ListProduk"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextSearchProduk"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.833" />
-
-    <Button
         android:id="@+id/buttontambahproduk"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -35,6 +20,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ListProduk" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:src="@drawable/loupe"
+        android:layout_marginTop="20dp"
+        app:layout_constraintRight_toLeftOf="@+id/editTextSearchProduk"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        />
 
     <ListView
         android:id="@+id/ListProduk"
@@ -67,13 +61,14 @@
         android:id="@+id/editTextSearchProduk"
         android:layout_width="wrap_content"
         android:layout_height="42dp"
-        android:layout_marginStart="16dp"
-        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:ems="12"
         android:hint="Cari Produk ...."
         android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttonCariProduk"
-        app:layout_constraintEnd_toStartOf="@+id/buttonCariProduk"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
     <FrameLayout
         android:id="@+id/fragmentContainerProduk"

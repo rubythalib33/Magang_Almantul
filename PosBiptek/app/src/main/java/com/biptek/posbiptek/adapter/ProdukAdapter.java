@@ -17,20 +17,24 @@ import java.util.ArrayList;
 public class ProdukAdapter extends BaseAdapter implements Filterable {
     private Context context;
     private ArrayList<Produk> produkArrayList;
+    private ArrayList<Produk> filteredProduk;
+    private ItemFilter itemFilter;
 
     public ProdukAdapter(Context context, ArrayList<Produk> produkArrayList){
         this.context = context;
         this.produkArrayList = produkArrayList;
+        this.filteredProduk = produkArrayList;
+        this.itemFilter = new ItemFilter();
     }
 
     @Override
     public int getCount() {
-        return this.produkArrayList.size();
+        return this.filteredProduk.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return this.produkArrayList.get(position);
+        return this.filteredProduk.get(position);
     }
 
     @Override
@@ -58,7 +62,33 @@ public class ProdukAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public Filter getFilter() {
-        return null;
+        return itemFilter;
 
+    }
+
+    private class ItemFilter extends Filter{
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            String filterString = constraint.toString().toLowerCase();
+            FilterResults results = new FilterResults();
+            ArrayList<Produk> nList = new ArrayList<>();
+            for(int i=0; i<produkArrayList.size(); i++){
+                Produk filterableProduk = produkArrayList.get(i);
+                if(filterableProduk.getNama_produk().toLowerCase().contains(filterString))
+                    nList.add(filterableProduk);
+            }
+
+            results.values = nList;
+            results.count = nList.size();
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            filteredProduk = (ArrayList<Produk>) results.values;
+            notifyDataSetChanged();
+        }
     }
 }

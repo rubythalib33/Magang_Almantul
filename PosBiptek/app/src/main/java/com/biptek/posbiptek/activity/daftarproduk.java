@@ -9,7 +9,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -26,24 +25,36 @@ import java.util.ArrayList;
 public class daftarproduk extends AppCompatActivity {
     private ListView listProduk;
     private ArrayList<Produk> produks;
+    private ProdukAdapter produkAdapter;
     private CRUD crud;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.daftarproduk);
 
-        Button cari = findViewById(R.id.buttonCariProduk);
-        final Button tambah = findViewById(R.id.buttontambahproduk);
+        Button tambah = findViewById(R.id.buttontambahproduk);
         listProduk = findViewById(R.id.ListProduk);
-        EditText editTextSearchProduk = (EditText) findViewById(R.id.editTextSearchProduk);
+        EditText editTextSearchProduk = findViewById(R.id.editTextSearchProduk);
         crud = new CRUD(this);
         produks = new ArrayList<>();
         loadDataListView();
 
-        cari.setOnClickListener(new View.OnClickListener() {
+        editTextSearchProduk.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                produkAdapter.getFilter().filter(s.toString());
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                System.out.println("Text ["+s+"]");
+                produkAdapter.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                produkAdapter.getFilter().filter(s.toString());
             }
         });
 
@@ -53,23 +64,6 @@ public class daftarproduk extends AppCompatActivity {
                 Intent addProduk = new Intent(daftarproduk.this, tambahproduk.class);
                 addProduk.putExtra("mode", "add");
                 startActivity(addProduk);
-            }
-        });
-
-        editTextSearchProduk.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
             }
         });
     }
@@ -95,7 +89,7 @@ public class daftarproduk extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Data Kosong", Toast.LENGTH_SHORT).show();
         }
 
-        ProdukAdapter produkAdapter = new ProdukAdapter(this, produks);
+        produkAdapter = new ProdukAdapter(this, produks);
         listProduk.setAdapter(produkAdapter);
         produkAdapter.notifyDataSetChanged();
 
