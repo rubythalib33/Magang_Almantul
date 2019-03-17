@@ -83,7 +83,7 @@ public class tambahproduk extends AppCompatActivity {
 
     public void clickTambahProduk(View view){
         Produk produk = new Produk(
-                kodeProduk.getText().toString(),
+                getIntent().getStringExtra("kode_produk"),
                 jenisProduk.getSelectedItem().toString(),
                 kategoriProduk.getText().toString(),
                 namaProduk.getText().toString(),
