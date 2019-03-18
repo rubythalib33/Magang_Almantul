@@ -5,87 +5,146 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="250dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="24dp"
-        android:ems="10"
-        android:hint="Pilih Produk"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editText9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editText9"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="Jumlah"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
-
-    <EditText
-        android:id="@+id/editText10"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="Diskon"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText9" />
-
-    <Button
-        android:id="@+id/buttonsimpanpenjualan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginEnd="43dp"
-        android:text="@string/simpan"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttonbatalpenjualan"
-        app:layout_constraintEnd_toStartOf="@+id/buttonbatalpenjualan"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonbatalpenjualan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="248dp"
-        android:text="Batal"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText10"
-        app:layout_constraintVertical_bias="0.182" />
-
-    <Button
-        android:id="@+id/BarcodePenjualan"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="38dp"
-        android:background="@drawable/barcode"
-        app:layout_constraintBottom_toTopOf="@+id/editText9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.42"
-        app:layout_constraintStart_toEndOf="@+id/editText5"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintVertical_bias="1.0">
 
-    <FrameLayout
-        android:id="@+id/scanBarcode"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewTambahPenjualan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="139dp"
+                android:layout_marginTop="31dp"
+                android:layout_marginEnd="139dp"
+                android:text="Tambah Produk"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/itemsPenjualan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Items"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTambahPenjualan"
+                app:layout_constraintLeft_toLeftOf="parent"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nilai"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTambahPenjualan"
+                />
+
+            <ListView
+                android:id="@+id/listProdukTerjual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/itemsPenjualan"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+
+            </ListView>
+
+            <Button
+                android:id="@+id/buttonPilihProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="Pilih Produk"
+                android:textSize="18sp"
+                android:onClick="clickPilihProdukPenjualan"
+                app:layout_constraintTop_toBottomOf="@+id/listProdukTerjual"
+                app:layout_constraintRight_toLeftOf="@+id/BarcodePenjualan"
+                />
+
+            <Button
+                android:id="@+id/BarcodePenjualan"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="8dp"
+                android:onClick="clickBarcodePenjualan"
+                android:background="@drawable/barcode"
+                app:layout_constraintTop_toBottomOf="@+id/listProdukTerjual"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/totalHargaPenjualan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="10dp"
+                android:text="Total Harga: Rp "
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@+id/buttonPilihProduk"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+
+            <Button
+                android:id="@+id/buttonBatalPenjualan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/batal"
+                android:onClick="clickBatalPenjualan"
+                app:layout_constraintTop_toBottomOf="@+id/totalHargaPenjualan"
+                app:layout_constraintEnd_toStartOf="@+id/buttonSimpanPenjualan"
+                />
+
+            <Button
+                android:id="@+id/buttonSimpanPenjualan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/simpan"
+                android:onClick="clickSimpanPenjualan"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/totalHargaPenjualan"
+                app:layout_constraintVertical_bias="0.182" />
+
+            <FrameLayout
+                android:id="@+id/popUpSearchProdukPenjualan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
