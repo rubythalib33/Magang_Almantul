@@ -757,7 +757,6 @@ public class CRUD {
     private static final String[] allColumnsTransaksiPenjualan = {
             "kode_penjualan",
             "username_pegawai_penjualan",
-            "nama_customer",
             "tanggal_transaksi_penjualan"
     };
 
@@ -773,7 +772,6 @@ public class CRUD {
         //untuk table transaksi_penjualan
         ContentValues contentValues = new ContentValues();
         contentValues.put("username_pegawai_penjualan", transaksiPenjualan.getUsername_pegawai_penjualan());
-        contentValues.put("nama_customer", transaksiPenjualan.getNama_customer());
         contentValues.put("tanggal_transaksi_penjualan", transaksiPenjualan.getTanggal_transaksi_penjualan());
         long inserid = database.insert("transaksi_penjualan", null, contentValues);
 
@@ -806,8 +804,7 @@ public class CRUD {
 
         TransaksiPenjualan transaksiPenjualan = new TransaksiPenjualan(cursor.getLong(0),
                 cursor.getString(1),
-                cursor.getString(2),
-                cursor.getString(3));
+                cursor.getString(2));
 
         return transaksiPenjualan;
     }
@@ -853,7 +850,6 @@ public class CRUD {
                 TransaksiPenjualan transaksiPenjualan = new TransaksiPenjualan();
                 transaksiPenjualan.setKode_penjualan(cursor.getLong(cursor.getColumnIndex("kode_penjualan")));
                 transaksiPenjualan.setUsername_pegawai_penjualan(cursor.getString(cursor.getColumnIndex("username_pegawai_penjualan")));
-                transaksiPenjualan.setNama_customer(cursor.getString(cursor.getColumnIndex("nama_customer")));
                 transaksiPenjualan.setTanggal_transaksi_penjualan(cursor.getString(cursor.getColumnIndex("tanggal_transaksi_penjualan")));
                 transaksiPenjualans.add(transaksiPenjualan);
             }
@@ -867,7 +863,6 @@ public class CRUD {
         //update di table transaksi_penjualan
         ContentValues contentValues = new ContentValues();
         contentValues.put("username_pegawai_penjualan", transaksiPenjualan.getUsername_pegawai_penjualan());
-        contentValues.put("nama_customer", transaksiPenjualan.getNama_customer());
         contentValues.put("tanggal_transaksi_penjualan", transaksiPenjualan.getTanggal_transaksi_penjualan());
         database.update("transaksi_penjualan", contentValues, "kode_penjualan=?", new String[]{String.valueOf(transaksiPenjualan.getKode_penjualan())});
 
