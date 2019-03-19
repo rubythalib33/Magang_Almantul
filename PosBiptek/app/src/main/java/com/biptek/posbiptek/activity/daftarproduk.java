@@ -108,7 +108,7 @@ public class daftarproduk extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Fragment deleteConfirmation = new FragmentDeleteConfirmation();
                 Bundle bundle = new Bundle();
-                bundle.putString("KODEPRODUK", produks.get(position).getKode_produk());
+                bundle.putString("KODEPRODUK", ((Produk) produkAdapter.getItem(position)).getKode_produk());
                 bundle.putString("menu", "produk");
                 deleteConfirmation.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerProduk, deleteConfirmation).addToBackStack(null).commit();

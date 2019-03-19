@@ -29,29 +29,5 @@ public class laporanpenjualan extends AppCompatActivity {
 
         listpenjualan = (ListView)findViewById(R.id.listviewLaporanPenjualan);
 
-        loaddatalistview();
-    }
-
-    private void loaddatalistview() {
-        crud.open();
-        transaksiPenjualans = crud.getAllTransaksiPenjualan();
-        crud.close();
-
-        if(transaksiPenjualans.isEmpty()){
-            Toast.makeText(getApplicationContext(),"Data Kosong", Toast.LENGTH_SHORT).show();
-        }else {
-            PenjualanAdapter penjualanAdapter = new PenjualanAdapter(this, transaksiPenjualans);
-            listpenjualan.setAdapter(penjualanAdapter);
-            penjualanAdapter.notifyDataSetChanged();
-
-        }
-
-        listpenjualan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-
     }
 }

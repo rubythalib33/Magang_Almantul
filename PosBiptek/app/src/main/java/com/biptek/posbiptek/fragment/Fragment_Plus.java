@@ -13,7 +13,7 @@ import android.widget.Button;
 
 import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.activity.tambahpembelian;
-import com.biptek.posbiptek.activity.tambahpenjualan;
+import com.biptek.posbiptek.activity.TambahPenjualan;
 
 public class Fragment_Plus extends Fragment {
     Button b1, b2, b4;
@@ -29,7 +29,7 @@ public class Fragment_Plus extends Fragment {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                   Intent intent = new Intent(getActivity(), tambahpenjualan.class);
+                   Intent intent = new Intent(getActivity(), TambahPenjualan.class);
                    startActivity(intent);
             }
         });

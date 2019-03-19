@@ -6,22 +6,24 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.biptek.posbiptek.R;
-import com.biptek.posbiptek.adapter.ProdukAdapter;
+import com.biptek.posbiptek.adapter.PenjualanAdapter;
 import com.biptek.posbiptek.fragment.FragmentPenjualan;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Produk;
 
 import java.util.ArrayList;
 
-public class tambahpenjualan extends AppCompatActivity {
+public class TambahPenjualan extends AppCompatActivity {
     private ArrayList<Produk> items;
     private ListView listItems;
     private TextView totalHarga;
     private CRUD crud;
+    private PenjualanAdapter penjualanAdapter;
 
 
     @Override
@@ -53,12 +55,24 @@ public class tambahpenjualan extends AppCompatActivity {
         loadDataListView();
     }
 
-    public void loadDataListView(){
-        ProdukAdapter produkAdapter = new ProdukAdapter(this, items);
-        listItems.setAdapter(produkAdapter);
+    private void loadDataListView(){
+        penjualanAdapter = new PenjualanAdapter(this, items);
+        listItems.setAdapter(penjualanAdapter);
+
+        listItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                items.remove(position);
+                return true;
+            }
+        });
     }
 
-    public void getKodeProduk(String kodeProduk){
+    private void totalBiaya(){
+
+    }
+
+    public void addKodeProduk(String kodeProduk){
         crud.open();
         items.add(crud.getProduk(kodeProduk));
         crud.close();
@@ -78,6 +92,6 @@ public class tambahpenjualan extends AppCompatActivity {
     }
 
     public void clickBarcodePenjualan(View view){
-        startActivityForResult(new Intent(tambahpenjualan.this, BarcodeScanner.class), 1);
+        startActivityForResult(new Intent(TambahPenjualan.this, BarcodeScanner.class), 1);
     }
 }

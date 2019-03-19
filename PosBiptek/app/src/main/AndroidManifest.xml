@@ -31,7 +31,7 @@
         <activity android:name=".activity.More_admin" />
         <activity android:name=".activity.tambahpembelian" />
         <activity android:name=".activity.pilihprodukpembelian" />
-        <activity android:name=".activity.tambahpenjualan" />
+        <activity android:name=".activity.TambahPenjualan" />
         <activity android:name=".activity.daftarhutang" />
         <activity android:name=".activity.daftarkontak" />
         <activity android:name=".activity.daftarproduk" />

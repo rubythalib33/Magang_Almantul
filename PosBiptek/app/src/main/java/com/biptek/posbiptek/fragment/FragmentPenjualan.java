@@ -15,26 +15,25 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
+import com.biptek.posbiptek.activity.TambahPenjualan;
 import com.biptek.posbiptek.adapter.ProdukAdapter;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Produk;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class FragmentPenjualan extends Fragment {
-    private View view;
     private ListView listProduk;
-    private ArrayList<Produk> produkArrayList;
     private ProdukAdapter produkAdapter;
-    private EditText searchProduk;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_penjualan, container,false);
+        View view = inflater.inflate(R.layout.fragment_penjualan, container, false);
 
         listProduk = view.findViewById(R.id.listProdukPenjualan);
-        searchProduk = view.findViewById(R.id.popUpSearchProdukPenjualan);
+        EditText searchProduk = view.findViewById(R.id.searchProdukPenjualan);
         loadDataListView();
 
         searchProduk.addTextChangedListener(new TextWatcher() {
@@ -60,7 +59,8 @@ public class FragmentPenjualan extends Fragment {
 
     private void loadDataListView(){
         CRUD crud = new CRUD(getContext());
-        produkArrayList = crud.getAllProduk();
+        crud.open();
+        ArrayList<Produk> produkArrayList = crud.getAllProduk();
         crud.close();
 
         if(produkArrayList.isEmpty())
@@ -73,7 +73,9 @@ public class FragmentPenjualan extends Fragment {
         listProduk.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                TambahPenjualan tambahPenjualan = (TambahPenjualan) getActivity();
+                tambahPenjualan.addKodeProduk(((Produk)produkAdapter.getItem(position)).getKode_produk());
+                Objects.requireNonNull(getActivity()).onBackPressed();
             }
         });
     }
