@@ -44,14 +44,13 @@
     <EditText
         android:id="@+id/penjualanJumlah"
         android:layout_width="wrap_content"
-        android:layout_height="23dp"
+        android:layout_height="wrap_content"
         android:inputType="number"
         android:layout_marginTop="5dp"
-        android:ems="2"
-        android:textColor="@android:color/black"
+        android:ems="3"
         android:layout_marginStart="5dp"
         app:layout_constraintLeft_toRightOf="@+id/penjualanJumlahProduk"
-        app:layout_constraintTop_toBottomOf="@+id/penjualanHargaProduk"
+        app:layout_constraintTop_toBottomOf="@+id/penjualanNamaProduk"
         />
 
     <TextView

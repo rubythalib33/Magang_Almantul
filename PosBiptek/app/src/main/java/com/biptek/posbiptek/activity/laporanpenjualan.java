@@ -3,15 +3,9 @@ package com.biptek.posbiptek.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
-import com.biptek.posbiptek.adapter.LaporanPembelianAdapter;
-import com.biptek.posbiptek.adapter.PenjualanAdapter;
-import com.biptek.posbiptek.adapter.ProdukAdapter;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.TransaksiPenjualan;
 
