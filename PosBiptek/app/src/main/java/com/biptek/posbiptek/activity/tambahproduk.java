@@ -83,7 +83,7 @@ public class tambahproduk extends AppCompatActivity {
 
     public void clickTambahProduk(View view){
         Produk produk = new Produk(
-                getIntent().getStringExtra("kode_produk"),
+                kodeProduk.getText().toString(),
                 jenisProduk.getSelectedItem().toString(),
                 kategoriProduk.getText().toString(),
                 namaProduk.getText().toString(),
@@ -99,6 +99,7 @@ public class tambahproduk extends AppCompatActivity {
         CRUD crud = new CRUD(this);
         crud.open();
         if (getIntent().getStringExtra("mode").equals("update")) {
+            produk.setKode_produk(getIntent().getStringExtra("kode_produk"));
             crud.updateProduk(produk);
             crud.close();
             onBackPressed();

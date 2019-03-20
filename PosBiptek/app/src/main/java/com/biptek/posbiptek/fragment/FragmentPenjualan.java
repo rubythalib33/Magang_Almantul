@@ -1,5 +1,6 @@
 package com.biptek.posbiptek.fragment;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -57,6 +58,15 @@ public class FragmentPenjualan extends Fragment {
         return view;
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO) {
+        } else if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_YES) {
+        }
+    }
+
     private void loadDataListView(){
         CRUD crud = new CRUD(getContext());
         crud.open();
@@ -67,14 +77,19 @@ public class FragmentPenjualan extends Fragment {
             Toast.makeText(getContext(), "Data Kosong !", Toast.LENGTH_SHORT).show();
 
         produkAdapter = new ProdukAdapter(getContext(), produkArrayList);
+        for(int filter : getArguments().getIntegerArrayList("produkFilter")){
+            produkArrayList.remove(filter);
+        }
         listProduk.setAdapter(produkAdapter);
         produkAdapter.notifyDataSetChanged();
+
 
         listProduk.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TambahPenjualan tambahPenjualan = (TambahPenjualan) getActivity();
-                tambahPenjualan.addKodeProduk(((Produk)produkAdapter.getItem(position)).getKode_produk());
+                tambahPenjualan.addItemBeli(((Produk)produkAdapter.getItem(position)).getKode_produk());
+                tambahPenjualan.addIndexKodeProduk(position);
                 Objects.requireNonNull(getActivity()).onBackPressed();
             }
         });

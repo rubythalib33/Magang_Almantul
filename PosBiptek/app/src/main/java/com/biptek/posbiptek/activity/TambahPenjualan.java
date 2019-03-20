@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,10 +21,10 @@ import java.util.ArrayList;
 
 public class TambahPenjualan extends AppCompatActivity {
     private ArrayList<Produk> items;
+    private ArrayList<Integer> produkFilter;
     private ListView listItems;
     private TextView totalHarga;
     private CRUD crud;
-    private PenjualanAdapter penjualanAdapter;
 
 
     @Override
@@ -37,6 +36,7 @@ public class TambahPenjualan extends AppCompatActivity {
         totalHarga = findViewById(R.id.totalHargaPenjualan);
         crud = new CRUD(this);
         items = new ArrayList<>();
+        produkFilter = new ArrayList<>();
         loadDataListView();
         updateViewHeight();
     }
@@ -82,31 +82,37 @@ public class TambahPenjualan extends AppCompatActivity {
         listItems.setLayoutParams(params);
     }
 
-    private void loadDataListView(){
-        penjualanAdapter = new PenjualanAdapter(this, items);
+    public void totalBiaya(int subTotal, boolean increase){
+        if(increase)
+            totalHarga.setText(String.valueOf(Integer.parseInt(totalHarga.getText().toString())+subTotal));
+        else
+            totalHarga.setText(String.valueOf(Integer.parseInt(totalHarga.getText().toString())-subTotal));
+    }
+
+    public void loadDataListView(){
+        PenjualanAdapter penjualanAdapter = new PenjualanAdapter(this, items);
         listItems.setAdapter(penjualanAdapter);
-
-        listItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                items.remove(position);
-                return true;
-            }
-        });
     }
 
-    private void totalBiaya(){
-
-    }
-
-    public void addKodeProduk(String kodeProduk){
+    public void addItemBeli(String kodeProduk){
         crud.open();
         items.add(crud.getProduk(kodeProduk));
         crud.close();
     }
 
+    public void addIndexKodeProduk(int position){
+        produkFilter.add(position);
+    }
+
+    public void removeIndexKodeProduk(int position){
+        produkFilter.remove(position);
+    }
+
     public void clickPilihProdukPenjualan(View view){
         Fragment pilihProduk = new FragmentPenjualan();
+        Bundle bundle = new Bundle();
+        bundle.putIntegerArrayList("produkFilter", produkFilter);
+        pilihProduk.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.popUpSearchProdukPenjualan, pilihProduk).addToBackStack(null).commit();
     }
 
