@@ -1,13 +1,23 @@
 package com.biptek.posbiptek.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,10 +26,19 @@ import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Produk;
 
+import java.io.ByteArrayOutputStream;
+
+import me.drakeet.materialdialog.MaterialDialog;
+
 public class tambahproduk extends AppCompatActivity {
     EditText kodeProduk, kategoriProduk, namaProduk, deskripsiProduk, hargaJual,
-             hargaBeli, satuanProduk, gambarProduk, stokProduk, stokKritisProduk, statusProduk;
+             hargaBeli, satuanProduk, stokProduk, stokKritisProduk, statusProduk;
     Spinner jenisProduk;
+    Button btnGambarProduk;
+    ImageView imgGambar;
+    private final int kodeKamera = 101;
+    private final int kodeGallery = 102;
+    Uri imageUri;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,10 +53,20 @@ public class tambahproduk extends AppCompatActivity {
         hargaJual = findViewById(R.id.hargaJualTambahProduk);
         hargaBeli = findViewById(R.id.hargaBeliTambahProduk);
         satuanProduk = findViewById(R.id.satuanTambahProduk);
-        gambarProduk = findViewById(R.id.gambarTambahProduk);
         stokProduk = findViewById(R.id.StokTambahProduk);
         stokKritisProduk = findViewById(R.id.StokKritisTambahProduk);
         statusProduk = findViewById(R.id.statusTambahProduk);
+        btnGambarProduk = findViewById(R.id.gambarTambahProduk);
+        imgGambar = findViewById(R.id.imageViewGambar);
+
+        btnGambarProduk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listDialogue();
+            }
+        });
+
+
 
         ArrayAdapter<String> listJenisProduk = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item,
@@ -51,6 +80,10 @@ public class tambahproduk extends AppCompatActivity {
             crud.close();
             kodeProduk.setText("Kode Produk : "+produk.getKode_produk());
             kodeProduk.setEnabled(false);
+
+            byte[] pic = produk.getGambar_produk();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(pic, 0, pic.length);
+
             Button barcodeScanner = findViewById(R.id.BarcodeTambahProduk);
             barcodeScanner.setVisibility(View.INVISIBLE);
 
@@ -63,11 +96,11 @@ public class tambahproduk extends AppCompatActivity {
             hargaJual.setText(String.valueOf(produk.getHarga_jual_produk()));
             hargaBeli.setText(String.valueOf(produk.getHarga_beli_produk()));
             satuanProduk.setText(produk.getSatuan_produk());
-            gambarProduk.setText(produk.getGambar_produk());
+            imgGambar.setImageBitmap(null);
             stokProduk.setText(String.valueOf(produk.getStok_produk()));
             stokKritisProduk.setText(String.valueOf(produk.getStok_kritis_produk()));
             statusProduk.setText(produk.getStatus_produk());
-
+            imgGambar.setImageBitmap(bitmap);
             TextView updateProduk = findViewById(R.id.textViewTambahProduk);
             updateProduk.setText("Update Produk");
 
@@ -77,11 +110,22 @@ public class tambahproduk extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == kodeGallery && resultCode == RESULT_OK){
+            imageUri = data.getData();
+            imgGambar.setImageURI(imageUri);
+        }else if(requestCode == kodeKamera && resultCode == RESULT_OK){
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            imgGambar.setImageBitmap(bitmap);
+        }
         if(resultCode == RESULT_OK)
             kodeProduk.setText(data.getStringExtra("barcodeResult"));
     }
 
     public void clickTambahProduk(View view){
+        Bitmap bmp = ((BitmapDrawable)imgGambar.getDrawable()).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG,0, baos);
+        byte[] imgInByte = baos.toByteArray();
         Produk produk = new Produk(
                 kodeProduk.getText().toString(),
                 jenisProduk.getSelectedItem().toString(),
@@ -91,7 +135,7 @@ public class tambahproduk extends AppCompatActivity {
                 Integer.parseInt(hargaJual.getText().toString()),
                 Integer.parseInt(hargaBeli.getText().toString()),
                 satuanProduk.getText().toString(),
-                gambarProduk.getText().toString(),
+                imgInByte,
                 Integer.parseInt(stokProduk.getText().toString()),
                 Integer.parseInt(stokKritisProduk.getText().toString()),
                 statusProduk.getText().toString()
@@ -121,4 +165,48 @@ public class tambahproduk extends AppCompatActivity {
     public void clickBarcodeTambahProduk(View view){
         startActivityForResult(new Intent(tambahproduk.this, BarcodeScanner.class), 1);
     }
+
+    public void listDialogue(){
+        final ArrayAdapter<String> arrayAdapter
+                = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+
+        arrayAdapter.add("Take Photo");
+        arrayAdapter.add("Select Gallery");
+
+        ListView listView = new ListView(this);
+        listView.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        float scale = getResources().getDisplayMetrics().density;
+        int dpAsPixels = (int) (8 * scale + 0.5f);
+        listView.setPadding(0, dpAsPixels, 0, dpAsPixels);
+        listView.setDividerHeight(0);
+        listView.setAdapter(arrayAdapter);
+
+        final MaterialDialog alert = new MaterialDialog(this).setContentView(listView);
+
+        alert.setPositiveButton("Cancel", new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                alert.dismiss();
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0){
+
+                    alert.dismiss();
+                    Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intentCamera, kodeKamera);
+
+                }else {
+                    alert.dismiss();
+                    Intent intentGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intentGallery, kodeGallery);
+                }
+            }
+        });
+        alert.show();
+    }
+
 }

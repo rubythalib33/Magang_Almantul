@@ -9,12 +9,12 @@ public class Produk {
     private int harga_jual_produk;
     private int harga_beli_produk;
     private String satuan_produk;
-    private String gambar_produk;
+    private byte[] gambar_produk;
     private int stok_produk;
     private int stok_kritis_produk;
     private String status_produk;
 
-    public Produk(String kode_produk, String jenis_produk, String kategori_produk, String nama_produk, String deskripsi_produk, int harga_jual_produk, int harga_beli_produk, String satuan_produk, String gambar_produk, int stok_produk, int stok_kritis_produk, String status_produk) {
+    public Produk(String kode_produk, String jenis_produk, String kategori_produk, String nama_produk, String deskripsi_produk, int harga_jual_produk, int harga_beli_produk, String satuan_produk, byte[] gambar_produk, int stok_produk, int stok_kritis_produk, String status_produk) {
         this.kode_produk = kode_produk;
         this.jenis_produk = jenis_produk;
         this.kategori_produk = kategori_produk;
@@ -97,11 +97,11 @@ public class Produk {
         this.satuan_produk = satuan_produk;
     }
 
-    public String getGambar_produk() {
+    public byte[] getGambar_produk() {
         return gambar_produk;
     }
 
-    public void setGambar_produk(String gambar_produk) {
+    public void setGambar_produk(byte[] gambar_produk) {
         this.gambar_produk = gambar_produk;
     }
 

@@ -382,7 +382,7 @@ public class CRUD {
                 cursor.getInt(5),
                 cursor.getInt(6),
                 cursor.getString(7),
-                cursor.getString(8),
+                cursor.getBlob(8),
                 cursor.getInt(9),
                 cursor.getInt(10),
                 cursor.getString(11));
@@ -413,7 +413,7 @@ public class CRUD {
                 produk.setHarga_jual_produk(cursor.getInt(cursor.getColumnIndex("harga_jual_produk")));
                 produk.setHarga_beli_produk(cursor.getInt(cursor.getColumnIndex("harga_beli_produk")));
                 produk.setSatuan_produk(cursor.getString(cursor.getColumnIndex("satuan_produk")));
-                produk.setGambar_produk(cursor.getString(cursor.getColumnIndex("gambar_produk")));
+                produk.setGambar_produk(cursor.getBlob(cursor.getColumnIndex("gambar_produk")));
                 produk.setStok_produk(cursor.getInt(cursor.getColumnIndex("stok_produk")));
                 produk.setStok_kritis_produk(cursor.getInt(cursor.getColumnIndex("stok_kritis_produk")));
                 produk.setStatus_produk(cursor.getString(cursor.getColumnIndex("status_produk")));

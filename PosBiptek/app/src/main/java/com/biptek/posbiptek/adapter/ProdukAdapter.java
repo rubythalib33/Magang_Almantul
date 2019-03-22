@@ -1,12 +1,16 @@
 package com.biptek.posbiptek.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.biptek.posbiptek.R;
@@ -50,8 +54,15 @@ public class ProdukAdapter extends BaseAdapter implements Filterable {
         TextView namaProduk = convertView.findViewById(R.id.textView_namaProduk);
         TextView stokProduk = convertView.findViewById(R.id.textView_stokProduk);
         TextView hargaProduk = convertView.findViewById(R.id.textView_hargaProduk);
+        ImageView gambarProduk = convertView.findViewById(R.id.imageView_gambarProduk);
 
         Produk produk = filteredProduk.get(position);
+
+
+        byte[] pic = produk.getGambar_produk();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(pic, 0, pic.length);
+        gambarProduk.setImageBitmap(bitmap);
+
 
         namaProduk.setText("Nama: "+produk.getNama_produk());
         stokProduk.setText("Stok: "+String.valueOf(produk.getStok_produk()));

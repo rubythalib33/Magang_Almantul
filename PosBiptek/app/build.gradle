@@ -31,4 +31,7 @@ dependencies {
     implementation 'com.weiwangcn.betterspinner:library-material:1.1.0'
     implementation 'org.jetbrains:annotations-java5:15.0'
     implementation 'me.dm7.barcodescanner:zxing:1.9'
+
+    compile 'me.drakeet.materialdialog:library:1.3.1'
+
 }
