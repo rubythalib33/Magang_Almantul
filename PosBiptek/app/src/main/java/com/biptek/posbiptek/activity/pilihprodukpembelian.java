@@ -7,13 +7,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
+import com.biptek.posbiptek.model.CRUD;
+import com.biptek.posbiptek.model.Produk;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 public class pilihprodukpembelian extends AppCompatActivity {
     Button bSimpanPilihan, bBatalPilih;
+    EditText namaProduk;
     String[] satuanProduk = {};
     String [] kategoriProduk = {};
     String [] jenisProduk = {};
@@ -22,6 +26,8 @@ public class pilihprodukpembelian extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plihprodukpembelian);
+
+
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, satuanProduk);
@@ -45,13 +51,14 @@ public class pilihprodukpembelian extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"Data Berhasil di Tambahkan", Toast.LENGTH_SHORT).show();
+                onBackPressed();
             }
         });
 
         bBatalPilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(pilihprodukpembelian.this, tambahpembelian.class));
+                onBackPressed();
             }
         });
     }
