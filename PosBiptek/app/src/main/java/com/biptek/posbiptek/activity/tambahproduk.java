@@ -122,10 +122,57 @@ public class tambahproduk extends AppCompatActivity {
     }
 
     public void clickTambahProduk(View view){
+        //form validation
+        if(kodeProduk.getText().toString().equals("")){
+            kodeProduk.setError("Tidak boleh kosong !");
+            return;
+        }
+        if(kategoriProduk.getText().toString().equals("")){
+            kategoriProduk.setError("Tidak boleh kosong !");
+            return;
+        }
+        if(namaProduk.getText().toString().equals("")){
+            namaProduk.setError("Tidak boleh kosong !");
+            return;
+        }
+        if(deskripsiProduk.getText().toString().equals("")){
+            deskripsiProduk.setError("Tidak boleh kosong !");
+            return;
+        }
+        if(hargaJual.getText().toString().equals("")){
+            hargaJual.setError("Tidak boleh kosong !");
+            return;
+        }
+        if(hargaBeli.getText().toString().equals("")){
+            hargaBeli.setError("Tidak boleh kosong !");
+            return;
+        }
+        if(satuanProduk.getText().toString().equals("")){
+            satuanProduk.setError("Tidak boleh kosong !");
+            return;
+        }
+        if(stokProduk.getText().toString().equals("")){
+            stokProduk.setError("Tidak boleh kosong !");
+            return;
+        }
+        if(stokKritisProduk.getText().toString().equals("")){
+            stokKritisProduk.setError("Tidak boleh kosong !");
+            return;
+        }
+        if(statusProduk.getText().toString().equals("")){
+            statusProduk.setError("Tidak boleh kosong !");
+            return;
+        }
+        if(imgGambar.getDrawable() == null){
+            Toast.makeText(this,"Anda belum memilih gambar produk !", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Bitmap bmp = ((BitmapDrawable)imgGambar.getDrawable()).getBitmap();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.PNG,0, baos);
         byte[] imgInByte = baos.toByteArray();
+
         Produk produk = new Produk(
                 kodeProduk.getText().toString(),
                 jenisProduk.getSelectedItem().toString(),

@@ -108,12 +108,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
                 android:inputType="textPersonName"
                 android:textSize="16sp"
                 android:ems="12"
-                app:layout_constraintLeft_toRightOf="@id/textViewkategoriTambahProduk"
-                app:layout_constraintTop_toBottomOf="@+id/jenisTambahProduk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewkategoriTambahProduk"
                 />
 
             <TextView
@@ -133,12 +132,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
                 android:inputType="textPersonName"
                 android:textSize="16sp"
                 android:ems="12"
-                app:layout_constraintLeft_toRightOf="@+id/textViewNamaTambahProduk"
-                app:layout_constraintTop_toBottomOf="@+id/kategoriTambahProduk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNamaTambahProduk"
                 />
 
             <TextView
@@ -158,12 +156,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
                 android:inputType="textPersonName"
                 android:textSize="16sp"
                 android:ems="12"
-                app:layout_constraintLeft_toRightOf="@+id/textViewDeskripsiTambahProduk"
-                app:layout_constraintTop_toBottomOf="@+id/namaTambahProduk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDeskripsiTambahProduk"
                 />
 
 
@@ -184,12 +181,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
                 android:inputType="number"
                 android:textSize="16sp"
                 android:ems="12"
-                app:layout_constraintLeft_toRightOf="@+id/textViewHargaTambahProduk"
-                app:layout_constraintTop_toBottomOf="@+id/deskripsiTambahProduk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewHargaTambahProduk"
                 />
 
             <TextView
@@ -209,12 +205,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
                 android:inputType="number"
                 android:textSize="16sp"
                 android:ems="12"
-                app:layout_constraintLeft_toRightOf="@+id/textViewHargaBeliTambahProduk"
-                app:layout_constraintTop_toBottomOf="@+id/hargaJualTambahProduk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewHargaBeliTambahProduk"
                 />
 
             <TextView
@@ -232,15 +227,13 @@
             <EditText
                 android:id="@+id/satuanTambahProduk"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
+                android:ems="12"
                 android:inputType="textPersonName"
                 android:textSize="16sp"
-                android:ems="12"
-                app:layout_constraintLeft_toRightOf="@+id/textViewSatuanTambahProduk"
-                app:layout_constraintTop_toBottomOf="@+id/hargaBeliTambahProduk"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSatuanTambahProduk" />
 
 
             <TextView
@@ -260,12 +253,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
                 android:inputType="number"
                 android:textSize="16sp"
                 android:ems="12"
-                app:layout_constraintLeft_toRightOf="@+id/textViewStokTambahProduk"
-                app:layout_constraintTop_toBottomOf="@+id/satuanTambahProduk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewStokTambahProduk"
                 />
 
             <TextView
@@ -285,12 +277,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
                 android:inputType="number"
                 android:textSize="16sp"
                 android:ems="12"
-                app:layout_constraintLeft_toRightOf="@+id/textViewStokKritisTambahProduk"
-                app:layout_constraintTop_toBottomOf="@+id/StokTambahProduk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewStokKritisTambahProduk"
                 />
 
             <TextView
@@ -310,12 +301,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
                 android:inputType="textPersonName"
                 android:textSize="16sp"
                 android:ems="12"
-                app:layout_constraintLeft_toRightOf="@+id/textViewStatusTambahProduk"
-                app:layout_constraintTop_toBottomOf="@+id/StokKritisTambahProduk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewStatusTambahProduk"
                 />
 
 
@@ -325,6 +315,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
                 android:ems="12"
                 android:text="Pilih Gambar"
                 android:textSize="16sp"
