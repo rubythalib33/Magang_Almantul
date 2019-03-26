@@ -40,7 +40,7 @@
         <activity android:name=".activity.laporankeuangan" />
         <activity android:name=".activity.laporanpembelian" />
         <activity android:name=".activity.laporanpenjualan" />
-        <activity android:name=".activity.tambahproduk" />
+        <activity android:name=".activity.TambahProduk" />
         <activity android:name=".activity.manajemen_user" />
         <activity android:name=".activity.manajemen_perusahaan" />
         <activity

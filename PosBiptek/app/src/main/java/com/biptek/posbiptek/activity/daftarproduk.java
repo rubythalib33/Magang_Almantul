@@ -61,7 +61,7 @@ public class daftarproduk extends AppCompatActivity {
         tambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent addProduk = new Intent(daftarproduk.this, tambahproduk.class);
+                Intent addProduk = new Intent(daftarproduk.this, TambahProduk.class);
                 addProduk.putExtra("mode", "add");
                 startActivity(addProduk);
             }
@@ -96,7 +96,7 @@ public class daftarproduk extends AppCompatActivity {
         listProduk.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent updateProduk = new Intent(daftarproduk.this, tambahproduk.class);
+                Intent updateProduk = new Intent(daftarproduk.this, TambahProduk.class);
                 updateProduk.putExtra("mode", "update");
                 updateProduk.putExtra("kode_produk", ((Produk) produkAdapter.getItem(position)).getKode_produk());
                 startActivity(updateProduk);

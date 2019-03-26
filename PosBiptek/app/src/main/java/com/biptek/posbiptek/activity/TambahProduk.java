@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +29,7 @@ import java.io.ByteArrayOutputStream;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
-public class tambahproduk extends AppCompatActivity {
+public class TambahProduk extends AppCompatActivity {
     EditText kodeProduk, kategoriProduk, namaProduk, deskripsiProduk, hargaJual,
              hargaBeli, satuanProduk, stokProduk, stokKritisProduk, statusProduk;
     Spinner jenisProduk;
@@ -210,7 +209,7 @@ public class tambahproduk extends AppCompatActivity {
     }
 
     public void clickBarcodeTambahProduk(View view){
-        startActivityForResult(new Intent(tambahproduk.this, BarcodeScanner.class), 1);
+        startActivityForResult(new Intent(TambahProduk.this, BarcodeScanner.class), 1);
     }
 
     public void listDialogue(){
