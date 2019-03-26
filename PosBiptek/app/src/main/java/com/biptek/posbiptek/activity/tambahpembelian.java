@@ -79,17 +79,12 @@ public class tambahpembelian extends AppCompatActivity {
         Intent i = getIntent();
         namaSupplier.setText(i.getStringExtra("namasupplier"));
 
-        Restock restock = new Restock();
-        restock.setBukti_transaksi_restock("Bukti");
-        restock.setTanggal_jatuh_tempo(tanggalPembayaran.getText().toString());
-        restock.setUsername_pegawai_restock(sessionData.getUsername());
-        restock.setTanggal_transaksi_restock(tanggalPembelian);
+//        Restock restock = new Restock();
+//        restock.setBukti_transaksi_restock("Bukti");
+//        restock.setTanggal_jatuh_tempo(tanggalPembayaran.getText().toString());
+//        restock.setUsername_pegawai_restock(sessionData.getUsername());
+//        restock.setTanggal_transaksi_restock(tanggalPembelian);
 
-        boolean checked = bukti.isChecked();
-        if(checked){
-            restock.setBukti_transaksi_restock(bukti.getText().toString());
-        } else
-        Toast.makeText(getApplicationContext(),"centang Sik",Toast.LENGTH_SHORT).show();
 
 
         pProduk.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +97,11 @@ public class tambahpembelian extends AppCompatActivity {
         simpanpembelian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean checked = bukti.isChecked();
+                if(checked){
+//            restock.setBukti_transaksi_restock(bukti.getText().toString());
+                } else
+                    Toast.makeText(getApplicationContext(),"centang Sik",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -128,7 +128,7 @@ public class tambahpembelian extends AppCompatActivity {
 
 
     public static String getCurrentTime() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-ddx", Locale.US);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd a", Locale.US);
         Date date = new Date();
         return dateFormat.format(date);
     }
