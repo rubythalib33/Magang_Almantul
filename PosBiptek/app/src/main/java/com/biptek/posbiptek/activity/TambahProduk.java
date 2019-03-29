@@ -37,6 +37,7 @@ public class TambahProduk extends AppCompatActivity {
     ImageView imgGambar;
     private final int kodeKamera = 101;
     private final int kodeGallery = 102;
+    private final int kodeBarcode = 1;
     Uri imageUri;
 
     @Override
@@ -57,15 +58,6 @@ public class TambahProduk extends AppCompatActivity {
         statusProduk = findViewById(R.id.statusTambahProduk);
         btnGambarProduk = findViewById(R.id.gambarTambahProduk);
         imgGambar = findViewById(R.id.imageViewGambar);
-
-        btnGambarProduk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listDialogue();
-            }
-        });
-
-
 
         ArrayAdapter<String> listJenisProduk = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item,
@@ -109,14 +101,14 @@ public class TambahProduk extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == kodeGallery && resultCode == RESULT_OK){
+        if(requestCode == kodeGallery){
             imageUri = data.getData();
             imgGambar.setImageURI(imageUri);
         }else if(requestCode == kodeKamera && resultCode == RESULT_OK){
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             imgGambar.setImageBitmap(bitmap);
         }
-        if(resultCode == RESULT_OK)
+        if(requestCode == kodeBarcode)
             kodeProduk.setText(data.getStringExtra("barcodeResult"));
     }
 
@@ -209,10 +201,10 @@ public class TambahProduk extends AppCompatActivity {
     }
 
     public void clickBarcodeTambahProduk(View view){
-        startActivityForResult(new Intent(TambahProduk.this, BarcodeScanner.class), 1);
+        startActivityForResult(new Intent(TambahProduk.this, BarcodeScanner.class), kodeBarcode);
     }
 
-    public void listDialogue(){
+    public void listDialogue(View view){
         final ArrayAdapter<String> arrayAdapter
                 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
 

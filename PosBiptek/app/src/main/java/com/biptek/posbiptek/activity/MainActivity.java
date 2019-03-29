@@ -110,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
                         sessionData.setUsername(admin.getUsername_admin());
                         sessionData.setJabatanLogIn("admin");
                         startActivity(new Intent(MainActivity.this, homeadmin.class));
+                        finish();
                     }
                     else Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
-                    finish();
                     break;
                 case "pegawai":
                     crud.open();
@@ -122,9 +122,9 @@ public class MainActivity extends AppCompatActivity {
                         sessionData.setUsername(pegawai.getUsername_pegawai());
                         sessionData.setJabatanLogIn("pegawai");
                         startActivity(new Intent(MainActivity.this, homekasir.class));
+                        finish();
                     }
                     else Toast.makeText(getApplicationContext(), "Username / Password Salah", Toast.LENGTH_SHORT).show();
-                    finish();
                     break;
                 case "owner":
                     crud.open();
@@ -134,9 +134,9 @@ public class MainActivity extends AppCompatActivity {
                         sessionData.setUsername(perusahaan.getNama_pemilik_perusahaan());
                         sessionData.setJabatanLogIn("owner");
                         startActivity(new Intent(MainActivity.this, homekasir.class));
+                        finish();
                     }
                     else Toast.makeText(getApplicationContext(), "Password Salah", Toast.LENGTH_SHORT).show();
-                    finish();
                     break;
             }
         }
