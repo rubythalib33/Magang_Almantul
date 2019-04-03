@@ -41,7 +41,7 @@ public class SupplierAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.list_view_supplier, null);
 
-        TextView namaSupplier = convertView.findViewById(R.id.textViewNamaSupplier);
+        TextView namaSupplier = convertView.findViewById(R.id.textViewIdPengeluaran);
         TextView alamatSupplier = convertView.findViewById(R.id.textViewAlamatSupplier);
         TextView noTeleponSupplier = convertView.findViewById(R.id.textViewNoTeleponSupplier);
         TextView emailSupplier = convertView.findViewById(R.id.textViewEmailSupplier);

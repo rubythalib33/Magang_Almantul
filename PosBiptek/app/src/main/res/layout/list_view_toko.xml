@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/textViewNamaToko"
+        android:id="@+id/textViewNamaTokoPengeluaran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -38,7 +38,7 @@
         android:textSize="12sp"
         android:textStyle="normal"
         app:layout_constraintLeft_toRightOf="@id/imageViewToko"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNamaToko"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNamaTokoPengeluaran"
         />
 
     <TextView

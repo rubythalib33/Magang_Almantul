@@ -17,12 +17,12 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/textViewNamaSupplier"
+        android:id="@+id/textViewIdPengeluaran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
-        android:text="Nama Supplier"
+        android:text="Kode Pengeluaran"
         android:textColor="@android:color/black"
         android:textSize="12sp"
         android:textStyle="normal"
@@ -30,38 +30,38 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewAlamatSupplier"
+        android:id="@+id/textViewTanggalPengeluaran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Alamat Supplier"
+        android:text="Tanggal Pengeluaran"
         android:textColor="@android:color/black"
         android:textSize="12sp"
         android:textStyle="normal"
         app:layout_constraintLeft_toRightOf="@id/imageViewToko"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNamaSupplier" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewIdPengeluaran" />
 
     <TextView
-        android:id="@+id/textViewEmailSupplier"
+        android:id="@+id/textViewJumlahPengeluaran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="36dp"
-        android:text="Email Supplier"
+        android:text="Jumlah Pengeluaran"
         android:textColor="@android:color/black"
         android:textSize="12sp"
         android:textStyle="normal"
         app:layout_constraintLeft_toRightOf="@id/imageViewToko"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNamaSupplier" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewIdPengeluaran" />
 
     <TextView
-        android:id="@+id/textViewNoTeleponSupplier"
+        android:id="@+id/textViewNamaTokoPengeluaran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="4dp"
-        android:text="No Telepon Supplier"
+        android:text="Nama Toko"
         android:textColor="@android:color/black"
         android:textSize="12sp"
         android:textStyle="normal"
