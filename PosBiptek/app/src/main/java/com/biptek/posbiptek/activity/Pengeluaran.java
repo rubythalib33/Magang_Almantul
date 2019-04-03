@@ -10,8 +10,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
+import com.biptek.posbiptek.adapter.PengeluaranAdapter;
 import com.biptek.posbiptek.adapter.SupplierAdapter;
 import com.biptek.posbiptek.fragment.FragmentDeleteConfirmation;
+import com.biptek.posbiptek.fragment.FragmentPengeluaran;
 import com.biptek.posbiptek.fragment.FragmentSupplier;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Supplier;
@@ -59,8 +61,8 @@ public class Pengeluaran extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Data Pengeluaran Kosong !", Toast.LENGTH_SHORT).show();
 
         PengeluaranAdapter pengeluaranAdapter = new PengeluaranAdapter(this, pengeluaran);
-        listPengeluaran.setAdapter(PengeluaranAdapter);
-        PengeluaranAdapter.notifyDataSetChanged();
+        listPengeluaran.setAdapter(pengeluaranAdapter);
+        pengeluaranAdapter.notifyDataSetChanged();
 
         listPengeluaran.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

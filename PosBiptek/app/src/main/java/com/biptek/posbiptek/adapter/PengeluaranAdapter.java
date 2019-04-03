@@ -8,27 +8,27 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.biptek.posbiptek.R;
-import com.biptek.posbiptek.model.Supplier;
+import com.biptek.posbiptek.model.Pengeluaran;
 
 import java.util.ArrayList;
 
 public class PengeluaranAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<Supplier> supplierArrayList;
+    private ArrayList<Pengeluaran> pengeluaranArrayList;
 
-    public PengeluaranAdapter(Context context, ArrayList<Supplier> supplierArrayList){
+    public PengeluaranAdapter(Context context, ArrayList<Pengeluaran> pengeluaranArrayList){
         this.context = context;
-        this.supplierArrayList = supplierArrayList;
+        this.pengeluaranArrayList = pengeluaranArrayList;
     }
 
     @Override
     public int getCount() {
-        return this.supplierArrayList.size();
+        return this.pengeluaranArrayList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return this.supplierArrayList.get(position);
+        return this.pengeluaranArrayList.get(position);
     }
 
     @Override
@@ -41,17 +41,17 @@ public class PengeluaranAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.list_view_pengeluaran, null);
 
-        TextView namaSupplier = convertView.findViewById(R.id.textViewNamaTokoPengeluaran);
-        TextView alamatSupplier = convertView.findViewById(R.id.textViewIdPengeluaran);
-        TextView noTeleponSupplier = convertView.findViewById(R.id.textViewTanggalPengeluaran);
-        TextView emailSupplier = convertView.findViewById(R.id.textViewJumlahPengeluaran);
+        TextView namaTokoPengeluaran = convertView.findViewById(R.id.textViewNamaTokoPengeluaran);
+        TextView idPengeluaran = convertView.findViewById(R.id.textViewIdPengeluaran);
+        TextView tanggalPengeluaran = convertView.findViewById(R.id.textViewTanggalPengeluaran);
+        TextView jumlahPengeluaran = convertView.findViewById(R.id.textViewJumlahPengeluaran);
 
-        Supplier supplier = supplierArrayList.get(position);
+        Pengeluaran pengeluaran = pengeluaranArrayList.get(position);
 
-        namaSupplier.setText("Nama Supplier: "+supplier.getNama_supplier());
-        alamatSupplier.setText("Alamat: "+supplier.getAlamat_supplier());
-        noTeleponSupplier.setText("No. Telepon: "+supplier.getNo_telepon_supplier());
-        emailSupplier.setText("E-mail: "+supplier.getEmail_supplier());
+        namaTokoPengeluaran.setText("Nama Toko: "+pengeluaran.getKode_toko_pengeluaran());
+        idPengeluaran.setText("Kode Pengeluaran: "+pengeluaran.getKode_pengeluaran());
+        tanggalPengeluaran.setText("Tanggal: "+pengeluaran.getTanggal_pengeluaran());
+        jumlahPengeluaran.setText("Jumlah: "+pengeluaran.getJumlah_pengeluaran());
 
 
         return convertView;

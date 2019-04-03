@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.SessionData;
 import com.biptek.posbiptek.model.CRUD;
-import com.biptek.posbiptek.model.Supplier;
+import com.biptek.posbiptek.model.Pengeluaran;
 
 import java.util.Objects;
 
@@ -27,61 +27,61 @@ public class FragmentPengeluaran extends Fragment {
         view = inflater.inflate(R.layout.fragment_pengeluaran, container, false);
         final CRUD crud = new CRUD(getContext());
 
-        Button simpanSupplier = view.findViewById(R.id.fragmentPengeluaraSimpan);
-        Button batalSupplier = view.findViewById(R.id.fragmentPengeluaranBatal);
-        final EditText namaSupplier = view.findViewById(R.id.fragmentTokoPengeluaran);
-        final EditText alamatSupplier = view.findViewById(R.id.fragmentKodePengeluaran);
-        final EditText noTelpSupplier = view.findViewById(R.id.fragmentTanggalPengeluaran);
-        final EditText emailSupplier = view.findViewById(R.id.fragmentJumlahPengeluaran);
+        Button simpanPengeluaran = view.findViewById(R.id.fragmentPengeluaraSimpan);
+        Button batalPengeluaran = view.findViewById(R.id.fragmentPengeluaranBatal);
+        final EditText namaTokoPengeluaran = view.findViewById(R.id.fragmentTokoPengeluaran);
+        final EditText kodePengeluaran = view.findViewById(R.id.fragmentKodePengeluaran);
+        final EditText tanggalPengeluaran = view.findViewById(R.id.fragmentTanggalPengeluaran);
+        final EditText jumlahPengeluaran = view.findViewById(R.id.fragmentJumlahPengeluaran);
 
-        simpanSupplier.setOnClickListener(new View.OnClickListener() {
+        simpanPengeluaran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SessionData sessionData = new SessionData(getContext());
-                Supplier supplier = new Supplier();
+                Pengeluaran pengeluaran = new Pengeluaran();
 
-                if (namaSupplier.getText().toString().equals(""))
-                    namaSupplier.setError("Tidak boleh kosong !");
+                if (namaTokoPengeluaran.getText().toString().equals(""))
+                    namaTokoPengeluaran.setError("Tidak boleh kosong !");
                 else
-                    supplier.setNama_supplier(namaSupplier.getText().toString());
+                    pengeluaran.setKode_toko_pengeluaran(Long.parseLong(namaTokoPengeluaran.getText().toString()));
 
-                if (alamatSupplier.getText().toString().equals(""))
-                    alamatSupplier.setError("Tidak boleh kosong !");
+                if (kodePengeluaran.getText().toString().equals(""))
+                    kodePengeluaran.setError("Tidak boleh kosong !");
                 else
-                    supplier.setAlamat_supplier(alamatSupplier.getText().toString());
+                    pengeluaran.setKode_pengeluaran(kodePengeluaran.getText().toString());
 
-                if (noTelpSupplier.getText().toString().matches("^[0-9,+]{10,}$"))
-                    supplier.setNo_telepon_supplier(noTelpSupplier.getText().toString());
+                if (tanggalPengeluaran.getText().toString().equals(""))
+                    tanggalPengeluaran.setError("Tidak boleh kosong");
                 else
-                    noTelpSupplier.setError("Silahkan isi nomor telepon Supplier dengan benar !");
+                    pengeluaran.setTanggal_pengeluaran(tanggalPengeluaran.getText().toString());
 
-                if (emailSupplier.getText().toString().equals(""))
-                    emailSupplier.setError("Tidak boleh kosong !");
-                else if(emailSupplier.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+.+[a-z]+"))
-                    supplier.setEmail_supplier(emailSupplier.getText().toString());
+                if (jumlahPengeluaran.getText().toString().equals(""))
+                    jumlahPengeluaran.setError("Tidak boleh kosong !");
+                else if(jumlahPengeluaran.getText().toString().matches("[0-9]"))
+                    pengeluaran.setJumlah_pengeluaran(Integer.parseInt(jumlahPengeluaran.getText().toString()));
                 else
-                    emailSupplier.setError("Email Tidak Valid");
+                    jumlahPengeluaran.setError("Masukan Tidak Valid");
 
-                //Untuk tambah Supplier
+                //Untuk tambah Pengeluaran
                 if(getArguments().getInt("mode") == 1){
                     crud.open();
-                    long idSupplier = crud.addSupplier(supplier);
+                    long idPengeluaran = crud.addPengeluaran(pengeluaran);
                     crud.close();
-                    if(idSupplier != -1)
+                    if(idPengeluaran != -1)
                         Objects.requireNonNull(getActivity()).onBackPressed();
                 }
-                //untuk update Supplier
+                //untuk update Pengeluaran
                 else if (getArguments().getInt("mode") == 2){
-                    supplier.setKode_supplier(getArguments().getLong("idSupplier"));
+                    pengeluaran.setKode_data_pengeluaran(getArguments().getLong("idPengeluaran"));
                     crud.open();
-                    crud.updateSupplier(supplier);
+                    crud.updatePengeluaran(pengeluaran);
                     crud.close();
                     Objects.requireNonNull(getActivity()).onBackPressed();
                 }
             }
         });
 
-        batalSupplier.setOnClickListener(new View.OnClickListener() {
+        batalPengeluaran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Objects.requireNonNull(getActivity()).onBackPressed();
@@ -97,22 +97,22 @@ public class FragmentPengeluaran extends Fragment {
         super.onResume();
         CRUD crud = new CRUD(getContext());
 
-        //untuk update Supplier
+        //untuk update Pengeluaran
         if(getArguments().getInt("mode") == 2){
             crud.open();
-            Supplier supplier = crud.getSupplier(getArguments().getLong("idSupplier"));
+            Pengeluaran pengeluaran = crud.getPengeluaran(getArguments().getLong("idPengeluaran"));
             crud.close();
-            ((TextView) view.findViewById(R.id.fragmentDataPengeluaran)).setText("Update Supplier");
-            ((EditText)view.findViewById(R.id.fragmentTokoPengeluaran)).setText(supplier.getNama_supplier());
-            ((EditText)view.findViewById(R.id.fragmentKodePengeluaran)).setText(supplier.getAlamat_supplier());
-            ((EditText)view.findViewById(R.id.fragmentNoTelpSupplier)).setText(supplier.getNo_telepon_supplier());
-            ((EditText)view.findViewById(R.id.fragmentEmailSupplier)).setText(supplier.getEmail_supplier());
+            ((TextView) view.findViewById(R.id.fragmentDataPengeluaran)).setText("Update Pengeluaran");
+            ((EditText)view.findViewById(R.id.fragmentTokoPengeluaran)).setText(pengeluaran.getKode_toko_pengeluaran()+"");
+            ((EditText)view.findViewById(R.id.fragmentKodePengeluaran)).setText(pengeluaran.getKode_pengeluaran());
+            ((EditText)view.findViewById(R.id.fragmentTanggalPengeluaran)).setText(pengeluaran.getTanggal_pengeluaran());
+            ((EditText)view.findViewById(R.id.fragmentJumlahPengeluaran)).setText(pengeluaran.getJumlah_pengeluaran());
         }
         else if(getArguments().getInt("mode") == 1) {
             ((EditText)view.findViewById(R.id.fragmentTokoPengeluaran)).setText("");
             ((EditText)view.findViewById(R.id.fragmentKodePengeluaran)).setText("");
-            ((EditText)view.findViewById(R.id.fragmentNoTelpSupplier)).setText("");
-            ((EditText)view.findViewById(R.id.fragmentEmailSupplier)).setText("");
+            ((EditText)view.findViewById(R.id.fragmentTanggalPengeluaran)).setText("");
+            ((EditText)view.findViewById(R.id.fragmentJumlahPengeluaran)).setText("");
         }
 
     }
