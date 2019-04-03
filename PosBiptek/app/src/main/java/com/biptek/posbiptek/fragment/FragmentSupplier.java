@@ -15,7 +15,6 @@ import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.SessionData;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Supplier;
-import com.biptek.posbiptek.model.Toko;
 
 import java.util.Objects;
 
@@ -30,8 +29,8 @@ public class FragmentSupplier extends Fragment {
 
         Button simpanSupplier = view.findViewById(R.id.fragmentSupplierSimpan);
         Button batalSupplier = view.findViewById(R.id.fragmentSupplierBatal);
-        final EditText namaSupplier = view.findViewById(R.id.fragmentNamaSupplier);
-        final EditText alamatSupplier = view.findViewById(R.id.fragmentAlamatSupplier);
+        final EditText namaSupplier = view.findViewById(R.id.fragmentTokoPengeluaran);
+        final EditText alamatSupplier = view.findViewById(R.id.fragmentKodePengeluaran);
         final EditText noTelpSupplier = view.findViewById(R.id.fragmentNoTelpSupplier);
         final EditText emailSupplier = view.findViewById(R.id.fragmentEmailSupplier);
 
@@ -103,15 +102,15 @@ public class FragmentSupplier extends Fragment {
             crud.open();
             Supplier supplier = crud.getSupplier(getArguments().getLong("idSupplier"));
             crud.close();
-            ((TextView) view.findViewById(R.id.fragmentDataSupplier)).setText("Update Supplier");
-            ((EditText)view.findViewById(R.id.fragmentNamaSupplier)).setText(supplier.getNama_supplier());
-            ((EditText)view.findViewById(R.id.fragmentAlamatSupplier)).setText(supplier.getAlamat_supplier());
+            ((TextView) view.findViewById(R.id.fragmentDataPengeluaran)).setText("Update Supplier");
+            ((EditText)view.findViewById(R.id.fragmentTokoPengeluaran)).setText(supplier.getNama_supplier());
+            ((EditText)view.findViewById(R.id.fragmentKodePengeluaran)).setText(supplier.getAlamat_supplier());
             ((EditText)view.findViewById(R.id.fragmentNoTelpSupplier)).setText(supplier.getNo_telepon_supplier());
             ((EditText)view.findViewById(R.id.fragmentEmailSupplier)).setText(supplier.getEmail_supplier());
         }
         else if(getArguments().getInt("mode") == 1) {
-            ((EditText)view.findViewById(R.id.fragmentNamaSupplier)).setText("");
-            ((EditText)view.findViewById(R.id.fragmentAlamatSupplier)).setText("");
+            ((EditText)view.findViewById(R.id.fragmentTokoPengeluaran)).setText("");
+            ((EditText)view.findViewById(R.id.fragmentKodePengeluaran)).setText("");
             ((EditText)view.findViewById(R.id.fragmentNoTelpSupplier)).setText("");
             ((EditText)view.findViewById(R.id.fragmentEmailSupplier)).setText("");
         }

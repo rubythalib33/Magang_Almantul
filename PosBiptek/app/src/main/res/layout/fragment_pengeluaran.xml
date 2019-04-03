@@ -7,11 +7,11 @@
     tools:context=".fragment.FragmentManajemenToko">
 
     <FrameLayout
+        android:id="@+id/fragmentPengeluaraSimpan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.8"
-        android:background="@drawable/backgroun_tansparant"
-        >
+        android:background="@drawable/backgroun_tansparant">
 
     </FrameLayout>
 
@@ -22,87 +22,85 @@
         android:background="@android:color/white">
 
         <TextView
-            android:id="@+id/fragmentDataSupplier"
+            android:id="@+id/fragmentDataPengeluaran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Tambah Supplier"
+            android:text="Tambah Pengeluaran"
             android:textSize="20sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/fragmentNamaSupplier"
+            android:id="@+id/fragmentTokoPengeluaran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:ems="12"
-            android:hint="Nama Supplier"
+            android:hint="Nama Toko (id)"
             android:inputType="textPersonName"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentDataSupplier" />
+            app:layout_constraintTop_toBottomOf="@+id/fragmentDataPengeluaran" />
 
         <EditText
-            android:id="@+id/fragmentAlamatSupplier"
+            android:id="@+id/fragmentKodePengeluaran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:ems="12"
-            android:hint="Alamat Supplier"
+            android:hint="Kode Pengeluaran"
             android:inputType="textPersonName"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentNamaSupplier" />
+            app:layout_constraintTop_toBottomOf="@+id/fragmentTokoPengeluaran" />
 
         <EditText
-            android:id="@+id/fragmentEmailSupplier"
+            android:id="@+id/fragmentJumlahPengeluaran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="120dp"
             android:ems="12"
-            android:hint="Email Supplier"
-            android:inputType="textPersonName"
+            android:hint="Jumlah Pengeluaran"
+            android:inputType="number"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentNamaSupplier" />
+            app:layout_constraintTop_toBottomOf="@+id/fragmentTokoPengeluaran" />
 
         <EditText
-            android:id="@+id/fragmentNoTelpSupplier"
+            android:id="@+id/fragmentTanggalPengeluaran"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:ems="12"
-            android:hint="No. telepon Supplier"
-            android:inputType="textPersonName"
+            android:hint="Tanggal Pengeluaran"
+            android:inputType="datetime"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentAlamatSupplier" />
+            app:layout_constraintTop_toBottomOf="@+id/fragmentKodePengeluaran" />
 
         <Button
-            android:id="@+id/fragmentSupplierSimpan"
+            android:id="@+id/fragmentPengeluaranSimpan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:text="@string/simpan"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/fragmentSupplierBatal"
+            android:id="@+id/fragmentPengeluaranBatal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/batal"
             android:layout_marginBottom="5dp"
+            android:text="@string/batal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/fragmentTokoSimpan"
-            />
+            app:layout_constraintRight_toLeftOf="@+id/fragmentTokoSimpan" />
 
     </android.support.constraint.ConstraintLayout>
 

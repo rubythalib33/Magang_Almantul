@@ -21,19 +21,19 @@ import java.util.ArrayList;
 public class Pengeluaran extends AppCompatActivity {
 
     private CRUD crud;
-    private ListView listSupplier;
-    private ArrayList<Supplier> supplier;
-    private Fragment popUpSupplier;
+    private ListView listPengeluaran;
+    private ArrayList<Pengeluaran> pengeluaran;
+    private Fragment popUpPengeluaran;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pengeluaran);
 
-        listSupplier = findViewById(R.id.listviewKontak);
+        listPengeluaran = findViewById(R.id.listviewKontak);
         crud = new CRUD(this);
-        supplier = new ArrayList<>();
-        popUpSupplier = new FragmentSupplier();
+        pengeluaran = new ArrayList<>();
+        popUpPengeluaran = new FragmentPengeluaran();
         loadListToko();
     }
 
@@ -43,45 +43,45 @@ public class Pengeluaran extends AppCompatActivity {
         loadListToko();
     }
 
-    public void clickTambahSupplier(View view){
+    public void clickTambahPengeluaran(View view){
         Bundle bundle = new Bundle();
         bundle.putInt("mode", 1);
-        popUpSupplier.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerSupplier, popUpSupplier).addToBackStack(null).commit();
+        popUpPengeluaran.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerPengeluaran, popUpPengeluaran).addToBackStack(null).commit();
     }
 
     private void loadListToko(){
         crud.open();
-        supplier = crud.getAllSupplier();
+        pengeluaran = crud.getAllPengeluaran();
         crud.close();
 
-        if(supplier.isEmpty())
-            Toast.makeText(getApplicationContext(), "Data Supplier Kosong !", Toast.LENGTH_SHORT).show();
+        if(pengeluaran.isEmpty())
+            Toast.makeText(getApplicationContext(), "Data Pengeluaran Kosong !", Toast.LENGTH_SHORT).show();
 
-        SupplierAdapter supplierAdapter = new SupplierAdapter(this, supplier);
-        listSupplier.setAdapter(supplierAdapter);
-        supplierAdapter.notifyDataSetChanged();
+        PengeluaranAdapter pengeluaranAdapter = new PengeluaranAdapter(this, pengeluaran);
+        listPengeluaran.setAdapter(PengeluaranAdapter);
+        PengeluaranAdapter.notifyDataSetChanged();
 
-        listSupplier.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listPengeluaran.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("mode", 2);
-                bundle.putLong("idSupplier", supplier.get(position).getKode_supplier());
-                popUpSupplier.setArguments(bundle);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerSupplier, popUpSupplier).addToBackStack(null).commit();
+                bundle.putLong("idPengeluaran", pengeluaran.get(position).getKode_Pengeluaran());
+                popUpPengeluaran.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerPengeluaran, popUpPengeluaran).addToBackStack(null).commit();
             }
         });
 
-        listSupplier.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        listPengeluaran.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Fragment deleteConfirmation = new FragmentDeleteConfirmation();
                 Bundle bundle = new Bundle();
-                bundle.putLong("idSupplier", supplier.get(position).getKode_supplier());
-                bundle.putString("menu", "supplier");
+                bundle.putLong("idPengeluaran", pengeluaran.get(position).getKode_Pengeluaran());
+                bundle.putString("menu", "pengeluaran");
                 deleteConfirmation.setArguments(bundle);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerSupplier, deleteConfirmation).addToBackStack(null).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerPengeluaran, deleteConfirmation).addToBackStack(null).commit();
                 return true;
             }
         });
