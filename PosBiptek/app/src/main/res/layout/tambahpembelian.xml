@@ -35,17 +35,14 @@
 
     <Button
         android:id="@+id/buttonpilihprodukpembelian"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_width="99dp"
+        android:layout_height="38dp"
         android:layout_gravity="center"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="56dp"
         android:text="Pilih Produk"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tglBatasPembeayaran" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/editText2"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/buttonbatalpembelian"
@@ -78,11 +75,12 @@
         android:layout_width="395dp"
         android:layout_height="78dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="31dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonpilihprodukpembelian" />
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
     <Button
         android:id="@+id/simpanpembelian"
@@ -109,6 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="Nama Supplier :"
+        android:textColor="@color/black_de"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/NamaSuplierSpinner"
         app:layout_constraintStart_toStartOf="parent" />
@@ -119,9 +118,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="Jatuh Tempo :"
+        android:textColor="@color/black_de"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/tglBatasPembeayaran"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="9dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nama Produk"
+        app:layout_constraintEnd_toStartOf="@+id/buttonpilihprodukpembelian"
+        app:layout_constraintTop_toBottomOf="@+id/tglBatasPembeayaran" />
 
     <FrameLayout
         android:id="@+id/containerPembelian"
@@ -129,7 +141,6 @@
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="15dp">
-
     </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

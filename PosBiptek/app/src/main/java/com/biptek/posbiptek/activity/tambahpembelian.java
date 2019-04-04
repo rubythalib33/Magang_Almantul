@@ -7,15 +7,19 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.SessionData;
+import com.biptek.posbiptek.fragment.FragmentPenjualan;
 import com.biptek.posbiptek.fragment.Fragment_dataSupplier;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Restock;
@@ -33,7 +37,8 @@ import java.util.Objects;
 public class tambahpembelian extends AppCompatActivity {
     Button pProduk, batalPembelian, pilihSupplier, simpanpembelian;
     private ArrayList<Supplier> suppliers;
-    private Fragment popSupplier;
+    private Fragment popSupplier, popUppilihProduk;
+    ListView listPembelian;
     EditText namaSupplier, tanggalPembayaran;
     Calendar calendar2;
     DatePickerDialog.OnDateSetListener date;
@@ -52,10 +57,12 @@ public class tambahpembelian extends AppCompatActivity {
         pProduk = (Button)findViewById(R.id.buttonpilihprodukpembelian);
         batalPembelian = (Button)findViewById(R.id.buttonbatalpembelian);
         popSupplier = new Fragment_dataSupplier();
+        popUppilihProduk = new FragmentPenjualan();
         namaSupplier = (EditText)findViewById(R.id.NamaSuplierSpinner);
         tanggalPembayaran = (EditText)findViewById(R.id.tglBatasPembeayaran);
         simpanpembelian = (Button)findViewById(R.id.simpanpembelian);
         bukti = (CheckBox)findViewById(R.id.checkBox_bukti);
+        listPembelian = (ListView)findViewById(R.id.listViewPembelian);
         String tanggalPembelian = getCurrentTime();
 
         date = new DatePickerDialog.OnDateSetListener() {
@@ -78,19 +85,15 @@ public class tambahpembelian extends AppCompatActivity {
         Bundle bundle = new Bundle();
         Intent i = getIntent();
         namaSupplier.setText(i.getStringExtra("namasupplier"));
-
 //        Restock restock = new Restock();
-//        restock.setBukti_transaksi_restock("Bukti");
 //        restock.setTanggal_jatuh_tempo(tanggalPembayaran.getText().toString());
 //        restock.setUsername_pegawai_restock(sessionData.getUsername());
 //        restock.setTanggal_transaksi_restock(tanggalPembelian);
 
-
-
         pProduk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(tambahpembelian.this, pilihprodukpembelian.class));
+                getSupportFragmentManager().beginTransaction().replace(R.id.containerPembelian, popUppilihProduk).addToBackStack(null).commit();
             }
         });
 
@@ -112,6 +115,29 @@ public class tambahpembelian extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    private void viewListview(){
+        ListAdapter listAdapter = listPembelian.getAdapter();
+        if(listAdapter == null)
+            return;
+        int desireWidth = View.MeasureSpec.makeMeasureSpec(listPembelian.getWidth(), View.MeasureSpec.UNSPECIFIED);
+        int totalHeight = 0;
+        View view = null;
+        for(int i = 0; i<listAdapter.getCount(); i++){
+            view = listAdapter.getView(i, view, listPembelian);
+            if(i == 0)
+                view.setLayoutParams(new ViewGroup.LayoutParams(desireWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            view.measure(desireWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
+
+        }
+        ViewGroup.LayoutParams params = listPembelian.getLayoutParams();
+        params.height = totalHeight+(listPembelian.getDividerHeight()*(listAdapter.getCount()-1));
+        listPembelian.setLayoutParams(params);
+
     }
 
     private void updateLabel(){

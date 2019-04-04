@@ -562,7 +562,6 @@ public class CRUD {
             contentValuesList.put("jumlah_produk_restock", listProdukRestock.getJumlah_produk_restock());
             database.insert("list_produk_restock", null, contentValuesList);
         }
-
         return insertid;
     }
 
