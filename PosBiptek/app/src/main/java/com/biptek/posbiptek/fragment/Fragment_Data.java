@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.biptek.posbiptek.R;
+import com.biptek.posbiptek.activity.DaftarPengeluaran;
 import com.biptek.posbiptek.activity.daftarhutang;
 import com.biptek.posbiptek.activity.daftarkontak;
 import com.biptek.posbiptek.activity.daftarproduk;
@@ -25,7 +26,7 @@ public class Fragment_Data extends Fragment {
             b1 = view.findViewById(R.id.button7);
             b2 = view.findViewById(R.id.button10);
             b3 = view.findViewById(R.id.button13);
-            b4 = view.findViewById(R.id.button14);
+            b4 = view.findViewById(R.id.buttonPengeluaran);
             b5 = view.findViewById(R.id.buttonXdata);
 
             b1.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +56,8 @@ public class Fragment_Data extends Fragment {
             b4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), DaftarPengeluaran.class);
+                    startActivity(intent);
 
                 }
             });
