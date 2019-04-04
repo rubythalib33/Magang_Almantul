@@ -43,6 +43,7 @@
         <activity android:name=".activity.TambahProduk" />
         <activity android:name=".activity.manajemen_user" />
         <activity android:name=".activity.manajemen_perusahaan" />
+        <activity android:name=".activity.DaftarPengeluaran" />
         <activity
             android:name=".activity.tambahuser"
             android:parentActivityName=".activity.manajemen_user" />

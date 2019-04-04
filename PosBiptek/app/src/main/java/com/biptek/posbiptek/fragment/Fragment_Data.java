@@ -18,7 +18,7 @@ import com.biptek.posbiptek.activity.daftarkontak;
 import com.biptek.posbiptek.activity.daftarproduk;
 
 public class Fragment_Data extends Fragment {
-    Button b1, b2, b3, b4, b5;
+    Button b1, b2, b3, b4, b5, b6;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class Fragment_Data extends Fragment {
             b2 = view.findViewById(R.id.button10);
             b3 = view.findViewById(R.id.button13);
             b4 = view.findViewById(R.id.buttonPengeluaran);
+            b6 = view.findViewById(R.id.buttonPemasukan);
             b5 = view.findViewById(R.id.buttonXdata);
 
             b1.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +59,13 @@ public class Fragment_Data extends Fragment {
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), DaftarPengeluaran.class);
                     startActivity(intent);
+
+                }
+            });
+
+            b6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
                 }
             });
