@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.activity.TambahPenjualan;
+import com.biptek.posbiptek.activity.tambahpembelian;
 import com.biptek.posbiptek.adapter.ProdukAdapter;
 import com.biptek.posbiptek.model.CRUD;
 import com.biptek.posbiptek.model.Produk;
@@ -77,7 +78,7 @@ public class FragmentPembelian extends Fragment {
             Toast.makeText(getContext(), "Data Kosong !", Toast.LENGTH_SHORT).show();
 
         produkAdapter = new ProdukAdapter(getContext(), produkArrayList);
-        for(int filter : getArguments().getIntegerArrayList("produkFilter")){
+        for(int filter : getArguments().getIntegerArrayList("filterProdukPembelian")){
             produkArrayList.remove(filter);
         }
         listProduk.setAdapter(produkAdapter);
@@ -87,11 +88,12 @@ public class FragmentPembelian extends Fragment {
         listProduk.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TambahPenjualan tambahPenjualan = (TambahPenjualan) getActivity();
+                tambahpembelian tambahPenjualan = (tambahpembelian) getActivity();
                 tambahPenjualan.addItemBeli(((Produk)produkAdapter.getItem(position)).getKode_produk());
                 tambahPenjualan.addIndexKodeProduk(position);
                 Objects.requireNonNull(getActivity()).onBackPressed();
             }
         });
     }
+
 }

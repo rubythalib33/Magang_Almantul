@@ -19,9 +19,11 @@ import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.SessionData;
+import com.biptek.posbiptek.fragment.FragmentPembelian;
 import com.biptek.posbiptek.fragment.FragmentPenjualan;
 import com.biptek.posbiptek.fragment.Fragment_dataSupplier;
 import com.biptek.posbiptek.model.CRUD;
+import com.biptek.posbiptek.model.Produk;
 import com.biptek.posbiptek.model.Restock;
 import com.biptek.posbiptek.model.Supplier;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
@@ -36,20 +38,21 @@ import java.util.Objects;
 
 public class tambahpembelian extends AppCompatActivity {
     Button pProduk, batalPembelian, pilihSupplier, simpanpembelian;
-    private ArrayList<Supplier> suppliers;
+    ArrayList<Integer> produkPembelianfilter;
+    private ArrayList<Produk> items;
     private Fragment popSupplier, popUppilihProduk;
     ListView listPembelian;
     EditText namaSupplier, tanggalPembayaran;
     Calendar calendar2;
     DatePickerDialog.OnDateSetListener date;
     CheckBox bukti;
+    CRUD crud;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tambahpembelian);
 
-        final CRUD crud = new CRUD(this);
         SessionData sessionData = new SessionData(this);
         calendar2 = Calendar.getInstance();
 
@@ -57,7 +60,7 @@ public class tambahpembelian extends AppCompatActivity {
         pProduk = (Button)findViewById(R.id.buttonpilihprodukpembelian);
         batalPembelian = (Button)findViewById(R.id.buttonbatalpembelian);
         popSupplier = new Fragment_dataSupplier();
-        popUppilihProduk = new FragmentPenjualan();
+        popUppilihProduk = new FragmentPembelian();
         namaSupplier = (EditText)findViewById(R.id.NamaSuplierSpinner);
         tanggalPembayaran = (EditText)findViewById(R.id.tglBatasPembeayaran);
         simpanpembelian = (Button)findViewById(R.id.simpanpembelian);
@@ -93,6 +96,9 @@ public class tambahpembelian extends AppCompatActivity {
         pProduk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putIntegerArrayList("filterProdukPembelian", produkPembelianfilter);
+                popUppilihProduk.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.containerPembelian, popUppilihProduk).addToBackStack(null).commit();
             }
         });
@@ -118,7 +124,7 @@ public class tambahpembelian extends AppCompatActivity {
     }
 
 
-    private void viewListview(){
+    public void viewListview(){
         ListAdapter listAdapter = listPembelian.getAdapter();
         if(listAdapter == null)
             return;
@@ -138,6 +144,20 @@ public class tambahpembelian extends AppCompatActivity {
         params.height = totalHeight+(listPembelian.getDividerHeight()*(listAdapter.getCount()-1));
         listPembelian.setLayoutParams(params);
 
+    }
+
+    public void addItemBeli(String kodeProduk){
+        crud.open();
+        items.add(crud.getProduk(kodeProduk));
+        crud.close();
+    }
+
+    public void addIndexKodeProduk(int position){
+        produkPembelianfilter.add(position);
+    }
+
+    public void removeIndexKodeProduk(int position){
+        produkPembelianfilter.remove(position);
     }
 
     private void updateLabel(){
