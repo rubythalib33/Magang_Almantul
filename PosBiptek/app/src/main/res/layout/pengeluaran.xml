@@ -7,13 +7,13 @@
     tools:context=".activity.daftarkontak">
 
     <TextView
-        android:id="@+id/judulManajemenSupplier"
+        android:id="@+id/judulManajemenPengeluaran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="139dp"
         android:layout_marginTop="31dp"
         android:layout_marginEnd="139dp"
-        android:text="Daftar Supplier"
+        android:text="Daftar Pengeluaran"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/listviewKontak"
+        android:id="@+id/listViewPengeluaran"
         android:layout_width="395dp"
         android:layout_height="484dp"
         android:layout_marginStart="8dp"
@@ -31,10 +31,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/judulManajemenSupplier" />
+        app:layout_constraintTop_toBottomOf="@+id/judulManajemenPengeluaran" />
 
     <Button
-        android:id="@+id/buttonTambahSupplier"
+        android:id="@+id/buttonTambahPengeluaran"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="306dp"
@@ -46,10 +46,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listviewKontak" />
+        app:layout_constraintTop_toBottomOf="@+id/listViewPengeluaran" />
 
     <FrameLayout
-        android:id="@+id/fragmentContainerSupplier"
+        android:id="@+id/fragmentContainerPengeluaran"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

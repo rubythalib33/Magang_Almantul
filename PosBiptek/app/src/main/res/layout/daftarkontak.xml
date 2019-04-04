@@ -7,7 +7,7 @@
     tools:context=".activity.daftarkontak">
 
     <TextView
-        android:id="@+id/judulManajemenSupplier"
+        android:id="@+id/judulManajemenPengeluaran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="139dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/listviewKontak"
+        android:id="@+id/listViewPengeluaran"
         android:layout_width="395dp"
         android:layout_height="484dp"
         android:layout_marginStart="8dp"
@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/judulManajemenSupplier" />
+        app:layout_constraintTop_toBottomOf="@+id/judulManajemenPengeluaran" />
 
     <Button
         android:id="@+id/buttonTambahSupplier"
@@ -46,7 +46,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listviewKontak" />
+        app:layout_constraintTop_toBottomOf="@+id/listViewPengeluaran" />
 
     <FrameLayout
         android:id="@+id/fragmentContainerSupplier"

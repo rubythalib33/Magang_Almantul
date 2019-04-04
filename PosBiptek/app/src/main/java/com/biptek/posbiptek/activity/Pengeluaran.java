@@ -11,16 +11,13 @@ import android.widget.Toast;
 
 import com.biptek.posbiptek.R;
 import com.biptek.posbiptek.adapter.PengeluaranAdapter;
-import com.biptek.posbiptek.adapter.SupplierAdapter;
 import com.biptek.posbiptek.fragment.FragmentDeleteConfirmation;
 import com.biptek.posbiptek.fragment.FragmentPengeluaran;
-import com.biptek.posbiptek.fragment.FragmentSupplier;
 import com.biptek.posbiptek.model.CRUD;
-import com.biptek.posbiptek.model.Supplier;
-
+import com.biptek.posbiptek.model.Pengeluaran;
 import java.util.ArrayList;
 
-public class Pengeluaran extends AppCompatActivity {
+public class DaftarPengeluaran extends AppCompatActivity {
 
     private CRUD crud;
     private ListView listPengeluaran;
@@ -32,7 +29,7 @@ public class Pengeluaran extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pengeluaran);
 
-        listPengeluaran = findViewById(R.id.listviewKontak);
+        listPengeluaran = findViewById(R.id.listViewPengeluaran);
         crud = new CRUD(this);
         pengeluaran = new ArrayList<>();
         popUpPengeluaran = new FragmentPengeluaran();
@@ -69,7 +66,7 @@ public class Pengeluaran extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("mode", 2);
-                bundle.putLong("idPengeluaran", pengeluaran.get(position).getKode_Pengeluaran());
+                bundle.putLong("idPengeluaran", pengeluaran.get(position).getKode_data_pengeluaran());
                 popUpPengeluaran.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerPengeluaran, popUpPengeluaran).addToBackStack(null).commit();
             }
@@ -80,7 +77,7 @@ public class Pengeluaran extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Fragment deleteConfirmation = new FragmentDeleteConfirmation();
                 Bundle bundle = new Bundle();
-                bundle.putLong("idPengeluaran", pengeluaran.get(position).getKode_Pengeluaran());
+                bundle.putLong("idPengeluaran", pengeluaran.get(position).getKode_data_pengeluaran());
                 bundle.putString("menu", "pengeluaran");
                 deleteConfirmation.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerPengeluaran, deleteConfirmation).addToBackStack(null).commit();

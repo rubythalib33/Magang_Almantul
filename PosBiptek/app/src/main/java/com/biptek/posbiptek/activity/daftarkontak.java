@@ -30,7 +30,7 @@ public class daftarkontak extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.daftarkontak);
 
-        listSupplier = findViewById(R.id.listviewKontak);
+        listSupplier = findViewById(R.id.listViewPengeluaran);
         crud = new CRUD(this);
         supplier = new ArrayList<>();
         popUpSupplier = new FragmentSupplier();
