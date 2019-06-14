@@ -231,7 +231,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="m7f7dMqf/U+fqNSY+fYKbAAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="xZbHMuyMpUGcCH8ueEzKRgAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Mencatat Transaki penjualan</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Mencatat transaksi penjualan</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="7IItdz+hskuWwqyR28ey6wAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -362,7 +362,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="t1KrpgiUpkm8dvhtLXvgiwAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="CxC2WFKPJ0CTkzMk2uTbFgAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Mencatat Transaksi Pembelian</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Mencatat transaksi pembelian</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="MjDi3SiWbkuPx+rkZwIZxQAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -1278,7 +1278,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="DB+wZpY3a0qfTVsCMJ435QAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="dMxCx/rM/Uij1Ig0cbYYygAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">melihat laporan keuangan</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Melihat laporan keuangan</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="jVBy5sWnk0yAGIz4cu7ZpQAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -1775,7 +1775,7 @@
 <XPD:REF name="Namespace">4VKBJVSIAUyCwTXMVIng+AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[5]" type="UMLUseCase" guid="CtTKMLL/MkWDxOrQMzkSOgAA">
-<XPD:ATTR name="Name" type="string">Mencatat Transaki penjualan</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Mencatat transaksi penjualan</XPD:ATTR>
 <XPD:REF name="Namespace">4VKBJVSIAUyCwTXMVIng+AAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">ZB7qlDYQskmfFmDEQcbTogAA</XPD:REF>
@@ -1829,7 +1829,7 @@
 <XPD:REF name="Includes[1]">aOdjNhCDDkyScpq080CGuAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[9]" type="UMLUseCase" guid="vCEU2F/gokWj8WFTsqkZZQAA">
-<XPD:ATTR name="Name" type="string">Mencatat Transaksi Pembelian</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Mencatat transaksi pembelian</XPD:ATTR>
 <XPD:REF name="Namespace">4VKBJVSIAUyCwTXMVIng+AAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">lLIV+G1IN0+ujZ58ucpiQgAA</XPD:REF>
@@ -2233,7 +2233,7 @@
 <XPD:REF name="Views[3]">5SVBNb6Bvk2ZDFZw+ZtIaAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[38]" type="UMLUseCase" guid="5fvEn7iF+Eq9wT9tD8o8ZwAA">
-<XPD:ATTR name="Name" type="string">melihat laporan keuangan</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Melihat laporan keuangan</XPD:ATTR>
 <XPD:REF name="Namespace">4VKBJVSIAUyCwTXMVIng+AAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">fhz4lVEhR06S3XbiC2VImwAA</XPD:REF>
