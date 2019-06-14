@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 25 Feb 2019 pada 07.17
--- Versi server: 10.1.34-MariaDB
--- Versi PHP: 7.2.7
+-- Generation Time: Jun 14, 2019 at 03:02 PM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `al_mantul`
+-- Database: `pos_biptek`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bundle`
+-- Table structure for table `bundle`
 --
 
 CREATE TABLE `bundle` (
@@ -53,7 +53,7 @@ CREATE TABLE `bundle` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `list_produk_bundle`
+-- Table structure for table `list_produk_bundle`
 --
 
 CREATE TABLE `list_produk_bundle` (
@@ -65,7 +65,7 @@ CREATE TABLE `list_produk_bundle` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `list_produk_restock`
+-- Table structure for table `list_produk_restock`
 --
 
 CREATE TABLE `list_produk_restock` (
@@ -78,7 +78,7 @@ CREATE TABLE `list_produk_restock` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `list_produk_terjual`
+-- Table structure for table `list_produk_terjual`
 --
 
 CREATE TABLE `list_produk_terjual` (
@@ -91,7 +91,7 @@ CREATE TABLE `list_produk_terjual` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migration`
+-- Table structure for table `migration`
 --
 
 CREATE TABLE `migration` (
@@ -100,7 +100,7 @@ CREATE TABLE `migration` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `migration`
+-- Dumping data for table `migration`
 --
 
 INSERT INTO `migration` (`version`, `apply_time`) VALUES
@@ -110,7 +110,7 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pegawai`
+-- Table structure for table `pegawai`
 --
 
 CREATE TABLE `pegawai` (
@@ -125,7 +125,7 @@ CREATE TABLE `pegawai` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pemasukan`
+-- Table structure for table `pemasukan`
 --
 
 CREATE TABLE `pemasukan` (
@@ -139,7 +139,7 @@ CREATE TABLE `pemasukan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengeluaran`
+-- Table structure for table `pengeluaran`
 --
 
 CREATE TABLE `pengeluaran` (
@@ -153,7 +153,7 @@ CREATE TABLE `pengeluaran` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `perusahaan`
+-- Table structure for table `perusahaan`
 --
 
 CREATE TABLE `perusahaan` (
@@ -168,7 +168,7 @@ CREATE TABLE `perusahaan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk`
+-- Table structure for table `produk`
 --
 
 CREATE TABLE `produk` (
@@ -180,7 +180,7 @@ CREATE TABLE `produk` (
   `harga_jual_produk` int(9) NOT NULL,
   `harga_beli_produk` int(9) NOT NULL,
   `satuan_produk` varchar(25) NOT NULL,
-  `gambar_produk` varchar(50) NOT NULL,
+  `gambar_produk` blob NOT NULL,
   `stok_produk` int(3) NOT NULL,
   `stok_kritis_produk` int(3) NOT NULL,
   `status_produk` varchar(5) NOT NULL
@@ -189,7 +189,7 @@ CREATE TABLE `produk` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk_diskon`
+-- Table structure for table `produk_diskon`
 --
 
 CREATE TABLE `produk_diskon` (
@@ -203,7 +203,7 @@ CREATE TABLE `produk_diskon` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `restock`
+-- Table structure for table `restock`
 --
 
 CREATE TABLE `restock` (
@@ -218,7 +218,7 @@ CREATE TABLE `restock` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `supplier`
+-- Table structure for table `supplier`
 --
 
 CREATE TABLE `supplier` (
@@ -232,7 +232,7 @@ CREATE TABLE `supplier` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `toko`
+-- Table structure for table `toko`
 --
 
 CREATE TABLE `toko` (
@@ -246,7 +246,7 @@ CREATE TABLE `toko` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi_penjualan`
+-- Table structure for table `transaksi_penjualan`
 --
 
 CREATE TABLE `transaksi_penjualan` (
@@ -258,7 +258,7 @@ CREATE TABLE `transaksi_penjualan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -274,7 +274,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
@@ -285,20 +285,20 @@ INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_res
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`username_admin`),
   ADD KEY `kode_perusahaan_admin` (`kode_perusahaan_admin`);
 
 --
--- Indeks untuk tabel `bundle`
+-- Indexes for table `bundle`
 --
 ALTER TABLE `bundle`
   ADD PRIMARY KEY (`kode_bundle`);
 
 --
--- Indeks untuk tabel `list_produk_bundle`
+-- Indexes for table `list_produk_bundle`
 --
 ALTER TABLE `list_produk_bundle`
   ADD PRIMARY KEY (`id_list_produk_bundle`),
@@ -306,7 +306,7 @@ ALTER TABLE `list_produk_bundle`
   ADD KEY `kode_produk_list_bundle` (`kode_produk_list_bundle`);
 
 --
--- Indeks untuk tabel `list_produk_restock`
+-- Indexes for table `list_produk_restock`
 --
 ALTER TABLE `list_produk_restock`
   ADD PRIMARY KEY (`id_list_produk_restock`),
@@ -314,7 +314,7 @@ ALTER TABLE `list_produk_restock`
   ADD KEY `kode_produk_list_restock` (`kode_produk_list_restock`);
 
 --
--- Indeks untuk tabel `list_produk_terjual`
+-- Indexes for table `list_produk_terjual`
 --
 ALTER TABLE `list_produk_terjual`
   ADD PRIMARY KEY (`id_list_produk_terjual`),
@@ -322,53 +322,53 @@ ALTER TABLE `list_produk_terjual`
   ADD KEY `kode_produk_list_terjual` (`kode_produk_list_terjual`);
 
 --
--- Indeks untuk tabel `migration`
+-- Indexes for table `migration`
 --
 ALTER TABLE `migration`
   ADD PRIMARY KEY (`version`);
 
 --
--- Indeks untuk tabel `pegawai`
+-- Indexes for table `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD PRIMARY KEY (`username_pegawai`),
   ADD KEY `kode_toko_pegawai` (`kode_toko_pegawai`);
 
 --
--- Indeks untuk tabel `pemasukan`
+-- Indexes for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
   ADD PRIMARY KEY (`kode_data_pemasukan`),
   ADD KEY `kode_toko_pemasukan` (`kode_toko_pemasukan`);
 
 --
--- Indeks untuk tabel `pengeluaran`
+-- Indexes for table `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
   ADD PRIMARY KEY (`kode_data_pengeluaran`),
   ADD KEY `kode_toko_pengeluaran` (`kode_toko_pengeluaran`);
 
 --
--- Indeks untuk tabel `perusahaan`
+-- Indexes for table `perusahaan`
 --
 ALTER TABLE `perusahaan`
   ADD PRIMARY KEY (`kode_perusahaan`);
 
 --
--- Indeks untuk tabel `produk`
+-- Indexes for table `produk`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`kode_produk`);
 
 --
--- Indeks untuk tabel `produk_diskon`
+-- Indexes for table `produk_diskon`
 --
 ALTER TABLE `produk_diskon`
   ADD PRIMARY KEY (`kode_diskon`),
   ADD KEY `kode_produk_diskon` (`kode_produk_diskon`);
 
 --
--- Indeks untuk tabel `restock`
+-- Indexes for table `restock`
 --
 ALTER TABLE `restock`
   ADD PRIMARY KEY (`kode_restock`),
@@ -376,27 +376,27 @@ ALTER TABLE `restock`
   ADD KEY `username_restock` (`username_pegawai_restock`);
 
 --
--- Indeks untuk tabel `supplier`
+-- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
   ADD PRIMARY KEY (`kode_supplier`);
 
 --
--- Indeks untuk tabel `toko`
+-- Indexes for table `toko`
 --
 ALTER TABLE `toko`
   ADD PRIMARY KEY (`kode_toko`),
   ADD KEY `kode_perusahaan_toko` (`kode_perusahaan_toko`);
 
 --
--- Indeks untuk tabel `transaksi_penjualan`
+-- Indexes for table `transaksi_penjualan`
 --
 ALTER TABLE `transaksi_penjualan`
   ADD PRIMARY KEY (`kode_penjualan`),
   ADD KEY `kode_pegawai_penjualan` (`username_pegawai_penjualan`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
@@ -405,157 +405,157 @@ ALTER TABLE `user`
   ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `bundle`
+-- AUTO_INCREMENT for table `bundle`
 --
 ALTER TABLE `bundle`
   MODIFY `kode_bundle` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `list_produk_bundle`
+-- AUTO_INCREMENT for table `list_produk_bundle`
 --
 ALTER TABLE `list_produk_bundle`
   MODIFY `id_list_produk_bundle` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `list_produk_restock`
+-- AUTO_INCREMENT for table `list_produk_restock`
 --
 ALTER TABLE `list_produk_restock`
   MODIFY `id_list_produk_restock` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `list_produk_terjual`
+-- AUTO_INCREMENT for table `list_produk_terjual`
 --
 ALTER TABLE `list_produk_terjual`
   MODIFY `id_list_produk_terjual` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `pemasukan`
+-- AUTO_INCREMENT for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
   MODIFY `kode_data_pemasukan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `pengeluaran`
+-- AUTO_INCREMENT for table `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
   MODIFY `kode_data_pengeluaran` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `perusahaan`
+-- AUTO_INCREMENT for table `perusahaan`
 --
 ALTER TABLE `perusahaan`
   MODIFY `kode_perusahaan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `produk_diskon`
+-- AUTO_INCREMENT for table `produk_diskon`
 --
 ALTER TABLE `produk_diskon`
   MODIFY `kode_diskon` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `restock`
+-- AUTO_INCREMENT for table `restock`
 --
 ALTER TABLE `restock`
   MODIFY `kode_restock` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `supplier`
+-- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
   MODIFY `kode_supplier` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `toko`
+-- AUTO_INCREMENT for table `toko`
 --
 ALTER TABLE `toko`
   MODIFY `kode_toko` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `transaksi_penjualan`
+-- AUTO_INCREMENT for table `transaksi_penjualan`
 --
 ALTER TABLE `transaksi_penjualan`
   MODIFY `kode_penjualan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `admin`
+-- Constraints for table `admin`
 --
 ALTER TABLE `admin`
   ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`kode_perusahaan_admin`) REFERENCES `perusahaan` (`kode_perusahaan`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `list_produk_bundle`
+-- Constraints for table `list_produk_bundle`
 --
 ALTER TABLE `list_produk_bundle`
   ADD CONSTRAINT `list_produk_bundle_ibfk_1` FOREIGN KEY (`kode_bundle_list`) REFERENCES `bundle` (`kode_bundle`) ON UPDATE CASCADE,
   ADD CONSTRAINT `list_produk_bundle_ibfk_2` FOREIGN KEY (`kode_produk_list_bundle`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `list_produk_restock`
+-- Constraints for table `list_produk_restock`
 --
 ALTER TABLE `list_produk_restock`
   ADD CONSTRAINT `list_produk_restock_ibfk_1` FOREIGN KEY (`kode_restock_list`) REFERENCES `restock` (`kode_restock`) ON UPDATE CASCADE,
   ADD CONSTRAINT `list_produk_restock_ibfk_2` FOREIGN KEY (`kode_produk_list_restock`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `list_produk_terjual`
+-- Constraints for table `list_produk_terjual`
 --
 ALTER TABLE `list_produk_terjual`
   ADD CONSTRAINT `list_produk_terjual_ibfk_1` FOREIGN KEY (`kode_penjualan_list`) REFERENCES `transaksi_penjualan` (`kode_penjualan`) ON UPDATE CASCADE,
   ADD CONSTRAINT `list_produk_terjual_ibfk_2` FOREIGN KEY (`kode_produk_list_terjual`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `pegawai`
+-- Constraints for table `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD CONSTRAINT `pegawai_ibfk_1` FOREIGN KEY (`kode_toko_pegawai`) REFERENCES `toko` (`kode_toko`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `pemasukan`
+-- Constraints for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
   ADD CONSTRAINT `pemasukan_ibfk_1` FOREIGN KEY (`kode_toko_pemasukan`) REFERENCES `toko` (`kode_toko`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `pengeluaran`
+-- Constraints for table `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
   ADD CONSTRAINT `pengeluaran_ibfk_1` FOREIGN KEY (`kode_toko_pengeluaran`) REFERENCES `toko` (`kode_toko`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `produk_diskon`
+-- Constraints for table `produk_diskon`
 --
 ALTER TABLE `produk_diskon`
   ADD CONSTRAINT `produk_diskon_ibfk_1` FOREIGN KEY (`kode_produk_diskon`) REFERENCES `produk` (`kode_produk`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `restock`
+-- Constraints for table `restock`
 --
 ALTER TABLE `restock`
   ADD CONSTRAINT `restock_ibfk_1` FOREIGN KEY (`kode_supplier_restock`) REFERENCES `supplier` (`kode_supplier`) ON UPDATE CASCADE,
   ADD CONSTRAINT `restock_ibfk_2` FOREIGN KEY (`username_pegawai_restock`) REFERENCES `pegawai` (`username_pegawai`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `toko`
+-- Constraints for table `toko`
 --
 ALTER TABLE `toko`
   ADD CONSTRAINT `toko_ibfk_1` FOREIGN KEY (`kode_perusahaan_toko`) REFERENCES `perusahaan` (`kode_perusahaan`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `transaksi_penjualan`
+-- Constraints for table `transaksi_penjualan`
 --
 ALTER TABLE `transaksi_penjualan`
   ADD CONSTRAINT `transaksi_penjualan_ibfk_1` FOREIGN KEY (`username_pegawai_penjualan`) REFERENCES `pegawai` (`username_pegawai`) ON UPDATE CASCADE;
