@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="Pengaturan Perusahaan"
@@ -26,7 +26,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Nama Perusahaan"
@@ -40,7 +40,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Nama Pemilik/Owner"
@@ -55,7 +55,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Alamat Lengkap"
@@ -66,11 +66,26 @@
         app:layout_constraintTop_toBottomOf="@+id/NamaPemilikPT" />
 
     <EditText
+        android:id="@+id/NoTeleponPT"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="No Telepon"
+        android:inputType="textImeMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AlamatLengkapPT" />
+
+    <EditText
         android:id="@+id/EmailPerusahaan"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Email Perusahaan"
@@ -78,14 +93,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NamaPemilikPT" />
+        app:layout_constraintTop_toBottomOf="@+id/TanggalBerdiriPT" />
 
     <EditText
         android:id="@+id/PasswordLamaPT"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Password Lama"
@@ -93,14 +108,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NamaPemilikPT" />
+        app:layout_constraintTop_toBottomOf="@+id/EmailPerusahaan" />
 
     <EditText
         android:id="@+id/passwordPT"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="268dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Password Baru"
@@ -108,14 +123,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NamaPemilikPT" />
+        app:layout_constraintTop_toBottomOf="@+id/PasswordLamaPT" />
 
     <EditText
         android:id="@+id/TanggalBerdiriPT"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Tanggal Berdiri"
@@ -123,15 +138,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NamaPemilikPT" />
+        app:layout_constraintTop_toBottomOf="@+id/NoTeleponPT" />
 
     <Button
         android:id="@+id/SimpanPT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
         android:text="Simpan"
+        android:onClick="clickUpdatePT"
         app:layout_constraintBaseline_toBaselineOf="@+id/BatalPT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BatalPT" />
@@ -141,8 +156,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="10dp"
         android:text="Batal"
+        android:onClick="clickBatalPT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
