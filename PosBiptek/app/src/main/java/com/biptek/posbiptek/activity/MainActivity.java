@@ -130,10 +130,10 @@ public class MainActivity extends AppCompatActivity {
                     crud.open();
                     Perusahaan perusahaan = crud.getPerusahaan(sessionData.getKodePerusahaan());
                     crud.close();
-                    if(perusahaan.getPassword_perusahaan().equals(password)){
+                    if(perusahaan != null&& perusahaan.getPassword_perusahaan().equals(password)){
                         sessionData.setUsername(perusahaan.getNama_pemilik_perusahaan());
                         sessionData.setJabatanLogIn("owner");
-                        startActivity(new Intent(MainActivity.this, homekasir.class));
+                        startActivity(new Intent(MainActivity.this, homeowner.class));
                         finish();
                     }
                     else Toast.makeText(getApplicationContext(), "Password Salah", Toast.LENGTH_SHORT).show();

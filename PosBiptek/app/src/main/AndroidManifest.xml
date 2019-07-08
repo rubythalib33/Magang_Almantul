@@ -37,6 +37,7 @@
         <activity android:name=".activity.daftarkontak" />
         <activity android:name=".activity.daftarproduk" />
         <activity android:name=".activity.hutang" />
+        <activity android:name=".activity.moreowner"/>
         <activity android:name=".activity.laporankeuangan" />
         <activity android:name=".activity.laporanpembelian" />
         <activity android:name=".activity.laporanpenjualan" />

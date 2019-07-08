@@ -38,7 +38,7 @@ public class homekasir extends AppCompatActivity {
                         selectedFragment = new Fragment_Plus();
                         break;
                     case R.id.More:
-                        startActivity(new Intent(homekasir.this, More_admin.class));
+                        startActivity(new Intent(homekasir.this, moreowner.class));
                         return true;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerkasir,selectedFragment).addToBackStack(null).commit();

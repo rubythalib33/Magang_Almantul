@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.biptek.posbiptek.R;
+import com.biptek.posbiptek.SessionData;
 
 public class moreowner extends AppCompatActivity {
     ImageButton logout;
@@ -23,8 +24,11 @@ public class moreowner extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                startActivity(new Intent(moreowner.this, homeowner.class));
+                SessionData sessionData = new SessionData(getApplicationContext());
+                sessionData.setUsername(null);
+                sessionData.setJabatanLogIn(null);
+                startActivity(new Intent(moreowner.this, MainActivity.class));
+                finish();
             }
         });
     }
